@@ -26,6 +26,7 @@ public class UiaException extends RuntimeException implements Serializable {
      */
     public UiaException(Throwable cause) {
         super(cause);
+        this.message = cause.getMessage();
     }
 
     /**
