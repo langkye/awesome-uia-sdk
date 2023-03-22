@@ -75,6 +75,6 @@ public class UserInfoConverter implements IUiaConverter {
      */
     @Override
     public String name() {
-        return JbanUserInfoRequest.class.getSimpleName();
+        return JbanUserInfoRequest.class.getName();
     }
 }

@@ -70,6 +70,6 @@ public class MobileConverter implements IUiaConverter {
      */
     @Override
     public String name() {
-        return JbanMobileMd5UserRequest.class.getSimpleName();
+        return JbanMobileMd5UserRequest.class.getName();
     }
 }

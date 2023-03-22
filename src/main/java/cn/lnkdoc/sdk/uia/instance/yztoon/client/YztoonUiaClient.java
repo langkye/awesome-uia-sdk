@@ -53,7 +53,7 @@ public class YztoonUiaClient implements IUiaClient {
 
             // match converter
             List<IUiaConverter> converters = request.getConvert();
-            Assert.required(converters, "not found converter for [" + request.getClass().getSimpleName() + "]");
+            Assert.required(converters, "not found converter for [" + request.getClass().getName() + "]");
 
             // convert
             IUiaConverter converter = converters.get(0);

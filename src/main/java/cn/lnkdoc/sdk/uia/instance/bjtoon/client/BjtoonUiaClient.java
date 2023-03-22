@@ -53,11 +53,11 @@ public class BjtoonUiaClient implements IUiaClient {
             // match converter
             IUiaConverter converter = request.getConvert()
                     .stream()
-                    .filter(it -> it.name().equals(request.getClass().getSimpleName() + ""))
+                    .filter(it -> it.name().equals(request.getClass().getName() + ""))
                     .findFirst()
-                    .orElseThrow(() -> new UiaException("not found converter for [" + request.getClass().getSimpleName() + "]"));
+                    .orElseThrow(() -> new UiaException("not found converter for [" + request.getClass().getName() + "]"));
             
-            Assert.required(converter, "not found converter for [" + request.getClass().getSimpleName() + "]");
+            Assert.required(converter, "not found converter for [" + request.getClass().getName() + "]");
 
             BjtoonResponse<RESP> responseWrapper = converter.convertResponse(Tuple.of(string, property));
 
@@ -82,10 +82,10 @@ public class BjtoonUiaClient implements IUiaClient {
         // match converter
         IUiaConverter converter = request.getConvert()
                 .stream()
-                .filter(it -> it.name().equals(request.getClass().getSimpleName()))
+                .filter(it -> it.name().equals(request.getClass().getName()))
                 .findFirst()
-                .orElseThrow(() -> new UiaException("not found converter for [" + request.getClass().getSimpleName() + "]"));
-        Assert.required(converter, "not found converter for [" + request.getClass().getSimpleName() + "]");
+                .orElseThrow(() -> new UiaException("not found converter for [" + request.getClass().getName() + "]"));
+        Assert.required(converter, "not found converter for [" + request.getClass().getName() + "]");
 
         // build request url
         String url = request.url(property);
