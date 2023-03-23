@@ -46,6 +46,6 @@ public class UserInfoConverter implements IUiaConverter {
      */
     @Override
     public String name() {
-        return UserInfoRequest.class.getSimpleName();
+        return UserInfoRequest.class.getName();
     }
 }

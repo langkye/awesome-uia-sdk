@@ -62,6 +62,6 @@ public class AccessTokenConverter implements IUiaConverter {
      */
     @Override
     public String name() {
-        return AccessTokenRequest.class.getSimpleName();
+        return AccessTokenRequest.class.getName();
     }
 }

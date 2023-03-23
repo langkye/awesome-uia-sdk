@@ -8,7 +8,7 @@
     <name>awesome-uia-sdk</name>
     <groupId>cn.lnkdoc.sdk</groupId>
     <artifactId>awesome-uia-sdk</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.1</version>
 
     <url>https://github.com/langkye/awesome-uia-sdk</url>
     <description>
@@ -33,7 +33,7 @@
     </developers>
 
     <scm>
-        <tag>1.0.0.RELEASE</tag>
+        <tag>${project.version}</tag>
         <connection>scm:git:git@github.com:langkye/awesome-uia-sdk.git</connection>
         <developerConnection>scm:git:git@github.com:langkye/awesome-uia-sdk.git</developerConnection>
         <url>https://github.com/langkye/awesome-uia-sdk/tree/${project.scm.tag}</url>

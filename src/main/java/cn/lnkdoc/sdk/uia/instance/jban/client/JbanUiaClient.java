@@ -54,7 +54,7 @@ public class JbanUiaClient implements IUiaClient {
             // convert 
             List<IUiaConverter> converts = request.getConvert();
 
-            Assert.required(converts, "not found converter for [" + request.getClass().getSimpleName() + "]");
+            Assert.required(converts, "not found converter for [" + request.getClass().getName() + "]");
 
             IUiaConverter convert = converts.get(0);
             RESP resp = (RESP) convert.convertResponse(string);

@@ -24,24 +24,24 @@ public abstract class AbstractUiaRequest implements IUiaRequest {
     @SuppressWarnings(value = {"unused"})
     @Override
     public <T, R> List<IUiaConverter> getConvert() {
-        List<IUiaConverter> converts = converters.get(this.getClass().getSimpleName());
+        List<IUiaConverter> converts = converters.get(this.getClass().getName());
         if (CollectionUtils.isEmpty(converts)) {
             loadConverters();
         }
-        converts = converters.get(this.getClass().getSimpleName());
+        converts = converters.get(this.getClass().getName());
 
         if (CollectionUtils.isEmpty(converts)) {
             converts = new ArrayList<>();
             List<IUiaConverter> finalConverts = converts;
             converters.forEach((k, v) -> {
-                if (k != null && k.contains(this.getClass().getSimpleName())) {
+                if (k != null && k.contains(this.getClass().getName())) {
                     finalConverts.addAll(v);
                 }
             });
         }
 
         if (CollectionUtils.isEmpty(converts)) {
-            throw new UiaException("convert not found by name : " + this.getClass().getSimpleName());
+            throw new UiaException("convert not found by name : " + this.getClass().getName());
         }
         
         return converts;
