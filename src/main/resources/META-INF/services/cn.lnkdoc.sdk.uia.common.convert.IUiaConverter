@@ -14,3 +14,4 @@ cn.lnkdoc.sdk.uia.instance.jban.convert.MobileConverter
 # ~======================= wx =======================~ # 
 cn.lnkdoc.sdk.uia.instance.wx.convert.AccessTokenConverter
 cn.lnkdoc.sdk.uia.instance.wx.convert.RefreshTokenConverter
+cn.lnkdoc.sdk.uia.instance.wx.convert.UserInfoConverter

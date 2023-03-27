@@ -1,12 +1,12 @@
 package cn.lnkdoc.sdk.uia.instance.wx;
 
-import cn.lnkdoc.sdk.uia.common.exception.UiaException;
-import cn.lnkdoc.sdk.uia.common.request.IUiaRequest;
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
 import cn.lnkdoc.sdk.uia.instance.AbstractInstance;
 import cn.lnkdoc.sdk.uia.instance.ISdkInstance;
 import cn.lnkdoc.sdk.uia.instance.wx.client.WxUiaClient;
 import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty;
+import cn.lnkdoc.sdk.uia.instance.wx.request.AccessTokenRequest;
+import cn.lnkdoc.sdk.uia.instance.wx.request.UserInfoRequest;
 
 /**
  * @author langkye
@@ -26,7 +26,7 @@ public class WxSdkInstance extends AbstractInstance implements ISdkInstance {
      */
     @Override
     public <T, R> UiaResponse<T> getAccessToken(R r) {
-        return (UiaResponse<T>) client.execute((IUiaRequest) r);
+        return (UiaResponse<T>) client.execute((AccessTokenRequest) r);
     }
 
     /**
@@ -37,6 +37,6 @@ public class WxSdkInstance extends AbstractInstance implements ISdkInstance {
      */
     @Override
     public <T, R> UiaResponse<T> getUserInfo(R accessToken) {
-        throw new UiaException("NOT IMPLEMENT");
+        return (UiaResponse<T>) client.execute((UserInfoRequest) accessToken);
     }
 }
