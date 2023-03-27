@@ -10,6 +10,7 @@ import cn.lnkdoc.sdk.uia.instance.bjtoon.UiaConstants;
  */
 @SuppressWarnings(value = {"unused"})
 public class BjtoonProperty implements IUiaProperty {
+    private boolean printStack = false;
     private String domain;
     private String clientId;
     private String clientSecret;
@@ -23,6 +24,7 @@ public class BjtoonProperty implements IUiaProperty {
     private String authTicketPath = "/api/oauth/getAuthTicket";
     private String registerPath = "/open/api/register/doUserRegisterByCertInfo";
     private String redirectUri = "";
+
     public String getDomain() {
         return domain;
     }
@@ -125,5 +127,14 @@ public class BjtoonProperty implements IUiaProperty {
 
     public void setRedirectUri(String redirectUri) {
         this.redirectUri = redirectUri;
+    }
+
+    @Override
+    public boolean isPrintStack() {
+        return printStack;
+    }
+
+    public void setPrintStack(boolean printStack) {
+        this.printStack = printStack;
     }
 }

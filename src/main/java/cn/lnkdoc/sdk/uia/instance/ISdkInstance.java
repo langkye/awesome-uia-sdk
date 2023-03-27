@@ -1,6 +1,5 @@
 package cn.lnkdoc.sdk.uia.instance;
 
-import cn.lnkdoc.sdk.uia.common.exception.UiaException;
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
 
 /**
@@ -36,7 +35,5 @@ public interface ISdkInstance {
      * @param <T> type
      * @return extra'info
      */
-    default <T, R> UiaResponse<T> execute(R request) {
-        throw new UiaException("TODO");
-    }
+    <T, R> UiaResponse<T> execute(R request);
 }

@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.common.property.IUiaProperty;
  */
 @SuppressWarnings(value = {"unused"})
 public class JbanProperty implements IUiaProperty {
+    private boolean printStack = false;
     /**
      * 测试：<a href="https://jzb-open-pre.jdcloud.com">...</a>
      * 生产-互联网：<a href="https://open.jzb.beijing.gov.cn">...</a>
@@ -84,5 +85,14 @@ public class JbanProperty implements IUiaProperty {
 
     public void setMobileMd5Path(String mobileMd5Path) {
         this.mobileMd5Path = mobileMd5Path;
+    }
+
+    @Override
+    public boolean isPrintStack() {
+        return printStack;
+    }
+
+    public void setPrintStack(boolean printStack) {
+        this.printStack = printStack;
     }
 }

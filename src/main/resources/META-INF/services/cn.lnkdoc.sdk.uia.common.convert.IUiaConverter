@@ -10,3 +10,7 @@ cn.lnkdoc.sdk.uia.instance.bjtoon.converter.UserInfoConverter
 cn.lnkdoc.sdk.uia.instance.jban.convert.UserInfoConverter
 cn.lnkdoc.sdk.uia.instance.jban.convert.AccessTokenConverter
 cn.lnkdoc.sdk.uia.instance.jban.convert.MobileConverter
+
+# ~======================= wx =======================~ # 
+cn.lnkdoc.sdk.uia.instance.wx.convert.AccessTokenConverter
+cn.lnkdoc.sdk.uia.instance.wx.convert.RefreshTokenConverter

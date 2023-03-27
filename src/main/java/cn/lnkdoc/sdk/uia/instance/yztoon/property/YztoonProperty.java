@@ -11,6 +11,7 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.Scope;
  */
 @SuppressWarnings(value = {"unused"})
 public class YztoonProperty implements IUiaProperty {
+    private boolean printStack = false;
     private String domain;
     private String clientId;
     private String clientSecret;
@@ -118,5 +119,14 @@ public class YztoonProperty implements IUiaProperty {
 
     public void setGrantType(String grantType) {
         this.grantType = grantType;
+    }
+
+    @Override
+    public boolean isPrintStack() {
+        return printStack;
+    }
+
+    public void setPrintStack(boolean printStack) {
+        this.printStack = printStack;
     }
 }

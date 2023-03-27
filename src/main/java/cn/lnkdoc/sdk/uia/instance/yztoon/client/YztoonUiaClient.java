@@ -9,6 +9,7 @@ import cn.lnkdoc.sdk.uia.common.response.IUiaResponse;
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
 import cn.lnkdoc.sdk.uia.common.util.Assert;
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
+import io.vavr.Tuple;
 import okhttp3.*;
 import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
@@ -57,9 +58,12 @@ public class YztoonUiaClient implements IUiaClient {
 
             // convert
             IUiaConverter converter = converters.get(0);
-            RESP t = converter.convertResponse(string);
+            RESP t = converter.convertResponse(Tuple.of(string, property));
             return UiaResponse.success(t);
         } catch (Exception e) {
+            if (property.isPrintStack()) {
+                log.error("", e);
+            }
             return UiaResponse.fail(e.getMessage());
         }
     }
@@ -78,7 +82,8 @@ public class YztoonUiaClient implements IUiaClient {
         String url = request.url(property);
 
         String logMessage = String.format("[%s][%s]", request.method(), url);
-        log.debug(logMessage);
+        boolean success = false;
+        String string = "";
 
         // build mediaType
         MediaType mediaType = MediaType.parse(ContentType.TEXT_PLAIN.getMimeType());
@@ -99,10 +104,14 @@ public class YztoonUiaClient implements IUiaClient {
             ResponseBody responseBody = response.body();
             Assert.required(responseBody, "请求无响应内容：[" + url + "]");
 
-            return responseBody.string();
+            string = responseBody.string();
+            success = true;
+            
+            return string;
         } catch (Exception e) {
-            log.error(logMessage + "[errorMessage:{}]", e.getMessage());
             throw new UiaException(e);
+        } finally {
+            log.debug("{}[{}][{}]", logMessage, success, string);
         }
     }
 }

@@ -5,4 +5,5 @@ package cn.lnkdoc.sdk.uia.common.property;
  * @since 1.0.0.RELEASE
  */
 public interface IUiaProperty {
+    boolean isPrintStack();
 }

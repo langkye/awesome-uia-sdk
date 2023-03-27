@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--////////////////////////////////属性////////////////////////////////-->
+    <!--日志文件路径-->
+    <property name="log.path" value="${user.dir}/logs"/>
+    <property name="appName" value="awesome-uia-sdk"/>
+    
+    <!--////////////////////////////////日志动作////////////////////////////////-->
+    <!--控制台输出：所有级别日志-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d %highlight(%-5level) [${appName}] [%X{traceId}] [%thread] [%X{requestUri}] %cyan(%logger{200}) [%X{processing}] : %msg%n</pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--////////////////////////////////日志级别&引用////////////////////////////////-->
+    
+    <!--////////////////////////////////日志激活////////////////////////////////-->
+    <root level="DEBUG"><!--｜DEBUG｜INFO｜WARN｜ERROR｜-->
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

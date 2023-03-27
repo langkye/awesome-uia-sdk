@@ -52,7 +52,7 @@ public class UserInfoConverter implements IUiaConverter {
             wrapper.getData().setCertNo(decryptCertNo);
         }
 
-        return (T) wrapper;
+        return (T) wrapper.getData();
     }
 
     /**

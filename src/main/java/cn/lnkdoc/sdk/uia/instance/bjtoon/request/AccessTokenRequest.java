@@ -12,9 +12,9 @@ import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
-@SuppressWarnings(value = {"unused"})
+@SuppressWarnings(value = {"unused", "Deprecation", "DeprecatedIsStillUsed"})
 public class AccessTokenRequest extends AbstractUiaRequest implements IUiaRequest {
-    private String requestBody;
+    private String body;
     private String url;
 
     private String grantType = "authorization_code";
@@ -66,12 +66,26 @@ public class AccessTokenRequest extends AbstractUiaRequest implements IUiaReques
         return HttpMethod.POST;
     }
 
+    /**
+     * @deprecated this method is deprecated.
+     *             remove in since 2.
+     *             see {@link #getBody()}
+     * @return body
+     */
+    @Deprecated
     public String getRequestBody() {
-        return requestBody;
+        return body;
     }
 
+    /**
+     * @deprecated this method is deprecated.
+     *             remove in since 2.
+     *             see {@link #setBody(String)}
+     * @param requestBody body
+     */
+    @Deprecated
     public void setRequestBody(String requestBody) {
-        this.requestBody = requestBody;
+        this.body = requestBody;
     }
 
     public String getUrl() {
@@ -87,7 +101,7 @@ public class AccessTokenRequest extends AbstractUiaRequest implements IUiaReques
     }
 
     public void setGrantCode(String grantCode) {
-        this.requestBody = grantCode;
+        this.body = grantCode;
     }
 
     public String getGrantType() {
@@ -144,5 +158,13 @@ public class AccessTokenRequest extends AbstractUiaRequest implements IUiaReques
 
     public void setLocalCheck(String localCheck) {
         this.localCheck = localCheck;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

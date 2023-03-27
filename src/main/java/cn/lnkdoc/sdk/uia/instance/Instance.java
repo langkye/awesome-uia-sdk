@@ -6,6 +6,8 @@ import cn.lnkdoc.sdk.uia.instance.bjtoon.BjtoonSdkInstance;
 import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty;
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance;
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
+import cn.lnkdoc.sdk.uia.instance.wx.WxSdkInstance;
+import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty;
 import cn.lnkdoc.sdk.uia.instance.yztoon.YztoonSdkInstance;
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
 import io.vavr.Function1;
@@ -28,6 +30,10 @@ public enum Instance {
      * jban
      */
     JBAN(Instance::jban, JbanProperty.class),
+    /**
+     * wx
+     */
+    WX(Instance::wx, WxProperty.class),
     ;
 
     
@@ -42,6 +48,11 @@ public enum Instance {
     
     private static JbanSdkInstance jban(IUiaProperty property) {
         return new JbanSdkInstance((JbanProperty) property);
+    }
+    
+    
+    private static WxSdkInstance wx(IUiaProperty property) {
+        return new WxSdkInstance((WxProperty) property);
     }
     
     

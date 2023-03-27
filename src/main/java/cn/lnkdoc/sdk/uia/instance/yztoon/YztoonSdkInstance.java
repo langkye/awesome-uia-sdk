@@ -1,19 +1,16 @@
 package cn.lnkdoc.sdk.uia.instance.yztoon;
 
-import cn.lnkdoc.sdk.uia.common.client.IUiaClient;
+import cn.lnkdoc.sdk.uia.common.request.IUiaRequest;
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
+import cn.lnkdoc.sdk.uia.instance.AbstractInstance;
 import cn.lnkdoc.sdk.uia.instance.ISdkInstance;
 import cn.lnkdoc.sdk.uia.instance.yztoon.client.YztoonUiaClient;
-import cn.lnkdoc.sdk.uia.instance.yztoon.domain.AccessToken;
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
-import cn.lnkdoc.sdk.uia.instance.yztoon.request.AccessTokenRequest;
-import cn.lnkdoc.sdk.uia.instance.yztoon.request.UserInfoRequest;
 
 /**
  * @author langkye
  */
-public class YztoonSdkInstance implements ISdkInstance {
-    private final IUiaClient client;
+public class YztoonSdkInstance extends AbstractInstance implements ISdkInstance {
 
     public YztoonSdkInstance(YztoonProperty property) {
         this.client = YztoonUiaClient.getInstance(property);
@@ -27,21 +24,17 @@ public class YztoonSdkInstance implements ISdkInstance {
      */
     @Override
     public <T, R> UiaResponse<T> getAccessToken(R r) {
-        AccessTokenRequest request = new AccessTokenRequest();
-        request.setBody((String) r);
-        return (UiaResponse<T>) client.execute(request);
+        return (UiaResponse<T>) client.execute((IUiaRequest) r);
     }
 
     /**
      * get UserInfo
      *
-     * @param accessToken accessToken
+     * @param r accessToken
      * @return UserInfo
      */
     @Override
-    public <T, R> UiaResponse<T> getUserInfo(R accessToken) {
-        UserInfoRequest request = new UserInfoRequest();
-        request.setBody(((AccessToken)accessToken).getAccessToken());
-        return (UiaResponse<T>) client.execute(request);
+    public <T, R> UiaResponse<T> getUserInfo(R r) {
+        return (UiaResponse<T>) client.execute((IUiaRequest) r);
     }
 }
