@@ -1,4 +1,4 @@
-package cn.lnkdoc.sdk.uia.instance.jban.client;
+package cn.lnkdoc.sdk.uia.instance.wx.client;
 
 import cn.lnkdoc.sdk.uia.common.client.IUiaClient;
 import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter;
@@ -7,10 +7,13 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest;
 import cn.lnkdoc.sdk.uia.common.response.IUiaResponse;
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
 import cn.lnkdoc.sdk.uia.common.util.Assert;
-import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
-import cn.lnkdoc.sdk.uia.instance.jban.util.CheckResponseUtil;
+import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty;
+import cn.lnkdoc.sdk.uia.instance.wx.util.CheckResponseUtil;
 import io.vavr.Tuple;
-import okhttp3.*;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,13 +24,14 @@ import java.util.List;
  * @since 1.0.0.RELEASE
  */
 @SuppressWarnings(value = {"Duplicates"})
-public class JbanUiaClient implements IUiaClient {
-    private static final Logger log = LoggerFactory.getLogger(JbanUiaClient.class);
+public class WxUiaClient implements IUiaClient {
+    private static final Logger log = LoggerFactory.getLogger(WxUiaClient.class);
+    
     private final OkHttpClient client = new OkHttpClient().newBuilder().build();
-    private JbanProperty property;
+    private WxProperty property;
 
-    public static JbanUiaClient getInstance(JbanProperty property) {
-        JbanUiaClient client = new JbanUiaClient();
+    public static WxUiaClient getInstance(WxProperty property) {
+        WxUiaClient client = new WxUiaClient();
         client.property = property;
 
         checkMustRequired(property);
@@ -35,9 +39,9 @@ public class JbanUiaClient implements IUiaClient {
         return client;
     }
 
-    private JbanUiaClient() {
-    }
-    
+    private WxUiaClient() {}
+
+
     /**
      * execute
      *
@@ -51,15 +55,15 @@ public class JbanUiaClient implements IUiaClient {
         try {
             // send request
             String string = this.sendRequest(request);
-
+            
             // check success
             CheckResponseUtil.check(string);
 
             // convert 
             List<IUiaConverter> converts = request.getConvert();
 
-            Assert.required(converts, "not found converter for [" + request.getClass().getName() + "]");
-
+            Assert.required(converts, "not found converter for [" + request.getClass().getSimpleName() + "]");
+            
             IUiaConverter convert = converts.get(0);
             RESP resp = (RESP) convert.convertResponse(string);
 
@@ -76,7 +80,7 @@ public class JbanUiaClient implements IUiaClient {
     private String sendRequest(IUiaRequest request) {
         // build request url
         String url = request.url(property);
-        
+
         String logMessage = String.format("[%s][%s]", request.method(), url);
         boolean success = false;
         String string = "";
@@ -98,20 +102,17 @@ public class JbanUiaClient implements IUiaClient {
             
             return string;
         } catch (Exception e) {
-            if (property.isPrintStack()) {
-                log.error("", e);
-            }
             throw new UiaException(e);
         } finally {
             log.debug("{}[{}][{}]", logMessage, success, string);
         }
     }
 
-    private static void checkMustRequired(JbanProperty property) {
-        Assert.required(property, "the yztoonConfiguration is required");
+    private static void checkMustRequired(WxProperty property) {
+        Assert.required(property, "the wxConfiguration is required");
         Assert.required(property.getDomain(), "the domain configuration is required");
         Assert.required(property.getClientId(), "the clientId configuration is required");
         Assert.required(property.getClientSecret(), "the clientSecret configuration is required");
-        Assert.required(property.getOpenTeamId(), "the redirectUrl configuration is required");
     }
+    
 }

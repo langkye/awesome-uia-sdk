@@ -7,9 +7,8 @@ import cn.lnkdoc.sdk.uia.common.exception.UiaException;
 import cn.lnkdoc.sdk.uia.common.request.IUiaRequest;
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
 import cn.lnkdoc.sdk.uia.common.util.Assert;
-import cn.lnkdoc.sdk.uia.instance.bjtoon.UiaConstants;
 import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty;
-import cn.lnkdoc.sdk.uia.instance.bjtoon.response.BjtoonResponse;
+import cn.lnkdoc.sdk.uia.instance.bjtoon.util.CheckResponseUtil;
 import io.vavr.Tuple;
 import okhttp3.*;
 import org.slf4j.Logger;
@@ -19,6 +18,7 @@ import org.slf4j.LoggerFactory;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings(value = {"Duplicates"})
 public class BjtoonUiaClient implements IUiaClient {
     private static final Logger log = LoggerFactory.getLogger(BjtoonUiaClient.class);
     private final OkHttpClient client = new OkHttpClient().newBuilder().build();
@@ -48,6 +48,9 @@ public class BjtoonUiaClient implements IUiaClient {
         try {
             // send request
             String string = this.sendRequest(request);
+            
+            // check success
+            CheckResponseUtil.check(string);
 
             // convert
             // match converter
@@ -59,21 +62,13 @@ public class BjtoonUiaClient implements IUiaClient {
             
             Assert.required(converter, "not found converter for [" + request.getClass().getName() + "]");
 
-            BjtoonResponse<RESP> responseWrapper = converter.convertResponse(Tuple.of(string, property));
-
-            RESP data = responseWrapper.getData();
-            // check success
-            boolean isSuccess = UiaConstants.RETURN_CODE_SUCCESS.getCode().equals(responseWrapper.getMeta().getCode())
-                    && data != null;
-
-            if (isSuccess) {
-                return UiaResponse.success(data);
-            } else {
-                return UiaResponse.fail(responseWrapper.getMeta().getMessage());
-            }
+            RESP data = converter.convertResponse(Tuple.of(string, property));
             
+            return UiaResponse.success(data);
         } catch (Exception e) {
-            log.error("[errorMessage:{}]", e.getMessage(), e);
+            if (property.isPrintStack()) {
+                log.error("", e);
+            }
             return UiaResponse.fail(e.getMessage());
         }
     }
@@ -91,7 +86,8 @@ public class BjtoonUiaClient implements IUiaClient {
         String url = request.url(property);
 
         String logMessage = String.format("[%s][%s]", request.method(), url);
-        log.debug(logMessage);
+        boolean success = false;
+        String string = "";
 
         RequestBody body = converter.convertRequest(Tuple.of(request, property));
 
@@ -108,9 +104,14 @@ public class BjtoonUiaClient implements IUiaClient {
             ResponseBody responseBody = response.body();
             Assert.required(responseBody, "请求无响应内容：[" + url + "]");
 
-            return responseBody.string();
+            string = responseBody.string();
+            success = true;
+            
+            return string;
         } catch (Exception e) {
             throw new UiaException(e);
+        } finally {
+            log.debug("{}[{}][{}]", logMessage, success, string);
         }
     }
 

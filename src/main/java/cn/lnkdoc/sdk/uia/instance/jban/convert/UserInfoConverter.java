@@ -1,7 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.jban.convert;
 
 import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter;
-import cn.lnkdoc.sdk.uia.common.exception.UiaException;
 import cn.lnkdoc.sdk.uia.instance.jban.domain.UserInfo;
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
 import cn.lnkdoc.sdk.uia.instance.jban.request.JbanUserInfoRequest;
@@ -29,10 +28,7 @@ public class UserInfoConverter implements IUiaConverter {
     public <T, R> T convertResponse(R body) {
         String json = (String) body;
         JbanResponse<UserInfo> jbanResponse = JSON.parseObject(json, new TypeReference<JbanResponse<UserInfo>>(){});
-        if (Integer.valueOf("0").equals(jbanResponse.getCode())) {
-            return (T) jbanResponse.getData();
-        }
-        throw new UiaException(jbanResponse.getMsg());
+        return (T) jbanResponse.getData();
     }
 
     /**

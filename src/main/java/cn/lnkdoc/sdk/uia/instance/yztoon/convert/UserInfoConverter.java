@@ -4,8 +4,10 @@ import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter;
 import cn.lnkdoc.sdk.uia.common.exception.UiaException;
 import cn.lnkdoc.sdk.uia.common.util.Assert;
 import cn.lnkdoc.sdk.uia.instance.yztoon.domain.UserInfo;
+import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.UserInfoRequest;
 import com.alibaba.fastjson2.JSON;
+import io.vavr.Tuple2;
 
 /**
  * @author langkye
@@ -21,7 +23,8 @@ public class UserInfoConverter implements IUiaConverter {
     @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertResponse(R body) {
-        String json = (String) body; 
+        Tuple2<String, YztoonProperty> tuple = ((Tuple2<String, YztoonProperty>) body);
+        String json = tuple._1; 
         UserInfo userInfo = JSON.parseObject(json, UserInfo.class);
         userInfo.parseExtInfo();
         Assert.required(userInfo.getCn(), "parser failed for json: " + json);

@@ -29,7 +29,8 @@ public class ApiUtil {
         String url = String.join("", property.getDomain(), property.getTeamAccessTokenPath());
 
         String logMessage = String.format("[%s][%s]", HttpMethod.POST.getMethod(), url);
-        log.debug(logMessage);
+        boolean success = false;
+        String string = "";
 
         // build mediaType
         MediaType mediaType = MediaType.parse(ContentType.APPLICATION_JSON.getMimeType());
@@ -55,11 +56,13 @@ public class ApiUtil {
             ResponseBody responseBody = response.body();
             Assert.required(responseBody, "请求无响应内容：[" + url + "]");
 
-            JbanResponse<TeamAccessToken> jbanResponse = JSONObject.parseObject(responseBody.string(), new TypeReference<JbanResponse<TeamAccessToken>>() {
+            string = responseBody.string();
+            JbanResponse<TeamAccessToken> jbanResponse = JSONObject.parseObject(string, new TypeReference<JbanResponse<TeamAccessToken>>() {
             });
 
-            boolean success = Integer.valueOf("0").equals(jbanResponse.getCode());
-            if (success) {
+            success = true;
+            boolean responseSuccess = Integer.valueOf("0").equals(jbanResponse.getCode());
+            if (responseSuccess) {
                 return jbanResponse.getData().getTeamAccessToken();
             }
             
@@ -67,8 +70,9 @@ public class ApiUtil {
         } catch (UiaException e) {
             throw e;
         } catch (Exception e) {
-            log.error(logMessage + "[errorMessage:{}]", e.getMessage());
             throw new UiaException(e);
+        } finally {
+            log.debug("{}[{}][{}]", logMessage, success, string);
         }
 
     }
@@ -78,7 +82,8 @@ public class ApiUtil {
         String url = String.join("", property.getDomain(), property.getAppAccessTokenPath());
 
         String logMessage = String.format("[%s][%s]", HttpMethod.POST.getMethod(), url);
-        log.debug(logMessage);
+        boolean success = false;
+        String string = "";
 
         // build mediaType
         MediaType mediaType = MediaType.parse(ContentType.APPLICATION_JSON.getMimeType());
@@ -105,11 +110,14 @@ public class ApiUtil {
             ResponseBody responseBody = response.body();
             Assert.required(responseBody, "请求无响应内容：[" + url + "]");
 
-            JbanResponse<AppAccessToken> jbanResponse = JSONObject.parseObject(responseBody.string(), new TypeReference<JbanResponse<AppAccessToken>>() {
+            string = responseBody.string();
+
+            JbanResponse<AppAccessToken> jbanResponse = JSONObject.parseObject(string, new TypeReference<JbanResponse<AppAccessToken>>() {
             });
 
-            boolean success = Integer.valueOf("0").equals(jbanResponse.getCode());
-            if (success) {
+            success = true;
+            boolean responseSuccess = Integer.valueOf("0").equals(jbanResponse.getCode());
+            if (responseSuccess) {
                 return jbanResponse.getData().getAppAccessToken();
             }
 
@@ -117,8 +125,9 @@ public class ApiUtil {
         } catch (UiaException e) {
             throw e;
         } catch (Exception e) {
-            log.error(logMessage + "[errorMessage:{}]", e.getMessage());
             throw new UiaException(e);
+        } finally {
+            log.debug("{}[{}][{}]", logMessage, success, string);
         }
     }
 }

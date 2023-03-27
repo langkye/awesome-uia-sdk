@@ -37,7 +37,7 @@ public class AccessTokenConverter implements IUiaConverter {
                 .addEncoded(UiaConstants.CLIENT_ID, bjtoonProperty.getClientId())
                 .addEncoded(UiaConstants.CLIENT_SECRET, bjtoonProperty.getClientSecret())
                 .addEncoded(UiaConstants.REDIRECT_URI, bjtoonProperty.getRedirectUri())
-                .addEncoded(UiaConstants.GRANT_CODE, accessTokenRequest.getGrantCode())
+                .addEncoded(UiaConstants.GRANT_CODE, accessTokenRequest.body())
                 .addEncoded(UiaConstants.GRANT_TYPE, bjtoonProperty.getGrantType())
                 .addEncoded(UiaConstants.AUTH_TOKEN, authToken)
                 .addEncoded(UiaConstants.SCOPE, bjtoonProperty.getScope())
@@ -60,8 +60,12 @@ public class AccessTokenConverter implements IUiaConverter {
     public <T, R> T convertResponse(R body) {
         io.vavr.Tuple2<String, BjtoonProperty> tuple = (io.vavr.Tuple2<String, BjtoonProperty>) body;
         // convert json
-        return JSONObject.parseObject(tuple._1, new TypeReference<BjtoonResponse<AccessToken>>() {
+        BjtoonResponse<AccessToken> response = (BjtoonResponse) JSONObject.parseObject(tuple._1, new TypeReference<BjtoonResponse<AccessToken>>() {
         });
+
+        AccessToken data = response.getData();
+        
+        return (T) data;
     }
 
     /**

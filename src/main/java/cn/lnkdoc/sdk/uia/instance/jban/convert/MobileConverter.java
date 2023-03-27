@@ -2,7 +2,6 @@ package cn.lnkdoc.sdk.uia.instance.jban.convert;
 
 import cn.lnkdoc.sdk.uia.common.HttpMethod;
 import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter;
-import cn.lnkdoc.sdk.uia.common.exception.UiaException;
 import cn.lnkdoc.sdk.uia.instance.jban.domain.MobileInfo;
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
 import cn.lnkdoc.sdk.uia.instance.jban.request.JbanMobileMd5UserRequest;
@@ -28,10 +27,7 @@ public class MobileConverter implements IUiaConverter {
     public <T, R> T convertResponse(R body) {
         String json = (String) body;
         JbanResponse<MobileInfo> jbanResponse = JSON.parseObject(json, new TypeReference<JbanResponse<MobileInfo>>(){});
-        if (Integer.valueOf("0").equals(jbanResponse.getCode())) {
-            return (T) jbanResponse.getData();
-        }
-        throw new UiaException(jbanResponse.getMsg());
+        return (T) jbanResponse.getData();
     }
 
     /**

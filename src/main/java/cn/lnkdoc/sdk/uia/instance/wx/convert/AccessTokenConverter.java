@@ -1,24 +1,21 @@
-package cn.lnkdoc.sdk.uia.instance.jban.convert;
+package cn.lnkdoc.sdk.uia.instance.wx.convert;
 
 import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter;
-import cn.lnkdoc.sdk.uia.instance.jban.domain.AccessToken;
-import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
-import cn.lnkdoc.sdk.uia.instance.jban.request.JbanAccessTokenRequest;
-import cn.lnkdoc.sdk.uia.instance.jban.response.JbanResponse;
-import cn.lnkdoc.sdk.uia.instance.jban.util.ApiUtil;
+import cn.lnkdoc.sdk.uia.instance.wx.domain.AccessToken;
+import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty;
+import cn.lnkdoc.sdk.uia.instance.wx.request.AccessTokenRequest;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.TypeReference;
 import okhttp3.*;
 import org.apache.http.entity.ContentType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
  */
 public class AccessTokenConverter implements IUiaConverter {
+    
     /**
      * convert response
      *
@@ -29,8 +26,11 @@ public class AccessTokenConverter implements IUiaConverter {
     @Override
     public <T, R> T convertResponse(R body) {
         String json = (String) body;
-        JbanResponse<AccessToken> jbanResponse = JSON.parseObject(json, new TypeReference<JbanResponse<AccessToken>>(){});
-        return (T) jbanResponse.getData();
+        
+        AccessToken accessToken = (AccessToken) JSON.parseObject(json, new TypeReference<AccessToken>() {
+        });
+
+        return (T) accessToken;
     }
 
     /**
@@ -42,8 +42,7 @@ public class AccessTokenConverter implements IUiaConverter {
     @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertRequest(R body) {
-        io.vavr.Tuple3<JbanProperty, OkHttpClient, JbanAccessTokenRequest> tuple = (io.vavr.Tuple3<JbanProperty, OkHttpClient, JbanAccessTokenRequest>) body;
-        String appAccessToken = ApiUtil.getAppAccessToken(tuple._1, tuple._2);
+        io.vavr.Tuple3<WxProperty, OkHttpClient, AccessTokenRequest> tuple = (io.vavr.Tuple3<WxProperty, OkHttpClient, AccessTokenRequest>) body;
 
         //请求头
         Headers headers = new Headers.Builder()
@@ -52,15 +51,11 @@ public class AccessTokenConverter implements IUiaConverter {
 
         //请求体
         JSONObject reqBody = new JSONObject();
-        reqBody.put("appAccessToken", appAccessToken);
-        reqBody.put("code", tuple._3.getBody());
 
         //请求对象
         Request request = new Request.Builder()
-                .url(tuple._3.getUrl())
-                //.method(HttpMethod.POST.name(), null)
-                .post(RequestBody.create(MediaType.parse("application/json"), reqBody.toJSONString()))
-                .headers(headers)
+                .url(tuple._3.url(tuple._1))
+                .get()
                 .build();
 
         return (T) request;
@@ -74,6 +69,6 @@ public class AccessTokenConverter implements IUiaConverter {
      */
     @Override
     public String name() {
-        return JbanAccessTokenRequest.class.getName();
+        return AccessTokenRequest.class.getName();
     }
 }
