@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.domain.AccessToken;
 import cn.lnkdoc.sdk.uia.instance.yztoon.domain.UserInfo;
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.AccessTokenRequest;
+import cn.lnkdoc.sdk.uia.instance.yztoon.request.LogoutRequest;
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.UserInfoRequest;
 import com.alibaba.fastjson2.JSONObject;
 import org.slf4j.Logger;
@@ -30,6 +31,10 @@ public class Example {
         // get user's info 
         UserInfo userInfo = getUserInfo(accessToken);
         System.out.println(JSONObject.toJSONString(userInfo));
+
+        // logout
+        Object logout = logout();
+        System.out.println(logout);
     }
 
     private static YztoonProperty loadProperty() {
@@ -39,6 +44,7 @@ public class Example {
         property.setClientSecret("");
         property.setRedirectUrl("");
         property.setPrintStack(true);
+        property.setTrustDomain(true);
         
         return property;
     }
@@ -81,6 +87,26 @@ public class Example {
             throw new RuntimeException(executeResponse.getMessage());
         }
         
+        return executeResponse.getData();
+    }
+
+    private static Object logout() {
+        // load property
+        YztoonProperty property = loadProperty();
+
+        // build instance
+        ISdkInstance instance = UiaSdkInstance.getInstance(property);
+
+        // build request=
+        LogoutRequest request = new LogoutRequest();
+
+        // execute
+        UiaResponse<Object> executeResponse = instance.getAccessToken(request);
+
+        if (executeResponse.isFailed()) {
+            throw new RuntimeException(executeResponse.getMessage());
+        }
+
         return executeResponse.getData();
     }
 }

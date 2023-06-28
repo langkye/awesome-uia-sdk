@@ -1,6 +1,7 @@
 # ~======================= yztoon =======================~ # 
 cn.lnkdoc.sdk.uia.instance.yztoon.convert.AccessTokenConverter
 cn.lnkdoc.sdk.uia.instance.yztoon.convert.UserInfoConverter
+cn.lnkdoc.sdk.uia.instance.yztoon.convert.LogoutConverter
 
 # ~======================= bjtoon =======================~ # 
 cn.lnkdoc.sdk.uia.instance.bjtoon.converter.AccessTokenConverter
