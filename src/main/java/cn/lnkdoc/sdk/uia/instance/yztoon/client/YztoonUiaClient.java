@@ -11,6 +11,7 @@ import cn.lnkdoc.sdk.uia.common.util.Assert;
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
 import io.vavr.Tuple;
 import okhttp3.*;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +24,8 @@ import java.util.List;
  */
 public class YztoonUiaClient implements IUiaClient {
     private static final Logger log = LoggerFactory.getLogger(YztoonUiaClient.class);
-    private final OkHttpClient client = new OkHttpClient().newBuilder().build();
-    
+    private final OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+
     private YztoonProperty property;
     
     private YztoonUiaClient() {
@@ -96,7 +97,9 @@ public class YztoonUiaClient implements IUiaClient {
                 .url(url)
                 .method(request.method().getMethod(), HttpMethod.POST.equals(request.method()) ? body : null)
                 .build();
-
+        // get or build client
+        OkHttpClient client = this.buildClient(property);
+        
         // call 
         try (Response response = client.newCall(httpRequest).execute()) {
 
@@ -113,5 +116,13 @@ public class YztoonUiaClient implements IUiaClient {
         } finally {
             log.debug("{}[{}][{}]", logMessage, success, string);
         }
+    }
+
+    private OkHttpClient buildClient(YztoonProperty property) {
+        if (property.isTrustDomain()) {
+            //.hostnameVerifier(new AllowAllHostnameVerifier())
+            builder.hostnameVerifier(new NoopHostnameVerifier());
+        }
+        return builder.build();
     }
 }
