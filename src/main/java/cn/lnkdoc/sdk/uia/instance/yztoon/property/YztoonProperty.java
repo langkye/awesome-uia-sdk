@@ -24,6 +24,7 @@ public class YztoonProperty implements IUiaProperty {
     private String keyStorePassword = "123456";
     private String service = "bjzwService";
     private String grantType = GrantType.AUTHORIZATION_CODE.getCode();
+    private boolean trustDomain;
 
     public String getDomain() {
         return domain;
@@ -128,5 +129,13 @@ public class YztoonProperty implements IUiaProperty {
 
     public void setPrintStack(boolean printStack) {
         this.printStack = printStack;
+    }
+
+    public boolean isTrustDomain() {
+        return trustDomain;
+    }
+
+    public void setTrustDomain(boolean trustDomain) {
+        this.trustDomain = trustDomain;
     }
 }
