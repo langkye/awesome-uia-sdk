@@ -5,6 +5,8 @@ import cn.lnkdoc.sdk.uia.common.GrantType;
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty;
 import cn.lnkdoc.sdk.uia.instance.yztoon.Scope;
 
+import java.util.Objects;
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
@@ -19,6 +21,7 @@ public class YztoonProperty implements IUiaProperty {
     private String accessTokenUrl = "/oauth2/access_token";
     private String refreshTokenUrl;
     private String userInfoUrl = "/oauth2/tokeninfo";
+    private String logoutUrl = "/UI/Logout";
     private String redirectUrl;
     private String keyStorePath = "classpath:yzttrust.jks";
     private String keyStorePassword = "123456";
@@ -40,6 +43,14 @@ public class YztoonProperty implements IUiaProperty {
 
     public void setUserInfoUrl(String userInfoUrl) {
         this.userInfoUrl = userInfoUrl;
+    }
+
+    public String getLogoutUrl() {
+        return logoutUrl;
+    }
+
+    public void setLogoutUrl(String logoutUrl) {
+        this.logoutUrl = logoutUrl;
     }
 
     public String getClientId() {
@@ -135,7 +146,7 @@ public class YztoonProperty implements IUiaProperty {
         return trustDomain;
     }
 
-    public void setTrustDomain(boolean trustDomain) {
-        this.trustDomain = trustDomain;
+    public void setTrustDomain(Boolean trustDomain) {
+        this.trustDomain = Objects.equals(Boolean.TRUE, trustDomain);
     }
 }
