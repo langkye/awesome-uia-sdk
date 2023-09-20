@@ -12,7 +12,11 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public class LogoutRequest extends AbstractUiaRequest implements IUiaRequest {
+    /**
+     * body
+     */
     private String body;
     
     /**
@@ -20,7 +24,6 @@ public class LogoutRequest extends AbstractUiaRequest implements IUiaRequest {
      *
      * @return request body
      */
-    @SuppressWarnings("unchecked")
     @Override
     public String body() {
         return getBody();
@@ -56,10 +59,20 @@ public class LogoutRequest extends AbstractUiaRequest implements IUiaRequest {
         return HttpMethod.GET;
     }
 
+    /**
+     * getter
+     *
+     * @return body
+     */
     public String getBody() {
         return body;
     }
 
+    /**
+     * setter
+     *
+     * @param body body
+     */
     public void setBody(String body) {
         this.body = body;
     }

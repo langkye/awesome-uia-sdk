@@ -29,6 +29,9 @@ public enum Scope {
      * credenceClass
      */
     CREDENCE_CLASS("credenceClass"),
+    /**
+     * ALL
+     */
     ALL(
             String.join("+"
                     , CN.scope
@@ -40,13 +43,26 @@ public enum Scope {
             )
     ),
     ;
-    
+
+    /**
+     * scope
+     */
     private final String scope;
 
+    /**
+     * constructor
+     * 
+     * @param scope scope
+     */
     Scope(String scope) {
         this.scope = scope;
     }
 
+    /**
+     * getter
+     * 
+     * @return scopse
+     */
     public String getScope() {
         return scope;
     }

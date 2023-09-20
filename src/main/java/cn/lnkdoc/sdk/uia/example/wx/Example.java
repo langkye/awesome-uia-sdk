@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author langkye
@@ -25,6 +26,11 @@ import java.net.URLEncoder;
 public class Example {
     private static final Logger log = LoggerFactory.getLogger(Example.class);
 
+    /**
+     * main
+     * 
+     * @param args args
+     */
     public static void main(String[] args) {
         // third-party platform's code
         String code = "";
@@ -118,7 +124,7 @@ public class Example {
 
     private static String buildLoginUrl() {
         String redirectUri = "";
-        String encode = URLEncoder.encode(redirectUri);
+        String encode = URLEncoder.encode(redirectUri, StandardCharsets.UTF_8);
 
         String state = "";
 

@@ -27,12 +27,26 @@ public enum Scope {
      */
     snsapi_login("snsapi_login"),
     ;
+
+    /**
+     * scope
+     */
     private final String scope;
 
+    /**
+     * constructor
+     * 
+     * @param scope scope
+     */
     Scope(String scope) {
         this.scope = scope;
     }
 
+    /**
+     * getter
+     * 
+     * @return scope
+     */
     public String getScope() {
         return scope;
     }

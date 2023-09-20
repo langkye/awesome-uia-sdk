@@ -8,8 +8,11 @@ import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public abstract class AbstractInstance implements ISdkInstance {
-
+    /**
+     * client
+     */
     protected IUiaClient client;
 
     /**

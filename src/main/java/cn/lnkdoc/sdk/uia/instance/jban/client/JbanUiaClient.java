@@ -26,6 +26,12 @@ public class JbanUiaClient implements IUiaClient {
     private final OkHttpClient client = new OkHttpClient().newBuilder().build();
     private JbanProperty property;
 
+    /**
+     * instance
+     * 
+     * @param property property
+     * @return instance
+     */
     public static JbanUiaClient getInstance(JbanProperty property) {
         JbanUiaClient client = new JbanUiaClient();
         client.property = property;

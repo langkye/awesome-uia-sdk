@@ -24,6 +24,12 @@ public class BjtoonUiaClient implements IUiaClient {
     private final OkHttpClient client = new OkHttpClient().newBuilder().build();
     private BjtoonProperty property;
 
+    /**
+     * instance
+     * 
+     * @param property property
+     * @return client
+     */
     public static BjtoonUiaClient getInstance(BjtoonProperty property) {
         BjtoonUiaClient client = new BjtoonUiaClient();
         client.property = property;

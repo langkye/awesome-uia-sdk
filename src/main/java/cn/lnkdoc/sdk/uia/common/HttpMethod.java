@@ -21,6 +21,11 @@ public enum HttpMethod {
         this.method = method;
     }
 
+    /**
+     * getter
+     * 
+     * @return method
+     */
     public String getMethod() {
         return method;
     }

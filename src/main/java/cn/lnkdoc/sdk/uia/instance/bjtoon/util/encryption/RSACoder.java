@@ -18,17 +18,41 @@ import java.util.Map;
  */
 @SuppressWarnings(value = {"ALL"})
 public class RSACoder {
-	
-
-    public static final String KEY_ALGORITHM = "RSA";  
-    public static final String SIGNATURE_ALGORITHM = "MD5withRSA";  
-  
-    private static final String PUBLIC_KEY = "RSAPublicKey";  
+    
+    /**
+     * KEY_ALGORITHM
+     */
+    public static final String KEY_ALGORITHM = "RSA";
+    /**
+     * SIGNATURE_ALGORITHM
+     */
+    public static final String SIGNATURE_ALGORITHM = "MD5withRSA";
+    /**
+     * PUBLIC_KEY
+     */
+    private static final String PUBLIC_KEY = "RSAPublicKey";
+    /**
+     * PRIVATE_KEY
+     */
     private static final String PRIVATE_KEY = "RSAPrivateKey";
-     
-    private static final int MAX_ENCRYPT_BLOCK = 117;  
-    private static final int MAX_DECRYPT_BLOCK = 128;  
-  
+
+    /**
+     * MAX_ENCRYPT_BLOCK
+     */
+    private static final int MAX_ENCRYPT_BLOCK = 117;
+    /**
+     * MAX_DECRYPT_BLOCK
+     */
+    private static final int MAX_DECRYPT_BLOCK = 128;
+
+    /**
+     * sign
+     * 
+     * @param data data
+     * @param privateKey privateKey
+     * @return result
+     * @throws Exception ex
+     */
     public static String sign(byte[] data, String privateKey) throws Exception {
         // 解密由base64编码的私钥  
         byte[] keyBytes = Base64.decodeBase64(privateKey);  
@@ -48,8 +72,17 @@ public class RSACoder {
         signature.update(data);  
   
         return Base64.encodeBase64String(signature.sign());  
-    }  
-  
+    }
+
+    /**
+     * vierfy
+     * 
+     * @param data data
+     * @param publicKey publicKey
+     * @param sign sign
+     * @return result
+     * @throws Exception ex
+     */
     public static boolean verify(byte[] data, String publicKey, String sign)
             throws Exception {  
   
@@ -71,8 +104,16 @@ public class RSACoder {
   
         // 验证签名是否正常  
         return signature.verify(Base64.decodeBase64(sign));  
-    }  
-  
+    }
+
+    /**
+     * decrypt
+     * 
+     * @param data data
+     * @param key key
+     * @return decrypt data
+     * @throws Exception ex
+     */
     public static byte[] decryptByPrivateKey(byte[] data, String key)
             throws Exception {  
     	byte[] keyBytes = Base64.decodeBase64(key);  
@@ -100,8 +141,16 @@ public class RSACoder {
         byte[] decryptedData = out.toByteArray();  
         out.close();  
         return decryptedData;  
-    }  
-  
+    }
+
+    /**
+     * decrypt
+     * 
+     * @param data data
+     * @param key key
+     * @return decrypt data
+     * @throws Exception ex
+     */
     public static byte[] decryptByPublicKey(byte[] data, String key)
             throws Exception {  
     	byte[] keyBytes = Base64.decodeBase64(key);  
@@ -129,8 +178,16 @@ public class RSACoder {
         byte[] decryptedData = out.toByteArray();  
         out.close();  
         return decryptedData;  
-    }  
-  
+    }
+
+    /**
+     * encrypt 
+     * 
+     * @param data data
+     * @param key key
+     * @return encrypt data
+     * @throws Exception ex
+     */
     public static byte[] encryptByPublicKey(byte[] data, String key)
             throws Exception {  
     	byte[] keyBytes = Base64.decodeBase64(key);  
@@ -161,6 +218,14 @@ public class RSACoder {
         return encryptedData;  
     }
 
+    /**
+     * encrypt 
+     * 
+     * @param data data
+     * @param key key
+     * @return encrypt data
+     * @throws Exception ex
+     */
     public static byte[] encryptByPrivateKey(byte[] data, String key)
             throws Exception {  
     	byte[] keyBytes = Base64.decodeBase64(key);  
@@ -188,14 +253,27 @@ public class RSACoder {
         byte[] encryptedData = out.toByteArray();  
         out.close();  
         return encryptedData;  
-    }  
+    }
+
+    /**
+     * getter
+     * 
+     * @param keyMap km
+     * @return pk
+     */
     public static String getPrivateKey(Map<String, Object> keyMap) {  
         Key key = (Key) keyMap.get(PRIVATE_KEY);  
         String privateKey = Base64.encodeBase64String(key.getEncoded());
         //String privateKey = new String(key.getEncoded(),"iso-8859-1");
         return privateKey;
-    }  
-  
+    }
+
+    /**
+     * getter
+     * 
+     * @param keyMap km
+     * @return pk
+     */
     public static String getPublicKey(Map<String, Object> keyMap) {  
         Key key = (Key) keyMap.get(PUBLIC_KEY);  
         String publicKey = Base64.encodeBase64String(key.getEncoded());
@@ -203,6 +281,12 @@ public class RSACoder {
         return publicKey;  
     }
 
+    /**
+     * init
+     * 
+     * @return km
+     * @throws Exception ex
+     */
     public static Map<String, Object> initKey() throws Exception {
         KeyPairGenerator keyPairGen = KeyPairGenerator  
                 .getInstance(KEY_ALGORITHM);  

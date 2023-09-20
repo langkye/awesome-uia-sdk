@@ -38,19 +38,40 @@ public enum Instance {
 
     
     // ~=============================== Instances ===============================~ //
+
+    /**
+     * of
+     * 
+     * @param property property
+     * @return instance
+     */
     private static YztoonSdkInstance yztoon(IUiaProperty property) {
         return new YztoonSdkInstance((YztoonProperty) property);
     }
-    
+    /**
+     * of
+     *
+     * @param property property
+     * @return instance
+     */
     private static BjtoonSdkInstance bjtoon(IUiaProperty property) {
         return new BjtoonSdkInstance((BjtoonProperty) property);
     }
-    
+    /**
+     * of
+     *
+     * @param property property
+     * @return instance
+     */
     private static JbanSdkInstance jban(IUiaProperty property) {
         return new JbanSdkInstance((JbanProperty) property);
     }
-    
-    
+    /**
+     * of
+     *
+     * @param property property
+     * @return instance
+     */
     private static WxSdkInstance wx(IUiaProperty property) {
         return new WxSdkInstance((WxProperty) property);
     }
@@ -59,25 +80,53 @@ public enum Instance {
     
     
     // ~=============================== Fileds/Constructor/Getter ===============================~ //
+    /**
+     * function
+     */
     private final Function1<IUiaProperty, ISdkInstance> function;
+    /**
+     * propertyClazz
+     */
     private final Class propertyClazz;
 
 
+    /**
+     * constructor
+     * 
+     * @param function function
+     * @param propertyClazz propertyClazz
+     */
     Instance(Function1<IUiaProperty, ISdkInstance> function, Class propertyClazz) {
         this.function = function;
         this.propertyClazz = propertyClazz;
     }
-    
+
+    /**
+     * getter
+     * 
+     * @return function
+     */
     public Function1<IUiaProperty, ISdkInstance> getFunction() {
         return function;
     }
 
+    /**
+     * getter
+     * 
+     * @return property clazz
+     */
     public Class getPropertyClazz() {
         return propertyClazz;
     }
 
     // ~=============================== Tools ===============================~ //
-    
+
+    /**
+     * of
+     * 
+     * @param name name
+     * @return instance
+     */
     public static Instance of(String name) {
         for (Instance instance : Instance.values()) {
             if (instance.toString().equals(name)) {
@@ -86,7 +135,13 @@ public enum Instance {
         }
         throw new UiaException("not match instance for “" + name + "”");
     }
-    
+
+    /**
+     * of
+     * 
+     * @param propertyClazz propertyClazz
+     * @return instance
+     */
     public static Instance of(Class propertyClazz) {
         for (Instance instance : Instance.values()) {
             if (instance.propertyClazz.equals(propertyClazz)) {

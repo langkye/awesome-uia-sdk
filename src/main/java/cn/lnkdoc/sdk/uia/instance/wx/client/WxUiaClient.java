@@ -26,10 +26,22 @@ import java.util.List;
 @SuppressWarnings(value = {"Duplicates"})
 public class WxUiaClient implements IUiaClient {
     private static final Logger log = LoggerFactory.getLogger(WxUiaClient.class);
-    
+
+    /**
+     * client
+     */
     private final OkHttpClient client = new OkHttpClient().newBuilder().build();
+    /**
+     * property
+     */
     private WxProperty property;
 
+    /**
+     * instance
+     * 
+     * @param property property
+     * @return client
+     */
     public static WxUiaClient getInstance(WxProperty property) {
         WxUiaClient client = new WxUiaClient();
         client.property = property;

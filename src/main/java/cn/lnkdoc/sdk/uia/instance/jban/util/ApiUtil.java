@@ -21,7 +21,14 @@ import org.slf4j.LoggerFactory;
 @SuppressWarnings(value = {"Duplicates"})
 public class ApiUtil {
     private static final Logger log = LoggerFactory.getLogger(ApiUtil.class);
-    
+
+    /**
+     * getter
+     * 
+     * @param property property
+     * @param client client
+     * @return team_access_token
+     */
     public static String getTeamAccessToken(JbanProperty property, OkHttpClient client) {
         String accessToken = getAppAccessToken(property, client);
 
@@ -77,6 +84,13 @@ public class ApiUtil {
 
     }
 
+    /**
+     * getter
+     * 
+     * @param property property
+     * @param client client
+     * @return app_access_token
+     */
     public static String getAppAccessToken(JbanProperty property, OkHttpClient client) {
         // build request url
         String url = String.join("", property.getDomain(), property.getAppAccessTokenPath());

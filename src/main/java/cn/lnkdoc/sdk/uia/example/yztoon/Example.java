@@ -21,6 +21,11 @@ import org.slf4j.LoggerFactory;
 public class Example {
     private static final Logger log = LoggerFactory.getLogger(Example.class);
 
+    /**
+     * main
+     *
+     * @param args args
+     */
     public static void main(String[] args) {
         String code = "";
 

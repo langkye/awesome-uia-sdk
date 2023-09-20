@@ -32,8 +32,14 @@ public class HexUtil {
 	        k += 2;  
 	    }  
 	    return byteArray;  
-	}  
-	
+	}
+
+	/**
+	 * byte to hex
+	 * 
+	 * @param byteArray byteArray
+	 * @return string
+	 */
 	public static String byteArray2HexStr(byte[] byteArray) {
 		if (byteArray == null || byteArray.length < 1) {
 			throw new IllegalArgumentException("this byteArray must not be null or empty");

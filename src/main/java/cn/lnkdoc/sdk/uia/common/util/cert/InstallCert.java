@@ -53,18 +53,45 @@ public class InstallCert {
     private static final String SECURITY_CERT_HOME = System.getProperty("java.home") + SEPARATOR + "lib" + SEPARATOR + "security";
     private static final String PROJECT_HOME = System.getProperty("user.dir");
 
+    /**
+     * main
+     * 
+     * @param args args
+     * @throws Exception ex
+     */
     public static void main(String[] args) throws Exception {
         String domain = "yzt.beijing.gov.cn";
         // generate cert : ${PROJECT_HOME}/jssecacerts
         generateTrustStore(domain);
         
-        // move ${PROJECT_HOME}/jssecacerts to ${SECURITY_CERT_HOME}
+        // move ${PROJECT_HOME}/jssecacerts to ${SECURITY_CERT_HOME}($JAVA_HOME/jre/lib/security)
     }
 
+    /**
+     * gen trust store
+     * 
+     * @param domain domain
+     * @throws NoSuchAlgorithmException NoSuchAlgorithmException
+     * @throws CertificateException CertificateException
+     * @throws IOException IOException
+     * @throws KeyStoreException KeyStoreException
+     * @throws KeyManagementException KeyManagementException
+     */
     public static void generateTrustStore(String domain) throws NoSuchAlgorithmException, CertificateException, IOException, KeyStoreException, KeyManagementException {
         generateTrustStore(domain, null);
     }
 
+    /**
+     * gen trust
+     * 
+     * @param domain domain
+     * @param password password
+     * @throws NoSuchAlgorithmException ex
+     * @throws CertificateException ex
+     * @throws IOException ex
+     * @throws KeyStoreException ex
+     * @throws KeyManagementException ex
+     */
     public static void generateTrustStore(String domain, String password) throws NoSuchAlgorithmException, CertificateException, IOException, KeyStoreException, KeyManagementException {
         if (Objects.isNull(domain)) {
             System.err.println("domain must be not null");
@@ -73,7 +100,7 @@ public class InstallCert {
         String keyStoreName = KEYS_STORE_NAME;
         String certFilePath = PROJECT_HOME + SEPARATOR + keyStoreName;
 
-        password = (Objects.isNull(password) || "".equals(password.trim())) ? DEFAULT_KEYSTORE_PASSWORD : password;
+        password = (Objects.isNull(password) || password.trim().isEmpty()) ? DEFAULT_KEYSTORE_PASSWORD : password;
         String host;
         int port;
         char[] passwordCharArray;
@@ -144,8 +171,8 @@ public class InstallCert {
 
         for (int i = 0; i < chain.length; i++) {
             X509Certificate cert = chain[i];
-            System.out.println(" " + (i + 1) + " Subject " + cert.getSubjectDN());
-            System.out.println("  Issuer  " + cert.getIssuerDN());
+            System.out.println(" " + (i + 1) + " Subject " + cert.getSubjectX500Principal());
+            System.out.println("  Issuer  " + cert.getSubjectX500Principal());
 
             sha1.update(cert.getEncoded());
             System.out.println("  sha1    " + toHexString(sha1.digest()));
@@ -160,7 +187,7 @@ public class InstallCert {
         String line = reader.readLine().trim();
         int k;
         try {
-            k = (line.length() == 0) ? 0 : Integer.parseInt(line) - 1;
+            k = (line.isEmpty()) ? 0 : Integer.parseInt(line) - 1;
         } catch (NumberFormatException e) {
             System.err.println("KeyStore not changed");
             return;
@@ -181,6 +208,12 @@ public class InstallCert {
         System.out.println("Added certificate to keystore " + certFilePath + " using alias '" + alias + "'");
     }
 
+    /**
+     * byte to hex
+     * 
+     * @param bytes bytes
+     * @return string
+     */
     private static String toHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder(bytes.length * 3);
         for (int b : bytes) {

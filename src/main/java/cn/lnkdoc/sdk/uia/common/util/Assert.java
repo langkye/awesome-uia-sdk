@@ -12,10 +12,21 @@ import java.util.Map;
  * @since 1.0.0.RELEASE
  */
 public class Assert {
+    /**
+     * required
+     * 
+     * @param obj obj
+     */
     public static void required(Object obj) {
         required(obj, null);
     }
-    
+
+    /**
+     * required
+     * 
+     * @param obj obj
+     * @param message message
+     */
     public static void required(Object obj, String message) {
         if (obj == null) {
             String msg = "the argument is null";
@@ -30,7 +41,7 @@ public class Assert {
         }
 
         if (obj instanceof Collection) {
-            if (((Collection<?>) obj).size() == 0) {
+            if (((Collection<?>) obj).isEmpty()) {
                 String msg = "the collection argument is empty";
                 throw new UiaException(StringUtils.isBlank(message) ? msg : message);
             }

@@ -8,10 +8,10 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest;
 import cn.lnkdoc.sdk.uia.common.response.IUiaResponse;
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse;
 import cn.lnkdoc.sdk.uia.common.util.Assert;
+import cn.lnkdoc.sdk.uia.common.util.trust.TrustDomain;
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
 import io.vavr.Tuple;
 import okhttp3.*;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,13 +24,28 @@ import java.util.List;
  */
 public class YztoonUiaClient implements IUiaClient {
     private static final Logger log = LoggerFactory.getLogger(YztoonUiaClient.class);
-    private final OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
 
+    /**
+     * builder
+     */
+    private final OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+    /**
+     * property
+     */
     private YztoonProperty property;
-    
+
+    /**
+     * constructor
+     */
     private YztoonUiaClient() {
     }
 
+    /**
+     * instance
+     * 
+     * @param property property
+     * @return instance
+     */
     public static YztoonUiaClient getInstance(YztoonProperty property) {
         YztoonUiaClient uiaClient = new YztoonUiaClient();
         uiaClient.property = property;
@@ -118,11 +133,16 @@ public class YztoonUiaClient implements IUiaClient {
         }
     }
 
+    @SuppressWarnings("ALL")
     private OkHttpClient buildClient(YztoonProperty property) {
         if (property.isTrustDomain()) {
-            //.hostnameVerifier(new AllowAllHostnameVerifier())
-            builder.hostnameVerifier(new NoopHostnameVerifier());
+            //builder.hostnameVerifier(new AllowAllHostnameVerifier())
+            //builder.hostnameVerifier(new NoopHostnameVerifier());
+
+            TrustDomain.trust(builder);
         }
-        return builder.build();
+        OkHttpClient build = builder.build();
+
+        return build;
     }
 }

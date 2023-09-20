@@ -7,7 +7,13 @@ import java.util.Locale;
  * @since 1.0.0.RELEASE
  */
 public class CaseFormat {
-    
+
+    /**
+     * UPPER_UNDERSCORE_2_LOWER_CAMEL
+     * 
+     * @param string string
+     * @return UPPER_UNDERSCORE_2_LOWER_CAMEL
+     */
     @SuppressWarnings("ALL")
     public static String UPPER_UNDERSCORE_2_LOWER_CAMEL(String string) {
         if (string == null) {

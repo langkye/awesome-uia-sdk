@@ -10,8 +10,14 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty;
 /**
  * @author langkye
  */
+@SuppressWarnings("unchecked")
 public class YztoonSdkInstance extends AbstractInstance implements ISdkInstance {
 
+    /**
+     * constructor
+     * 
+     * @param property property
+     */
     public YztoonSdkInstance(YztoonProperty property) {
         this.client = YztoonUiaClient.getInstance(property);
     }
