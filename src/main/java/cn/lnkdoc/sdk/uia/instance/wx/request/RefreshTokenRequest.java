@@ -11,7 +11,11 @@ import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public class RefreshTokenRequest extends AbstractUiaRequest implements IUiaRequest {
+    /**
+     * body
+     */
     private String body;
 
     /**
@@ -19,7 +23,6 @@ public class RefreshTokenRequest extends AbstractUiaRequest implements IUiaReque
      *
      * @return request body
      */
-    @SuppressWarnings("unchecked")
     @Override
     public String body() {
         return getBody();
@@ -55,10 +58,20 @@ public class RefreshTokenRequest extends AbstractUiaRequest implements IUiaReque
         return HttpMethod.GET;
     }
 
+    /**
+     * getter
+     * 
+     * @return body
+     */
     public String getBody() {
         return body;
     }
 
+    /**
+     * setter
+     * 
+     * @param body body
+     */
     public void setBody(String body) {
         this.body = body;
     }

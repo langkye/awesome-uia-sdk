@@ -11,7 +11,9 @@ import java.util.*;
  * @since 1.0.0.RELEASE
  */
 public abstract class AbstractUiaRequest implements IUiaRequest {
-    @SuppressWarnings("ALL")
+    /**
+     * converters
+     */
     protected static final Map<String, List<IUiaConverter>> converters = new HashMap<>();
 
     /**

@@ -15,6 +15,7 @@ import okhttp3.FormBody;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public class AccessTokenConverter implements IUiaConverter {
     /**
      * convert body
@@ -22,7 +23,6 @@ public class AccessTokenConverter implements IUiaConverter {
      * @param body body
      * @return response converted result
      */
-    @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertRequest(R body) {
         io.vavr.Tuple2<AccessTokenRequest, BjtoonProperty> tuple = (io.vavr.Tuple2<AccessTokenRequest, BjtoonProperty>) body;
@@ -55,12 +55,11 @@ public class AccessTokenConverter implements IUiaConverter {
      * @param body body
      * @return response converted result
      */
-    @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertResponse(R body) {
         io.vavr.Tuple2<String, BjtoonProperty> tuple = (io.vavr.Tuple2<String, BjtoonProperty>) body;
         // convert json
-        BjtoonResponse<AccessToken> response = (BjtoonResponse) JSONObject.parseObject(tuple._1, new TypeReference<BjtoonResponse<AccessToken>>() {
+        BjtoonResponse<AccessToken> response = JSONObject.parseObject(tuple._1, new TypeReference<BjtoonResponse<AccessToken>>() {
         });
 
         AccessToken data = response.getData();

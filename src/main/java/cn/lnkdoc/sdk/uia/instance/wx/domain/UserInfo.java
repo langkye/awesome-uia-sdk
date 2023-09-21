@@ -55,74 +55,164 @@ public class UserInfo extends WxResponse {
      */
     private String unionid;
 
+    /**
+     * getter
+     * 
+     * @return openid
+     */
     public String getOpenid() {
         return openid;
     }
 
+    /**
+     * setter
+     * 
+     * @param openid openid
+     */
     public void setOpenid(String openid) {
         this.openid = openid;
     }
 
+    /**
+     * getter
+     * 
+     * @return nickname
+     */
     public String getNickname() {
         return nickname;
     }
 
+    /**
+     * setter
+     * 
+     * @param nickname nickname
+     */
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
 
+    /**
+     * getter
+     * 
+     * @return sex
+     */
     public Integer getSex() {
         return sex;
     }
 
+    /**
+     * setter
+     * 
+     * @param sex sex
+     */
     public void setSex(Integer sex) {
         this.sex = sex;
     }
 
+    /**
+     * getter
+     * 
+     * @return province
+     */
     public String getProvince() {
         return province;
     }
 
+    /**
+     * setter
+     * 
+     * @param province province
+     */
     public void setProvince(String province) {
         this.province = province;
     }
 
+    /**
+     * getter
+     * 
+     * @return city
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     * setter
+     * 
+     * @param city city
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     * getter
+     * 
+     * @return country
+     */
     public String getCountry() {
         return country;
     }
 
+    /**
+     * setter
+     * 
+     * @param country country
+     */
     public void setCountry(String country) {
         this.country = country;
     }
 
+    /**
+     * getter
+     * 
+     * @return headimgurl
+     */
     public String getHeadimgurl() {
         return headimgurl;
     }
 
+    /**
+     * setter
+     * 
+     * @param headimgurl headimgurl
+     */
     public void setHeadimgurl(String headimgurl) {
         this.headimgurl = headimgurl;
     }
 
+    /**
+     * getter
+     * 
+     * @return privilege
+     */
     public String getPrivilege() {
         return privilege;
     }
 
+    /**
+     * setter
+     * 
+     * @param privilege privilege
+     */
     public void setPrivilege(String privilege) {
         this.privilege = privilege;
     }
 
+    /**
+     * getter
+     * 
+     * @return unionid
+     */
     public String getUnionid() {
         return unionid;
     }
 
+    /**
+     * setter
+     * 
+     * @param unionid unionid
+     */
     public void setUnionid(String unionid) {
         this.unionid = unionid;
     }

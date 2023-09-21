@@ -15,11 +15,22 @@ import java.util.Objects;
  */
 public class CheckResponseUtil {
     private static final Logger log = LoggerFactory.getLogger(CheckResponseUtil.class);
-    
+
+    /**
+     * check
+     * 
+     * @param json json
+     */
     public static synchronized void check(String json) {
         check(json, false);
     }
-    
+
+    /**
+     * check
+     * 
+     * @param json json
+     * @param isPrintStack isPrintStack
+     */
     public static synchronized void check(String json, Boolean isPrintStack) {
         WxResponse wxResponse = JSONObject.parseObject(json, new TypeReference<WxResponse>() {
         });

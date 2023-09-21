@@ -76,85 +76,186 @@ public class UserInfo implements Serializable {
      * 扩展信息中
      */
     private UserExtInfo extInfo;
+    /**
+     * isParse
+     */
     private boolean isParse = false;
 
+    /**
+     * getter
+     * 
+     * @return uid
+     */
     public String getUid() {
         return uid;
     }
 
+    /**
+     * setter
+     * 
+     * @param uid uid
+     */
     public void setUid(String uid) {
         this.uid = uid;
     }
 
+    /**
+     * getter
+     * 
+     * @return cn
+     */
     public String getCn() {
         return cn;
     }
 
+    /**
+     * setter
+     * 
+     * @param cn cn
+     */
     public void setCn(String cn) {
         this.cn = cn;
     }
 
+    /**
+     * getter
+     * 
+     * @return idCardNumber
+     */
     public String getIdCardNumber() {
         return idCardNumber;
     }
 
+    /**
+     * setter
+     * 
+     * @param idCardNumber idCardNumber
+     */
     public void setIdCardNumber(String idCardNumber) {
         this.idCardNumber = idCardNumber;
     }
 
+    /**
+     * getter
+     * 
+     * @return credenceClass
+     */
     public String getCredenceClass() {
         return credenceClass;
     }
 
+    /**
+     * setter
+     * 
+     * @param credenceClass credenceClass
+     */
     public void setCredenceClass(String credenceClass) {
         this.credenceClass = credenceClass;
     }
 
+    /**
+     * getter
+     * 
+     * @return trustLevel
+     */
     public String getTrustLevel() {
         return trustLevel;
     }
 
+    /**
+     * setter
+     * 
+     * @param trustLevel trustLevel
+     */
     public void setTrustLevel(String trustLevel) {
         this.trustLevel = trustLevel;
     }
 
+    /**
+     * getter
+     * 
+     * @return instruction
+     */
     public String getInstruction() {
         return instruction;
     }
 
+    /**
+     * setter
+     * 
+     * @param instruction instruction
+     */
     public void setInstruction(String instruction) {
         this.instruction = instruction;
     }
 
+    /**
+     * getter
+     * 
+     * @return tokenId
+     */
     public String getTokenId() {
         return tokenId;
     }
 
+    /**
+     * setter
+     * 
+     * @param tokenId tokenId
+     */
     public void setTokenId(String tokenId) {
         this.tokenId = tokenId;
     }
 
+    /**
+     * getter
+     * 
+     * @return extProperties
+     */
     public List<String> getExtProperties() {
         return extProperties;
     }
 
+    /**
+     * setter
+     * 
+     * @param extProperties extProperties
+     */
     public void setExtProperties(List<String> extProperties) {
         this.extProperties = extProperties;
         parseExtInfo();
     }
 
+    /**
+     * getter
+     * 
+     * @return parse
+     */
     public boolean isParse() {
         return isParse;
     }
 
+    /**
+     * setter
+     * 
+     * @param parse parse
+     */
     public void setParse(boolean parse) {
         isParse = parse;
     }
 
+    /**
+     * parser
+     */
     public void parseExtInfo() {
         getExtInfo();
     }
 
+    /**
+     * getter
+     * 
+     * @return userExtInfo
+     */
     @SuppressWarnings("ALL")
     public UserExtInfo getExtInfo() {
         if (isParse) {
@@ -209,6 +310,11 @@ public class UserInfo implements Serializable {
         return extInfo;
     }
 
+    /**
+     * setter
+     * 
+     * @param extInfo extInfo
+     */
     public void setExtInfo(UserExtInfo extInfo) {
         this.extInfo = extInfo;
     }

@@ -11,8 +11,15 @@ import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public class JbanMobileMd5UserRequest extends AbstractUiaRequest implements IUiaRequest {
+    /**
+     * body
+     */
     private String body;
+    /**
+     * url
+     */
     private String url;
     
     /**
@@ -20,7 +27,6 @@ public class JbanMobileMd5UserRequest extends AbstractUiaRequest implements IUia
      *
      * @return request body
      */
-    @SuppressWarnings("unchecked")
     @Override
     public <T> T body() {
         return (T) body;
@@ -56,18 +62,38 @@ public class JbanMobileMd5UserRequest extends AbstractUiaRequest implements IUia
         return HttpMethod.GET;
     }
 
+    /**
+     * getter
+     * 
+     * @return body
+     */
     public String getBody() {
         return body;
     }
 
+    /**
+     * setter
+     * 
+     * @param body body
+     */
     public void setBody(String body) {
         this.body = body;
     }
 
+    /**
+     * getter
+     * 
+     * @return url
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * setter
+     * 
+     * @param url url
+     */
     public void setUrl(String url) {
         this.url = url;
     }

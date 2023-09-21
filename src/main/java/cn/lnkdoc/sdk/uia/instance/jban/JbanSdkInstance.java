@@ -10,7 +10,13 @@ import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
 /**
  * @author langkye
  */
+@SuppressWarnings("unchecked")
 public class JbanSdkInstance extends AbstractInstance implements ISdkInstance {
+    /**
+     * instance
+     * 
+     * @param property property
+     */
     public JbanSdkInstance(JbanProperty property) {
         this.client = JbanUiaClient.getInstance(property);
     }

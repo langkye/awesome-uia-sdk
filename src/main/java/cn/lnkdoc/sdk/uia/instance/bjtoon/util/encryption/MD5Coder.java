@@ -7,6 +7,12 @@ import java.security.MessageDigest;
  * @author langkye
  */
 public class MD5Coder {
+	/**
+	 * md5
+	 * 
+	 * @param s string
+	 * @return md5 string
+	 */
 	@SuppressWarnings(value = {"SpellCheckingInspection", "ALL"})
 	public static String MD5(String s) {
 		char[] hexDigits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',

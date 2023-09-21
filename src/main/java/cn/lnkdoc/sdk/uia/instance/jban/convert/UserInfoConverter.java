@@ -16,6 +16,7 @@ import org.apache.http.entity.ContentType;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings({"unchecked", "Duplicates"})
 public class UserInfoConverter implements IUiaConverter {
     /**
      * convert response
@@ -23,7 +24,6 @@ public class UserInfoConverter implements IUiaConverter {
      * @param body response
      * @return response converted result
      */
-    @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertResponse(R body) {
         String json = (String) body;
@@ -37,7 +37,6 @@ public class UserInfoConverter implements IUiaConverter {
      * @param body body
      * @return response converted result
      */
-    @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertRequest(R body) {
         io.vavr.Tuple3<JbanProperty, OkHttpClient, JbanUserInfoRequest> tuple = (io.vavr.Tuple3<JbanProperty, OkHttpClient, JbanUserInfoRequest>) body;
@@ -53,11 +52,13 @@ public class UserInfoConverter implements IUiaConverter {
         reqBody.put("appAccessToken", appAccessToken);
         reqBody.put("code", tuple._3.getBody());
 
+        RequestBody requestBody = RequestBody.create(reqBody.toJSONString(), MediaType.parse("application/json"));
+
         //请求对象
         Request request = new Request.Builder()
                 .url(tuple._3.getUrl())
                 //.method(HttpMethod.POST.name(), null)
-                .post(RequestBody.create(MediaType.parse("application/json"), reqBody.toJSONString()))
+                .post(requestBody)
                 .headers(headers)
                 .build();
         

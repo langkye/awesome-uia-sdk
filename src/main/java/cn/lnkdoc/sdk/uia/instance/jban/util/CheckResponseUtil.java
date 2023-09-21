@@ -16,10 +16,22 @@ import java.util.Objects;
  */
 public class CheckResponseUtil {
     private static final Logger log = LoggerFactory.getLogger(CheckResponseUtil.class);
+
+    /**
+     * check
+     * 
+     * @param json json
+     */
     public static synchronized void check(String json) {
         check(json, false);
     }
-    
+
+    /**
+     * check
+     * 
+     * @param json json
+     * @param printStack printStack
+     */
     public static synchronized void check(String json, Boolean printStack) {
         JbanResponse<AccessToken> jbanResponse = JSON.parseObject(json, new TypeReference<JbanResponse<AccessToken>>(){});
         if (!Objects.equals(0, jbanResponse.getCode())) {

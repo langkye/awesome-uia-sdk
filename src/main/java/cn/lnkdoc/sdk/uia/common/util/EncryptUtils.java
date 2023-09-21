@@ -13,11 +13,24 @@ import java.security.MessageDigest;
  */
 public class EncryptUtils {
 
+    /**
+     * encrypt
+     * 
+     * @param plainText plainText
+     * @return encrypt data
+     */
     @SuppressWarnings("ALL")
     public static String MD5EncryptAsHex(String plainText) {
        return MD5EncryptAsHex(plainText, null);
     }
 
+    /**
+     * encrypt 
+     * 
+     * @param plainText plainText
+     * @param saltValue saltValue
+     * @return encrypt data
+     */
     @SuppressWarnings("ALL")
     public static String MD5EncryptAsHex(String plainText, String saltValue) {
         try {

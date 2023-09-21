@@ -11,8 +11,15 @@ import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty;
  * @since 1.0.0.RELEASE
  */
 public class JbanUserInfoRequest extends AbstractUiaRequest implements IUiaRequest {
+    /**
+     * body
+     */
     private String body;
+    /**
+     * url
+     */
     private String url;
+    
     /**
      * request body
      *
@@ -49,18 +56,38 @@ public class JbanUserInfoRequest extends AbstractUiaRequest implements IUiaReque
         return HttpMethod.POST;
     }
 
+    /**
+     * getter
+     * 
+     * @return body
+     */
     public String getBody() {
         return body;
     }
 
+    /**
+     * setter
+     * 
+     * @param body body
+     */
     public void setBody(String body) {
         this.body = body;
     }
 
+    /**
+     * getter
+     * 
+     * @return url
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * setter
+     * 
+     * @param url url
+     */
     public void setUrl(String url) {
         this.url = url;
     }

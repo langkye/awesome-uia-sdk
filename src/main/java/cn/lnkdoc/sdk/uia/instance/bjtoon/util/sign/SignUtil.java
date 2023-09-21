@@ -19,7 +19,8 @@ import java.util.Map;
 public class SignUtil {
 
     /**
-     *
+     * getter
+     * 
      * @param params sign map
      * @return sign (String)
      */
@@ -40,6 +41,13 @@ public class SignUtil {
 
     }
 
+    /**
+     * getter
+     * 
+     * @param content content
+     * @param signType signType
+     * @return sign
+     */
     public static String getSign(String content,String signType){
 
         if(StringUtils.equalsIgnoreCase("md5",signType)){

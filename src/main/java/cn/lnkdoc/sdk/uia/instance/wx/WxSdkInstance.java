@@ -12,8 +12,14 @@ import cn.lnkdoc.sdk.uia.instance.wx.request.UserInfoRequest;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public class WxSdkInstance extends AbstractInstance implements ISdkInstance {
 
+    /**
+     * constructor
+     *
+     * @param property property
+     */
     public WxSdkInstance(WxProperty property) {
         this.client = WxUiaClient.getInstance(property);
     }

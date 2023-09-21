@@ -12,7 +12,7 @@ import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
-@SuppressWarnings(value = {"unused", "Deprecation", "DeprecatedIsStillUsed"})
+@SuppressWarnings(value = {"unused", "Deprecation", "DeprecatedIsStillUsed", "unchecked"})
 public class AccessTokenRequest extends AbstractUiaRequest implements IUiaRequest {
     private String body;
     private String url;
@@ -32,7 +32,6 @@ public class AccessTokenRequest extends AbstractUiaRequest implements IUiaReques
      *
      * @return request body
      */
-    @SuppressWarnings("unchecked")
     @Override
     public String body() {
         return getRequestBody();
@@ -88,82 +87,181 @@ public class AccessTokenRequest extends AbstractUiaRequest implements IUiaReques
         this.body = requestBody;
     }
 
+    /**
+     * getter
+     * 
+     * @return url
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * setter
+     * 
+     * @param url url
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /**
+     * getter
+     * 
+     * @return grantCode
+     */
     public String getGrantCode() {
         return body();
     }
 
+    /**
+     * setter
+     * 
+     * @param grantCode grantCode
+     */
     public void setGrantCode(String grantCode) {
         this.body = grantCode;
     }
 
+    /**
+     * getter
+     * 
+     * @return grantType
+     */
     public String getGrantType() {
         return grantType;
     }
 
+    /**
+     * setter
+     * 
+     * @param grantType grantType
+     */
     public void setGrantType(String grantType) {
         this.grantType = grantType;
     }
 
+    /**
+     * getter
+     * 
+     * @return authToken
+     */
     public String getAuthToken() {
         return authToken;
     }
 
+    /**
+     * setter
+     * 
+     * @param authToken authToken
+     */
     public void setAuthToken(String authToken) {
         this.authToken = authToken;
     }
 
+    /**
+     * getter
+     * 
+     * @return scope
+     */
     public String getScope() {
         return scope;
     }
 
+    /**
+     * setter
+     * 
+     * @param scope scope
+     */
     public void setScope(String scope) {
         this.scope = scope;
     }
 
+    /**
+     * getter
+     * 
+     * @return toonType
+     */
     public String getToonType() {
-        return toonType;
+            return toonType;
     }
 
+    /**
+     * setter
+     * 
+     * @param toonType toonType
+     */
     public void setToonType(String toonType) {
         this.toonType = toonType;
     }
-
+    
+    /**
+     * getter
+     * 
+     * @return state
+     */
     public String getState() {
         return state;
     }
 
+    /**
+     * setter
+     * 
+     * @param state state
+     */
     public void setState(String state) {
         this.state = state;
     }
 
+    /**
+     * getter
+     * 
+     * @return inType
+     */
     public String getInType() {
         return inType;
     }
 
+    /**
+     * setter
+     * @param inType inType
+     */
     public void setInType(String inType) {
         this.inType = inType;
     }
 
+    /**
+     * getter
+     * 
+     * @return localCheck
+     */
     public String getLocalCheck() {
         return localCheck;
     }
 
+    /**
+     * setter
+     * 
+     * @param localCheck localCheck
+     */
     public void setLocalCheck(String localCheck) {
         this.localCheck = localCheck;
     }
 
+    /**
+     * getter
+     * 
+     * @return body
+     */
     public String getBody() {
         return body;
     }
 
+    /**
+     * setter
+     * 
+     * @param body body
+     */
     public void setBody(String body) {
         this.body = body;
     }

@@ -11,8 +11,11 @@ import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
-@SuppressWarnings(value = {"unused"})
+@SuppressWarnings(value = {"unused", "unchecked"})
 public class UserInfoRequest extends AbstractUiaRequest implements IUiaRequest {
+    /**
+     * body
+     */
     private Body body;
     
     /**
@@ -20,7 +23,6 @@ public class UserInfoRequest extends AbstractUiaRequest implements IUiaRequest {
      *
      * @return request body
      */
-    @SuppressWarnings("unchecked")
     @Override
     public Body body() {
         return getBody();
@@ -58,35 +60,79 @@ public class UserInfoRequest extends AbstractUiaRequest implements IUiaRequest {
         return HttpMethod.GET;
     }
 
+    /**
+     * getter
+     * 
+     * @return body
+     */
     public Body getBody() {
         return body;
     }
 
+    /**
+     * setter
+     * 
+     * @param body body
+     */
     public void setBody(Body body) {
         this.body = body;
     }
-    
+
+    /**
+     * body class
+     */
     public static class Body {
+        /**
+         * accessToken
+         */
         private String accessToken;
+        /**
+         * openid
+         */
         private String openid;
 
+        /**
+         * constructor
+         * @param accessToken accessToken
+         * @param openid openid
+         */
         public Body(String accessToken, String openid) {
             this.accessToken = accessToken;
             this.openid = openid;
         }
 
+        /**
+         * getter
+         * 
+         * @return accessToken
+         */
         public String getAccessToken() {
             return accessToken;
         }
 
+        /**
+         * setter
+         * 
+         * @param accessToken accessToken
+         */
         public void setAccessToken(String accessToken) {
             this.accessToken = accessToken;
         }
 
+        /**
+         * getter
+         * 
+         * @return openid
+         */
         public String getOpenid() {
             return openid;
         }
 
+        /**
+         * setter
+         * 
+         * @param openid openid
+         */
         public void setOpenid(String openid) {
             this.openid = openid;
         }

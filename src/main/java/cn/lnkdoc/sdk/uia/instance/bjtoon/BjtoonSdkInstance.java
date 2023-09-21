@@ -13,7 +13,13 @@ import cn.lnkdoc.sdk.uia.instance.bjtoon.request.AccessTokenRequest;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public class BjtoonSdkInstance extends AbstractInstance implements ISdkInstance {
+    /**
+     * constructor
+     * 
+     * @param property property
+     */
     public BjtoonSdkInstance(BjtoonProperty property) {
         this.client = BjtoonUiaClient.getInstance(property);
     }

@@ -15,6 +15,7 @@ import okhttp3.FormBody;
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings("unchecked")
 public class UserInfoConverter implements IUiaConverter {
     /**
      * convert request
@@ -22,7 +23,6 @@ public class UserInfoConverter implements IUiaConverter {
      * @param body tuple
      * @return response converted result
      */
-    @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertRequest(R body) {
         io.vavr.Tuple2<UserInfoRequest, BjtoonProperty> tuple = (io.vavr.Tuple2<UserInfoRequest, BjtoonProperty>) body;
@@ -37,7 +37,6 @@ public class UserInfoConverter implements IUiaConverter {
      * @param body body
      * @return response converted result
      */
-    @SuppressWarnings("ALL")
     @Override
     public <T, R> T convertResponse(R body) {
         io.vavr.Tuple2<String, BjtoonProperty> tuple = (io.vavr.Tuple2<String, BjtoonProperty>) body;

@@ -37,50 +37,110 @@ public class RefreshToken extends WxResponse {
      */
     private String unionid;
 
+    /**
+     * getter
+     *
+     * @return accessToken
+     */
     public String getAccessToken() {
         return accessToken;
     }
 
+    /**
+     * setter
+     *
+     * @param accessToken accessToken
+     */
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
 
+    /**
+     * getter
+     *
+     * @return expiresIn
+     */
     public Long getExpiresIn() {
         return expiresIn;
     }
 
+    /**
+     * setter
+     *
+     * @param expiresIn expiresIn
+     */
     public void setExpiresIn(Long expiresIn) {
         this.expiresIn = expiresIn;
     }
 
+    /**
+     * getter
+     *
+     * @return refreshToken
+     */
     public String getRefreshToken() {
         return refreshToken;
     }
 
+    /**
+     * setter
+     *
+     * @param refreshToken refreshToken
+     */
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
     }
 
+    /**
+     * getter
+     *
+     * @return openid
+     */
     public String getOpenid() {
         return openid;
     }
 
+    /**
+     * setter
+     *
+     * @param openid openid
+     */
     public void setOpenid(String openid) {
         this.openid = openid;
     }
 
+    /**
+     * getter
+     *
+     * @return scope
+     */
     public String getScope() {
         return scope;
     }
 
+    /**
+     * setter
+     *
+     * @param scope scope
+     */
     public void setScope(String scope) {
         this.scope = scope;
     }
 
+    /**
+     * getter
+     *
+     * @return unionid
+     */
     public String getUnionid() {
         return unionid;
     }
 
+    /**
+     * setter
+     *
+     * @param unionid unionid
+     */
     public void setUnionid(String unionid) {
         this.unionid = unionid;
     }

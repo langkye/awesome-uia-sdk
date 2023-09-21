@@ -1,14 +1,23 @@
 package cn.lnkdoc.sdk.uia.common.exception;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
  */
+@SuppressWarnings(value = {"unused"})
 public class UiaException extends RuntimeException implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
+    /**
+     * code
+     */
     private int code = 401;
+    /**
+     * message
+     */
     private String message;
 
     /**
@@ -19,7 +28,7 @@ public class UiaException extends RuntimeException implements Serializable {
      * <p>
      *                by the {@link #getMessage()} method).
      * @param cause   the cause (which is saved for later retrieval by the
-     *                {@link #getCause()} method).  (A <tt>null</tt> value is
+     *                {@link #getCause()} method).  (A  null  value is
      *                permitted, and indicates that the cause is nonexistent or
      *                unknown.)
      * @since 1.4
@@ -65,20 +74,39 @@ public class UiaException extends RuntimeException implements Serializable {
         this.message = message;
     }
 
+    /**
+     * getter 
+     * 
+     * @return code
+     */
     public int getCode() {
         return code;
     }
 
+    /**
+     * setter
+     * 
+     * @param code code
+     */
     public void setCode(int code) {
         this.code = code;
     }
 
+    /**
+     * getter
+     * 
+     * @return message
+     */
     @Override
     public String getMessage() {
         return message;
     }
 
-    @SuppressWarnings(value = {"unused"})
+    /**
+     * setter
+     * 
+     * @param message message
+     */
     public void setMessage(String message) {
         this.message = message;
     }

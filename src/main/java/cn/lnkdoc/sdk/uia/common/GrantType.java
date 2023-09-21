@@ -17,6 +17,11 @@ public enum GrantType {
         this.code = code;
     }
 
+    /**
+     * getter
+     * 
+     * @return code
+     */
     public String getCode() {
         return code;
     }
