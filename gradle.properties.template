@@ -1,0 +1,6 @@
+# create the property file in ~/.gradle
+signing.keyId=
+signing.password=
+signing.secretKeyRingFile=
+ossrh.username=
+ossrh.password=

@@ -1,10 +1,19 @@
 # Awesome Uia SDK - Java
 <!-- TOC -->
 * [Awesome Uia SDK - Java](#awesome-uia-sdk---java)
-  * [Supports](#supports)
+* [Supports](#supports)
   * [Usage](#usage)
-    * [Bjtoon](#bjtoon)
+    * [Add dependency](#add-dependency)
+      * [Maven](#maven)
+      * [Gradle](#gradle)
+    * [Examples](#examples)
+      * [Bjtoon（北京通）](#bjtoon北京通)
+        * [Java](#java)
+        * [Kotlin](#kotlin)
+      * [More Examples:](#more-examples-)
 <!-- TOC -->
+
+---
 
 ## Supports
 
@@ -18,28 +27,51 @@
 
 
 ## Usage
-> examples:
-### Bjtoon（北京通）
+### Add dependency
+#### Maven
+```xml
+<dependency>
+    <groupId>cn.lnkdoc.sdk</groupId>
+    <artifactId>awesome-uia-sdk</artifactId>
+    <version>${awesome-uia-sdk.version}</version>
+</dependency>
+```
+#### Gradle
+- groovy dsl
+  ```build.gradle
+  // https://mvnrepository.com/artifact/cn.lnkdoc.sdk/awesome-uia-sdk
+  implementation 'cn.lnkdoc.sdk:awesome-uia-sdk:${awesome_uia_sdk_version}'
+  ```
+
+- kotlin dsl
+  ```kts
+  // https://mvnrepository.com/artifact/cn.lnkdoc.sdk/awesome-uia-sdk
+  implementation("cn.lnkdoc.sdk:awesome-uia-sdk:${awesome_uia_sdk_version}")
+  ```
+
+### Examples
+#### Bjtoon（北京通）
+##### Java
 - Authenticate
   ```java
   // load property
-  BjtoonProperty property = new BjtoonProperty();
+  cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty property = new cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty();
   property.setDomain("https://bjt.beijing.gov.cn/renzheng");
   property.setClientId("");
   property.setClientSecret("");
-  //property.setPrintStack(true);
+  property.setPrintStack(true);
   
   String code = "";
   
   // build instance
-  ISdkInstance instance = UiaSdkInstance.getInstance(property);
+  cn.lnkdoc.sdk.uia.instance.ISdkInstance instance = cn.lnkdoc.sdk.uia.UiaSdkInstance.getInstance(property);
   
   // build request
-  AccessTokenRequest request = new AccessTokenRequest();
+  cn.lnkdoc.sdk.uia.instance.bjtoon.request.AccessTokenRequest request = new cn.lnkdoc.sdk.uia.instance.bjtoon.request.AccessTokenRequest();
   request.setBody(code);
   
   // execute
-  UiaResponse<AccessToken> executeResponse = instance.getAccessToken(request);
+  cn.lnkdoc.sdk.uia.common.response.UiaResponse<cn.lnkdoc.sdk.uia.instance.bjtoon.domain.AccessToken> executeResponse = instance.getAccessToken(request);
   
   // check success
   if (executeResponse.isFailed()) {
@@ -47,37 +79,95 @@
   }
   
   // accessToken
-  AccessToken accessToken = executeResponse.getData();
+  cn.lnkdoc.sdk.uia.instance.bjtoon.domain.AccessToken accessToken = executeResponse.getData();
   ```
 
 - Get UserInfo
   ```java
   // load property
-  BjtoonProperty property = new BjtoonProperty();
+  cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty property = new cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty();
   property.setDomain("https://bjt.beijing.gov.cn/renzheng");
   property.setClientId("");
   property.setClientSecret("");
-  //property.setPrintStack(true);
+  property.setPrintStack(true);
   
   String accessToken = "";
   
   // build instance
-  ISdkInstance instance = UiaSdkInstance.getInstance(property);
+  cn.lnkdoc.sdk.uia.instance.ISdkInstance instance = cn.lnkdoc.sdk.uia.UiaSdkInstance.getInstance(property);
   
   // build request
-  UserInfoRequest request = new UserInfoRequest();
+  cn.lnkdoc.sdk.uia.instance.bjtoon.request.UserInfoRequest request = new cn.lnkdoc.sdk.uia.instance.bjtoon.request.UserInfoRequest();
   request.setBody(accessToken);
   
   // execute
-  UiaResponse<UserInfo> executeResponse = instance.getUserInfo(request);
+  cn.lnkdoc.sdk.uia.common.response.UiaResponse<cn.lnkdoc.sdk.uia.instance.bjtoon.domain.UserInfo> executeResponse = instance.getUserInfo(request);
   
   // check success
   if (executeResponse.isFailed()) {
       throw new RuntimeException(executeResponse.getMessage());
   }
   
-  UserInfo userInfo = executeResponse.getData();
+  cn.lnkdoc.sdk.uia.instance.bjtoon.domain.UserInfo userInfo = executeResponse.getData();
   ```
+##### Kotlin
+- Authenticate
+  ```kotlin
+  // load property
+  val property = cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty()
+  property.domain = "https://bjt.beijing.gov.cn/renzheng"
+  property.clientId = ""
+  property.clientSecret = ""
+  property.printStack = true
+
+  // third-party platform's code
+  val code = ""
+
+  // build instance
+  val instance = cn.lnkdoc.sdk.uia.UiaSdkInstance.getInstance(property)
+
+  // build request
+  val request = cn.lnkdoc.sdk.uia.instance.bjtoon.request.AccessTokenRequest()
+  request.body = code
+
+  // execute
+  val executeResponse = instance.getAccessToken<cn.lnkdoc.sdk.uia.instance.bjtoon.domain.AccessToken, cn.lnkdoc.sdk.uia.instance.bjtoon.request.AccessTokenRequest>(request)
+
+  // check success
+  if (executeResponse.isFailed) {
+      throw RuntimeException(executeResponse.message)
+  }
+
+  val accessToken = executeResponse.data
+  ```
+- Get UserInfo
+  ```kotlin
+  // load property
+  val property = cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty()
+  property.domain = "https://bjt.beijing.gov.cn/renzheng"
+  property.clientId = ""
+  property.clientSecret = ""
+  property.printStack = true
+
+  val accessToken = ""
+
+  // build instance
+  val instance = cn.lnkdoc.sdk.uia.UiaSdkInstance.getInstance(property)
+
+  // build request
+  val request = cn.lnkdoc.sdk.uia.instance.bjtoon.request.UserInfoRequest()
+  request.body = accessToken
+
+  // execute
+  val executeResponse = instance.getAccessToken<cn.lnkdoc.sdk.uia.instance.bjtoon.domain.UserInfo, cn.lnkdoc.sdk.uia.instance.bjtoon.request.UserInfoRequest>(request)
+
+  // check success
+  if (executeResponse.isFailed) {
+      throw RuntimeException(executeResponse.message)
+  }
   
-More Examples: 
-> See: [**`src/main/java/cn/lnkdoc/sdk/uia/example`**](https://github.com/langkye/awesome-uia-sdk/tree/master/src/main/java/cn/lnkdoc/sdk/uia/example/)
+  val userInfo = executeResponse.data
+  ```
+
+#### More Examples: 
+> See: [**`src/main/kotlin/cn/lnkdoc/sdk/uia/example`**](https://github.com/langkye/awesome-uia-sdk/tree/2.0.0.dev/src/main/kotlin/cn/lnkdoc/sdk/uia/example/)
