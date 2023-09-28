@@ -35,10 +35,22 @@ sourceSets {
 
 repositories {
     mavenLocal()
-    mavenCentral()
-    maven("https://s01.oss.sonatype.org/")
+    //mavenCentral()
     maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://repo.maven.apache.org/maven2")
+    }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://s01.oss.sonatype.org/")
+    }
+    maven {
+        isAllowInsecureProtocol = true
         url = uri("https://repo.maven.apache.org/maven2/")
+    }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://maven.aliyun.com/repository/public")
     }
 }
 
@@ -165,15 +177,17 @@ publishing {
 
     repositories {
         maven {
-            val releasesRepositoryUrl = project.findProperty("repository.release-url") as String
-            val snapshotsRepositoryUrl= project.findProperty("repository.snapshots-url") as String
-
+            val releasesRepositoryUrl = RELEASE_URL
+            val snapshotsRepositoryUrl= SNAPSHOTS_URL
+            
+            isAllowInsecureProtocol = true
             name = project.name
             description = project.description
 
             url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepositoryUrl else releasesRepositoryUrl)
 
             credentials {
+                // find property from ~/.gradle/gradle.properties
                 username = project.findProperty("ossrh.username") as String
                 password = project.findProperty("ossrh.password") as String
             }

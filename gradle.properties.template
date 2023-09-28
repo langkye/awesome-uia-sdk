@@ -4,5 +4,3 @@ signing.password=
 signing.secretKeyRingFile=
 ossrh.username=
 ossrh.password=
-repository.release-url=https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
-repository.snapshots-url=https://s01.oss.sonatype.org/content/repositories/snapshots/
