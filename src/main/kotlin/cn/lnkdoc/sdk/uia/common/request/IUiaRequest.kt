@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.common.request
 
 import cn.lnkdoc.sdk.uia.common.HttpMethod
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 
 

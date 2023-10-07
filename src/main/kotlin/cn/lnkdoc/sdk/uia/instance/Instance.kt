@@ -2,6 +2,8 @@ package cn.lnkdoc.sdk.uia.instance
 
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
+import cn.lnkdoc.sdk.uia.instance.alipay.AlipaySdkInstance
+import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 import cn.lnkdoc.sdk.uia.instance.bjtoon.BjtoonSdkInstance
 import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance
@@ -50,7 +52,12 @@ enum class Instance
     /**
      * wx
      */
-    WX({ property -> wx(property) }, WxProperty::class.java)
+    WX({ property -> wx(property) }, WxProperty::class.java),
+
+    /**
+     * alipay
+     */
+    ALIPAY({ property -> alipay(property) }, AlipayProperty::class.java),
     ;
 
     companion object {
@@ -89,7 +96,7 @@ enum class Instance
 
 // ~=============================== Instances ===============================~ //
 /**
- * of
+ * of yztoon
  *
  * @param property property
  * @return instance
@@ -99,7 +106,7 @@ private fun yztoon(property: IUiaProperty): YztoonSdkInstance {
 }
 
 /**
- * of
+ * of bjtoon
  *
  * @param property property
  * @return instance
@@ -109,7 +116,7 @@ private fun bjtoon(property: IUiaProperty): ISdkInstance {
 }
 
 /**
- * of
+ * of jban
  *
  * @param property property
  * @return instance
@@ -119,11 +126,21 @@ private fun jban(property: IUiaProperty): JbanSdkInstance {
 }
 
 /**
- * of
+ * of wx
  *
  * @param property property
  * @return instance
  */
 private fun wx(property: IUiaProperty): WxSdkInstance {
     return WxSdkInstance(property as WxProperty)
+}
+
+/**
+ * of alipay
+ *
+ * @param property property
+ * @return instance
+ */
+private fun alipay(property: IUiaProperty): AlipaySdkInstance {
+    return AlipaySdkInstance(property as AlipayProperty)
 }

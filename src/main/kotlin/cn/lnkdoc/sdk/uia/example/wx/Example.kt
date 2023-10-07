@@ -8,7 +8,6 @@ import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 import cn.lnkdoc.sdk.uia.instance.wx.request.AccessTokenRequest
 import cn.lnkdoc.sdk.uia.instance.wx.request.RefreshTokenRequest
 import cn.lnkdoc.sdk.uia.instance.wx.request.UserInfoRequest
-import com.alibaba.fastjson2.JSONObject
 import com.alibaba.fastjson2.toJSONString
 import org.apache.commons.lang3.StringUtils
 import org.slf4j.LoggerFactory
@@ -31,6 +30,7 @@ object Example {
      */
     @JvmStatic
     fun main(args: Array<String>) {
+        println(buildLoginUrl())
         // third-party platform's code
         val code = ""
 
@@ -51,6 +51,7 @@ object Example {
         val property = WxProperty()
         property.clientId = ""
         property.clientSecret = ""
+        property.redirectUri = ""
         //property.printStack = true
         return property
     }
@@ -104,10 +105,10 @@ object Example {
 
         // build request
         val request = UserInfoRequest()
-        request.body = UserInfoRequest.Body(
-            accessToken!!.accessToken!!,
-            accessToken.openid!!
-        )
+        val body = UserInfoRequest.Body()
+        body.accessToken = accessToken?.accessToken
+        body.openid = accessToken?.openid
+        request.body = body
 
         // execute
         val executeResponse = instance.execute<UserInfo, UserInfoRequest>(request)
@@ -121,11 +122,11 @@ object Example {
 
     private fun buildLoginUrl(): String {
         return try {
-            val redirectUri = ""
+            val property = loadProperty()
+            val redirectUri = property.redirectUri
             //String encode = URLEncoder.encode(redirectUri, StandardCharsets.UTF_8);
             val encode = URLEncoder.encode(redirectUri, StandardCharsets.UTF_8.displayName())
             val state = ""
-            val property = loadProperty()
             java.lang.String.join(
                 "",
                 "https://open.weixin.qq.com/connect/qrconnect?",

@@ -7,4 +7,7 @@ package cn.lnkdoc.sdk.uia;
  */
 @SuppressWarnings("unused")
 public class TesterJava {
+    public static void main(String[] args) {
+        
+    }
 }

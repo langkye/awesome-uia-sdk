@@ -9,8 +9,9 @@ package cn.lnkdoc.sdk.uia
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class TesterKt {
-    fun main() {
+object TesterKt {
+    @JvmStatic
+    fun main(args: Array<String>) {
         
     }
 }

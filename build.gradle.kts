@@ -55,7 +55,7 @@ repositories {
 }
 
 dependencies {
-    api(httpclient)
+    api(httpclient5)
     api(okhttp)
     api(bcprovJdk15to18)
     api(slf4j_api)
@@ -74,6 +74,7 @@ dependencies {
     //api(kotlin(stdlib_jdk8))
     api(kotlin_stdlib_jdk8)
     api(kotlin_reflect)
+    api(alipay_sdk_java)
 
     testImplementation(junit)
 }

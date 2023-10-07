@@ -1,6 +1,6 @@
-package cn.lnkdoc.sdk.uia.instance.jban.convert
+package cn.lnkdoc.sdk.uia.instance.jban.converter
 
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.instance.jban.domain.UserInfo
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.jban.request.JbanUserInfoRequest
@@ -15,7 +15,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.apache.http.entity.ContentType
+import org.apache.hc.core5.http.ContentType
 
 /**
  * @author langkye

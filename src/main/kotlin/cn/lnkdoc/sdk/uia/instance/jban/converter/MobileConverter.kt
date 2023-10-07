@@ -1,7 +1,7 @@
-package cn.lnkdoc.sdk.uia.instance.jban.convert
+package cn.lnkdoc.sdk.uia.instance.jban.converter
 
 import cn.lnkdoc.sdk.uia.common.HttpMethod
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.instance.jban.domain.MobileInfo
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.jban.request.JbanMobileMd5UserRequest

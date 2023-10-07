@@ -1,6 +1,6 @@
 package cn.lnkdoc.sdk.uia.common.request
 
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import org.apache.commons.collections4.CollectionUtils
 import java.util.*

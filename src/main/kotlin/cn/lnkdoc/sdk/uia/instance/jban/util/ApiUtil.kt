@@ -12,7 +12,7 @@ import com.alibaba.fastjson2.into
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.apache.http.entity.ContentType
+import org.apache.hc.core5.http.ContentType
 import org.slf4j.LoggerFactory
 
 /**

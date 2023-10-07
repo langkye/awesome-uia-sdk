@@ -24,7 +24,7 @@ class UserInfoRequest : AbstractUiaRequest(), IUiaRequest {
      * @return request body
      */
     override fun <T> body(): T {
-        return body!! as T
+        return body as T
     }
 
     /**
@@ -61,41 +61,14 @@ class UserInfoRequest : AbstractUiaRequest(), IUiaRequest {
     /**
      * body class
      */
-    class Body
-    /**
-     * constructor
-     * @param accessToken accessToken
-     * @param openid openid
-     */(
+    class Body {
         /**
          * accessToken
          */
-        var accessToken: String,
+        var accessToken: String? = null
         /**
          * openid
          */
-        var openid: String
-    ) {
-        /**
-         * getter
-         *
-         * @return accessToken
-         */
-        /**
-         * setter
-         *
-         * @param accessToken accessToken
-         */
-        /**
-         * getter
-         *
-         * @return openid
-         */
-        /**
-         * setter
-         *
-         * @param openid openid
-         */
-
+        var openid: String? = null
     }
 }

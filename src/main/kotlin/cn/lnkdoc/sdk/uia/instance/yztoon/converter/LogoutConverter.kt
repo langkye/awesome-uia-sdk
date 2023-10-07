@@ -1,6 +1,6 @@
-package cn.lnkdoc.sdk.uia.instance.yztoon.convert
+package cn.lnkdoc.sdk.uia.instance.yztoon.converter
 
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.LogoutRequest
