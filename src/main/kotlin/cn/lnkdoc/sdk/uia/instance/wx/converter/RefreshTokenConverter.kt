@@ -1,6 +1,6 @@
-package cn.lnkdoc.sdk.uia.instance.wx.convert
+package cn.lnkdoc.sdk.uia.instance.wx.converter
 
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.instance.wx.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 import cn.lnkdoc.sdk.uia.instance.wx.request.RefreshTokenRequest

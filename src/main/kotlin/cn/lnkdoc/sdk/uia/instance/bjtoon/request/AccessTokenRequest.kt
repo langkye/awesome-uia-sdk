@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon.request
 
+import cn.lnkdoc.sdk.uia.common.GrantType
 import cn.lnkdoc.sdk.uia.common.HttpMethod
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
@@ -26,7 +27,7 @@ class AccessTokenRequest : AbstractUiaRequest(), IUiaRequest {
     /**
      * grantType
      */
-    var grantType = "authorization_code"
+    var grantType = GrantType.AUTHORIZATION_CODE
     /**
      * authToken
      */
@@ -34,7 +35,7 @@ class AccessTokenRequest : AbstractUiaRequest(), IUiaRequest {
     /**
      * scope
      */
-    var scope = "authorization_code"
+    var scope = GrantType.AUTHORIZATION_CODE
     /**
      * toonType
      */

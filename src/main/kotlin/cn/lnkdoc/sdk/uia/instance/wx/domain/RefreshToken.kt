@@ -12,17 +12,17 @@ class RefreshToken : WxResponse() {
     /**
      * 接口调用凭证
      */
-    @JSONField(name = "access_token")
+    @set:JSONField(name = "access_token")
     var accessToken: String? = null
     /**
      * access_token接口调用凭证超时时间，单位（秒）
      */
-    @JSONField(name = "expires_in")
+    @set:JSONField(name = "expires_in")
     var expiresIn: Long? = null
     /**
      * 用户刷新access_token
      */
-    @JSONField(name = "refresh_token")
+    @set:JSONField(name = "refresh_token")
     var refreshToken: String? = null
     /**
      * 授权用户唯一标识

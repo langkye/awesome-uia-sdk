@@ -1,6 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon.converter
 
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.instance.bjtoon.UiaConstants
 import cn.lnkdoc.sdk.uia.instance.bjtoon.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty

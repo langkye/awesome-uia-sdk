@@ -49,6 +49,10 @@ class WxProperty : IUiaProperty {
      * refreshTokenGrantType
      */
     var refreshTokenGrantType = UiaConstants.GRANT_TYPE_REFRESH
+    /**
+     * redirectUri
+     */
+    var redirectUri: String? = null
 
     /**
      * getter

@@ -1,8 +1,6 @@
-package cn.lnkdoc.sdk.uia.common.convert
+package cn.lnkdoc.sdk.uia.common.converter
 
 /**
- *
- *
  * @author langkye
  * @since 1.0.0.RELEASE
  */

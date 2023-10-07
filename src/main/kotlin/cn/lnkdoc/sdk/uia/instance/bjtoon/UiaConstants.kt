@@ -1,5 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon
 
+import cn.lnkdoc.sdk.uia.common.GrantType
+
 /**
  *
  * General Constants
@@ -88,7 +90,7 @@ object UiaConstants {
     /**
      * GRANT_TYPE_CODE
      */
-    const val GRANT_TYPE_CODE = "authorization_code"
+    val GRANT_TYPE_CODE = GrantType.AUTHORIZATION_CODE.code
     /**
      * GRANT_TYPE_REFRESH
      */

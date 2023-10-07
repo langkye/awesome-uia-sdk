@@ -1,6 +1,6 @@
-package cn.lnkdoc.sdk.uia.instance.jban.convert
+package cn.lnkdoc.sdk.uia.instance.jban.converter
 
-import cn.lnkdoc.sdk.uia.common.convert.IUiaConverter
+import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.instance.jban.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.jban.request.JbanAccessTokenRequest
@@ -12,7 +12,7 @@ import io.vavr.Tuple3
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.apache.http.entity.ContentType
+import org.apache.hc.core5.http.ContentType
 
 /**
  * @author langkye

@@ -38,7 +38,7 @@
 ```
 #### Gradle
 - groovy dsl
-  ```build.gradle
+  ```groovy
   // https://mvnrepository.com/artifact/cn.lnkdoc.sdk/awesome-uia-sdk
   implementation 'cn.lnkdoc.sdk:awesome-uia-sdk:${awesome_uia_sdk_version}'
   ```
