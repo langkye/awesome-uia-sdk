@@ -21,3 +21,7 @@ cn.lnkdoc.sdk.uia.instance.wx.converter.UserInfoConverter
 cn.lnkdoc.sdk.uia.instance.alipay.converter.AccessTokenConverter
 cn.lnkdoc.sdk.uia.instance.alipay.converter.RefreshTokenConverter
 cn.lnkdoc.sdk.uia.instance.alipay.converter.UserInfoConverter
+
+# ~======================= github =======================~ # 
+cn.lnkdoc.sdk.uia.instance.github.converter.AccessTokenConverter
+cn.lnkdoc.sdk.uia.instance.github.converter.UserInfoConverter
