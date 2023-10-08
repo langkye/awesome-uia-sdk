@@ -23,6 +23,7 @@
 | Yztoon | None        | authenticate with “[北京市统一身份认证平台(法人)](https://yzt.beijing.gov.cn/)”                                           |
 | Jban   | None        | authenticate with “[京办](https://jzb.beijing.gov.cn/home/)”                                                          |
 | Weixin | None        | authenticate with “[微信](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)” |
+| Alipay | 4.38.90.ALL | authenticate with “[支付宝](https://opendocs.alipay.com/open/263/105808)” |
 
 
 
