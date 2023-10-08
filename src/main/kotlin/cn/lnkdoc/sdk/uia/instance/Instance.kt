@@ -6,6 +6,8 @@ import cn.lnkdoc.sdk.uia.instance.alipay.AlipaySdkInstance
 import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 import cn.lnkdoc.sdk.uia.instance.bjtoon.BjtoonSdkInstance
 import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty
+import cn.lnkdoc.sdk.uia.instance.github.GithubSdkInstance
+import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.wx.WxSdkInstance
@@ -58,6 +60,11 @@ enum class Instance
      * alipay
      */
     ALIPAY({ property -> alipay(property) }, AlipayProperty::class.java),
+
+    /**
+     * github
+     */
+    GITHUB({ property -> github(property) }, GithubProperty::class.java),
     ;
 
     companion object {
@@ -143,4 +150,14 @@ private fun wx(property: IUiaProperty): WxSdkInstance {
  */
 private fun alipay(property: IUiaProperty): AlipaySdkInstance {
     return AlipaySdkInstance(property as AlipayProperty)
+}
+
+/**
+ * of github
+ *
+ * @param property property
+ * @return instance
+ */
+private fun github(property: IUiaProperty): GithubSdkInstance {
+    return GithubSdkInstance(property as GithubProperty)
 }
