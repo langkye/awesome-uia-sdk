@@ -6,6 +6,8 @@ import cn.lnkdoc.sdk.uia.instance.alipay.AlipaySdkInstance
 import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 import cn.lnkdoc.sdk.uia.instance.bjtoon.BjtoonSdkInstance
 import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty
+import cn.lnkdoc.sdk.uia.instance.gitee.GiteeSdkInstance
+import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
 import cn.lnkdoc.sdk.uia.instance.github.GithubSdkInstance
 import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance
@@ -65,6 +67,11 @@ enum class Instance
      * github
      */
     GITHUB({ property -> github(property) }, GithubProperty::class.java),
+
+    /**
+     * gitee
+     */
+    GITEE({ property -> gitee(property) }, GiteeProperty::class.java),
     ;
 
     companion object {
@@ -160,4 +167,14 @@ private fun alipay(property: IUiaProperty): AlipaySdkInstance {
  */
 private fun github(property: IUiaProperty): GithubSdkInstance {
     return GithubSdkInstance(property as GithubProperty)
+}
+
+/**
+ * of gitee
+ *
+ * @param property property
+ * @return instance
+ */
+private fun gitee(property: IUiaProperty): GiteeSdkInstance {
+    return GiteeSdkInstance(property as GiteeProperty)
 }
