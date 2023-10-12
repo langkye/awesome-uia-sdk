@@ -27,6 +27,7 @@
 | Github | None         | authenticate with “[Github](https://docs.github.com/zh/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps)” |
 | Gitee  | None         | authenticate with “[Gitee](https://gitee.com/api/v5/oauth_doc#/)”                                                   |
 | Google | None         | authenticate with “[Google](https://developers.google.com/identity/protocols/oauth2/web-server?hl=zh-cn)”           |
+| Gitlab | None         | authenticate with “[Gitlab](https://docs.gitlab.com/ee/api/oauth2.html)”           |
 
 
 
