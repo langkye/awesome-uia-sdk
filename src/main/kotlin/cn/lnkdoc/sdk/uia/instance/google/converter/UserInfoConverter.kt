@@ -1,32 +1,33 @@
-package cn.lnkdoc.sdk.uia.instance.github.converter
+package cn.lnkdoc.sdk.uia.instance.google.converter
 
 import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
-import cn.lnkdoc.sdk.uia.instance.github.domain.UserInfo
-import cn.lnkdoc.sdk.uia.instance.github.request.UserInfoRequest
-import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
+import cn.lnkdoc.sdk.uia.instance.google.domain.UserInfo
+import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
+import cn.lnkdoc.sdk.uia.instance.google.request.UserInfoRequest
 import com.alibaba.fastjson2.into
 import io.vavr.Tuple2
-
 
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
  */
-@Suppress("Unchecked_cast")
+@Suppress("unused", "Unchecked_cast", "Duplicated_code_fragment")
 open class UserInfoConverter : IUiaConverter {
-    private var name: String = UserInfoRequest::class.java.getName()
-
     /**
-     * convert request
+     * convert body
      *
-     * @param body tuple
+     * @param body body
      * @return response converted result
      */
     override fun <T, R> convertRequest(body: R): T {
+        val tuple = body as Tuple2<UserInfoRequest, GoogleProperty>
+        val accessTokenRequest = tuple._1
+
         val builder = okhttp3.FormBody.Builder()
-        return builder
-            .build() as T
+        builder.addEncoded("access_token", accessTokenRequest.body())
+
+        return builder.build() as T
     }
 
     /**
@@ -38,26 +39,27 @@ open class UserInfoConverter : IUiaConverter {
      * @return response converted result
      */
     override fun <T, R> buildHeaders(body: R): T {
-        val tuple = body as Tuple2<UserInfoRequest, GithubProperty>
         val builder = okhttp3.Headers.Builder()
-        val requestBody = tuple._1.body<String>()
         return builder
-            .add("Authorization", "Bearer $requestBody")
             .add("Accept", "application/json")
             .build() as T
     }
 
     /**
-     * convert body
+     * convert response
      *
-     * @param body body
+     * @param body response
      * @return response converted result
      */
     override fun <T, R> convertResponse(body: R): T {
-        val tuple = body as Tuple2<String, GithubProperty>
+        @Suppress("Duplicated_code_fragment")
+        val tuple = body as Tuple2<String, GoogleProperty>
         // convert json
-        val data = tuple._1.into<UserInfo>()
-        data.raw = tuple._1
+        @Suppress("Duplicated_code_fragment")
+        val string = tuple._1
+        
+        val data = string.into<UserInfo>()
+        data.raw = string
 
         if (!data.success) {
             throw UiaException(data.message)
@@ -65,14 +67,12 @@ open class UserInfoConverter : IUiaConverter {
 
         return data as T
     }
-
     /**
      * converter name
      *
      * @return converter name
      */
     override fun name(): String {
-        return name
+        return UserInfoRequest::class.java.getName()
     }
 }
-

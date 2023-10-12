@@ -86,6 +86,7 @@ class UserInfo {
     var updatedAt: String? = null
     @set:JSONField(name = "url")
     var url: String? = null
+    var raw: String? = null
     @set:JSONField(name = "message")
     var message: String? = null
         set(value) {

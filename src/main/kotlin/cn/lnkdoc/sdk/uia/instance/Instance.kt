@@ -10,6 +10,8 @@ import cn.lnkdoc.sdk.uia.instance.gitee.GiteeSdkInstance
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
 import cn.lnkdoc.sdk.uia.instance.github.GithubSdkInstance
 import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
+import cn.lnkdoc.sdk.uia.instance.google.GoogleSdkInstance
+import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.wx.WxSdkInstance
@@ -72,6 +74,11 @@ enum class Instance
      * gitee
      */
     GITEE({ property -> gitee(property) }, GiteeProperty::class.java),
+
+    /**
+     * google
+     */
+    GOOGLE({ property -> google(property) }, GoogleProperty::class.java),
     ;
 
     companion object {
@@ -177,4 +184,14 @@ private fun github(property: IUiaProperty): GithubSdkInstance {
  */
 private fun gitee(property: IUiaProperty): GiteeSdkInstance {
     return GiteeSdkInstance(property as GiteeProperty)
+}
+
+/**
+ * of google
+ *
+ * @param property property
+ * @return instance
+ */
+private fun google(property: IUiaProperty): GoogleSdkInstance {
+    return GoogleSdkInstance(property as GoogleProperty)
 }

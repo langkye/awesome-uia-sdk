@@ -47,4 +47,8 @@ class UserInfo {
      */
     @set:JSONField(name = "gender")
     var gender : String? = null
+    /**
+     * raw
+     */
+    var raw: String? = null
 }

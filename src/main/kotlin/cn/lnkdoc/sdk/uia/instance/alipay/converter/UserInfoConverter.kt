@@ -29,6 +29,8 @@ class UserInfoConverter : IUiaConverter {
         val alipayResponse = body as AlipayResponse
         val responseBody = alipayResponse.body.parseObject().getString("alipay_user_info_share_response")
         val response = JSON.parseObject(responseBody, object : TypeReference<UserInfo?>() {}) as UserInfo
+        response.raw = alipayResponse.body
+
         return response as T
     }
 
