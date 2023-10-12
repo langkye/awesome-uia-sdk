@@ -30,3 +30,8 @@ cn.lnkdoc.sdk.uia.instance.github.converter.UserInfoConverter
 cn.lnkdoc.sdk.uia.instance.gitee.converter.AccessTokenConverter
 cn.lnkdoc.sdk.uia.instance.gitee.converter.RefreshTokenConverter
 cn.lnkdoc.sdk.uia.instance.gitee.converter.UserInfoConverter
+
+# ~======================= google =======================~ # 
+cn.lnkdoc.sdk.uia.instance.google.converter.AccessTokenConverter
+cn.lnkdoc.sdk.uia.instance.google.converter.RefreshTokenConverter
+cn.lnkdoc.sdk.uia.instance.google.converter.UserInfoConverter

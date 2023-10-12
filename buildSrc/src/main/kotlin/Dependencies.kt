@@ -47,7 +47,7 @@ object VERSION {
     const val ARTHAS_SPRING_BOOT_STARTER_VERSION = ""
     const val BCPROV_JDK15ON_VERSION = "1.70"
     const val HUTOOL_VERSION = ""
-    const val COMMON_LANG3_VERSION = "3.12.0"//"3.13.0"
+    const val COMMON_LANG3_VERSION = "3.13.0"
     const val EASY_EXCEL_VERSION = ""
     const val EASY_CAPTCHA_VERSION = ""
     const val GUAVA_VERSION = "32.1.2-jre"
@@ -60,14 +60,14 @@ object VERSION {
     const val HTTPCLIENT5_VERSION = "5.2.1"
     const val OKHTTP_VERSION = "4.11.0"
     const val BCPROV_JDK15TO18_VERSION = "1.76"
-    const val FAST_JSON2_VERSION = "2.0.40"
+    const val FAST_JSON2_VERSION = "2.0.41"
     const val FAST_JSON2KOTLIN_VERSION = "2.0.17"
-    const val JAVAHOST_VERSION = "0.9.6"
+    const val JAVAHOST_VERSION = "0.9.12"
     const val VAVR_VERSION = "0.10.4"
     const val COLLECTIONS4_VERSION = "4.4"
-    const val COMMONS_CODEC_VERSION = "1.16.0"//"1.13"//
+    const val COMMONS_CODEC_VERSION = "1.16.0"
     const val KOTLINX_SERIALIZATION_JSON_VERSION = "1.6.0"
-    const val ALIPAY_SDK_JAVA_VERSION = "4.38.85.ALL"
+    const val ALIPAY_SDK_JAVA_VERSION = "4.38.90.ALL"
 }
 
 // ---------------------------------------------------------- Library ----------------------------------------------------------  
