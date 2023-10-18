@@ -2,15 +2,15 @@
 <!-- TOC -->
 * [Awesome Uia SDK - Java](#awesome-uia-sdk---java)
 * [Supports](#supports)
-  * [Usage](#usage)
-    * [Add dependency](#add-dependency)
-      * [Maven](#maven)
-      * [Gradle](#gradle)
-    * [Examples](#examples)
-      * [Bjtoon（北京通）](#bjtoon北京通)
-        * [Java](#java)
-        * [Kotlin](#kotlin)
-      * [More Examples:](#more-examples-)
+* [Usage](#usage)
+  * [Add dependency](#add-dependency)
+    * [Maven](#maven)
+    * [Gradle](#gradle)
+  * [Examples](#examples)
+    * [Bjtoon（北京通）](#bjtoon北京通)
+      * [Java](#java)
+      * [Kotlin](#kotlin)
+    * [More Examples:](#more-examples-)
 <!-- TOC -->
 
 ---
