@@ -40,3 +40,7 @@ cn.lnkdoc.sdk.uia.instance.google.converter.UserInfoConverter
 cn.lnkdoc.sdk.uia.instance.gitlab.converter.AccessTokenConverter
 cn.lnkdoc.sdk.uia.instance.gitlab.converter.RefreshTokenConverter
 cn.lnkdoc.sdk.uia.instance.gitlab.converter.UserInfoConverter
+
+# ~======================= weibo =======================~ # 
+cn.lnkdoc.sdk.uia.instance.weibo.converter.AccessTokenConverter
+cn.lnkdoc.sdk.uia.instance.weibo.converter.UserInfoConverter

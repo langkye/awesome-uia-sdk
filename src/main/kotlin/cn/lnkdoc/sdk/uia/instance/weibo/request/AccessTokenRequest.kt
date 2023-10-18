@@ -1,31 +1,27 @@
-package cn.lnkdoc.sdk.uia.instance.github.request
+package cn.lnkdoc.sdk.uia.instance.weibo.request
 
 import cn.lnkdoc.sdk.uia.common.HttpMethod
-import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.common.request.AbstractUiaRequest
 import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
-import cn.lnkdoc.sdk.uia.common.util.Assert.required
-import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
-
+import cn.lnkdoc.sdk.uia.instance.weibo.property.WeiboProperty
 
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
  */
-@Suppress("Unchecked_cast", "unused")
-class UserInfoRequest : AbstractUiaRequest(), IUiaRequest {
-    /**
-     * body
-     */
+@Suppress("Unchecked_cast")
+class AccessTokenRequest: AbstractUiaRequest(), IUiaRequest {
     var body: String? = null
+    
     /**
      * request body
      *
+     * @param <T> type
      * @return request body
      */
     override fun <T> body(): T {
-        return body!! as T
+        return body as T
     }
 
     /**
@@ -35,13 +31,8 @@ class UserInfoRequest : AbstractUiaRequest(), IUiaRequest {
      * @return request url
      */
     override fun url(property: IUiaProperty): String {
-        val varProperty = property as GithubProperty
-        required(varProperty, "配置不能为空")
-        return try {
-            (varProperty.userInfoUrl)
-        } catch (e: Exception) {
-            throw UiaException(e)
-        }
+        val varProperty = property as WeiboProperty
+        return varProperty.accessTokenUrl
     }
 
     /**
@@ -50,7 +41,6 @@ class UserInfoRequest : AbstractUiaRequest(), IUiaRequest {
      * @return request method
      */
     override fun method(): HttpMethod {
-        return HttpMethod.GET
+        return HttpMethod.POST
     }
 }
-
