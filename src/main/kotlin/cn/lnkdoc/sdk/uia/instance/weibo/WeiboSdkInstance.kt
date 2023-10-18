@@ -1,24 +1,25 @@
-package cn.lnkdoc.sdk.uia.instance.gitlab
+package cn.lnkdoc.sdk.uia.instance.weibo
 
 import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.common.response.UiaResponse
 import cn.lnkdoc.sdk.uia.instance.AbstractInstance
 import cn.lnkdoc.sdk.uia.instance.ISdkInstance
-import cn.lnkdoc.sdk.uia.instance.gitlab.client.GitlabUiaClient
-import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
-import cn.lnkdoc.sdk.uia.instance.gitlab.request.AccessTokenRequest
+import cn.lnkdoc.sdk.uia.instance.weibo.client.WeiboUiaClient
+import cn.lnkdoc.sdk.uia.instance.weibo.property.WeiboProperty
+import cn.lnkdoc.sdk.uia.instance.weibo.request.AccessTokenRequest
+
 
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
-class GitlabSdkInstance(property: GitlabProperty) : AbstractInstance(), ISdkInstance {
+class WeiboSdkInstance(property: WeiboProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */
     init {
-        client = GitlabUiaClient.getInstance(property)
+        client = WeiboUiaClient.getInstance(property)
     }
 
     /**

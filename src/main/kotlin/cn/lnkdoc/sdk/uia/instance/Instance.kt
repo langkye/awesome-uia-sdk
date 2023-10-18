@@ -16,6 +16,8 @@ import cn.lnkdoc.sdk.uia.instance.google.GoogleSdkInstance
 import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
+import cn.lnkdoc.sdk.uia.instance.weibo.WeiboSdkInstance
+import cn.lnkdoc.sdk.uia.instance.weibo.property.WeiboProperty
 import cn.lnkdoc.sdk.uia.instance.wx.WxSdkInstance
 import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 import cn.lnkdoc.sdk.uia.instance.yztoon.YztoonSdkInstance
@@ -86,6 +88,11 @@ enum class Instance
      * gitlab
      */
     GITLAB({ property -> gitlab(property) }, GitlabProperty::class.java),
+
+    /**
+     * weibo
+     */
+    WEIBO({ property -> weibo(property) }, WeiboProperty::class.java),
     ;
 
     companion object {
@@ -211,4 +218,14 @@ private fun google(property: IUiaProperty): GoogleSdkInstance {
  */
 private fun gitlab(property: IUiaProperty): GitlabSdkInstance {
     return GitlabSdkInstance(property as GitlabProperty)
+}
+
+/**
+ * of weibo
+ *
+ * @param property property
+ * @return instance
+ */
+private fun weibo(property: IUiaProperty): WeiboSdkInstance {
+    return WeiboSdkInstance(property as WeiboProperty)
 }
