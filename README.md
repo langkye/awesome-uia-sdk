@@ -17,18 +17,19 @@
 
 ## Supports
 
-| SDK    | Version      | Description                                                                                                         |
-|--------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| Bjtoon | ~~1.1~~+     | authenticate with “[北京市统一身份认证平台(自然人)](http://www.beijing.gov.cn/)”                                                  |
-| Yztoon | None         | authenticate with “[北京市统一身份认证平台(法人)](https://yzt.beijing.gov.cn/)”                                                  |
-| Jban   | None         | authenticate with “[京办](https://jzb.beijing.gov.cn/home/)”                                                          |
-| Weixin | None         | authenticate with “[微信](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)” |
-| Alipay | 4.38.90.ALL+ | authenticate with “[支付宝](https://opendocs.alipay.com/open/263/105808)”                                              |
-| Github | None         | authenticate with “[Github](https://docs.github.com/zh/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps)” |
-| Gitee  | None         | authenticate with “[Gitee](https://gitee.com/api/v5/oauth_doc#/)”                                                   |
-| Google | None         | authenticate with “[Google](https://developers.google.com/identity/protocols/oauth2/web-server?hl=zh-cn)”           |
-| Gitlab | None         | authenticate with “[Gitlab](https://docs.gitlab.com/ee/api/oauth2.html)”           |
-| Weibo  | None         | authenticate with “[Weibo](https://open.weibo.com/wiki/Connect/login)”           |
+| SDK      | Version      | Description                                                                                                         |
+|----------|--------------|---------------------------------------------------------------------------------------------------------------------|
+| Bjtoon   | ~~1.1~~+     | authenticate with “[北京市统一身份认证平台(自然人)](http://www.beijing.gov.cn/)”                                                  |
+| Yztoon   | None         | authenticate with “[北京市统一身份认证平台(法人)](https://yzt.beijing.gov.cn/)”                                                  |
+| Jban     | None         | authenticate with “[京办](https://jzb.beijing.gov.cn/home/)”                                                          |
+| Weixin   | None         | authenticate with “[微信](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)” |
+| Alipay   | 4.38.90.ALL+ | authenticate with “[支付宝](https://opendocs.alipay.com/open/263/105808)”                                              |
+| Github   | None         | authenticate with “[Github](https://docs.github.com/zh/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps)” |
+| Gitee    | None         | authenticate with “[Gitee](https://gitee.com/api/v5/oauth_doc#/)”                                                   |
+| Google   | None         | authenticate with “[Google](https://developers.google.com/identity/protocols/oauth2/web-server?hl=zh-cn)”           |
+| Gitlab   | None         | authenticate with “[Gitlab](https://docs.gitlab.com/ee/api/oauth2.html)”           |
+| Weibo    | None         | authenticate with “[Weibo](https://open.weibo.com/wiki/Connect/login)”           |
+| Bccastle | None         | authenticate with “[Bccastle](https://www.bccastle.com/products/auth.html)”           |
 
 
 

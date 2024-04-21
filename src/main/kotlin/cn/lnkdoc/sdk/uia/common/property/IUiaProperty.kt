@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.common.property
 
 /**
- *
+ * uia property
  *
  * @author langkye
  * @since 1.0.0.RELEASE
@@ -13,4 +13,11 @@ interface IUiaProperty {
      * @return boolean
      */
     fun isPrintStack() : Boolean
+    
+    /**
+     * isPrintStack
+     *
+     * @return boolean
+     */
+    fun isUseInterceptor() : Boolean = false
 }

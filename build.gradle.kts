@@ -57,6 +57,7 @@ repositories {
 dependencies {
     api(httpclient5)
     api(okhttp)
+    api(okio)
     api(bcprovJdk15to18)
     api(slf4j_api)
     api(guava)
