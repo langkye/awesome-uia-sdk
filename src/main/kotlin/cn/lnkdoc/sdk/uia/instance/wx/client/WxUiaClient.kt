@@ -45,7 +45,7 @@ class WxUiaClient private constructor() : IUiaClient {
             val string = sendRequest(request)
 
             // check success
-            check(string)
+            check(string, property!!.isPrintStack())
 
             // convert 
             val converts = request.getConvert<Any, Any>()

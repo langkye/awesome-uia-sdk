@@ -35,12 +35,10 @@ object CheckResponseUtil {
     fun check(json: String?, isPrintStack: Boolean?) {
         val wxResponse = JSONObject.parseObject(json, object : TypeReference<WxResponse?>() {})
         if (Objects.nonNull(wxResponse?.errcode)) {
-            if (0 != wxResponse?.errcode) {
-                if (isPrintStack == true) {
-                    log.error(json)
-                }
-                throw UiaException(wxResponse?.errmsg)
+            if (isPrintStack == true) {
+                log.error(json)
             }
+            throw UiaException(wxResponse?.errmsg)
         }
     }
 }

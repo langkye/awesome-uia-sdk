@@ -33,6 +33,7 @@ object CheckResponseUtil {
     @Synchronized
     fun check(json: String = "{}", printStack: Boolean = false) {
         val jbanResponse: JbanResponse<AccessToken> = json.into<JbanResponse<AccessToken>>()
+        // 返回码：0-表示运行成功，无错误返回；其它-运行出错后的错误代码。
         if (0 != jbanResponse.code) {
             if (printStack) {
                 log.error(json)
