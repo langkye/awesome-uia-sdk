@@ -190,10 +190,10 @@ publishing {
 
             credentials {
                 // find property from ~/.gradle/gradle.properties
-                username = project.findProperty("ossrh.username") as String
-                //username = project.findProperty("nexus.username") as String
-                password = project.findProperty("ossrh.password") as String
-                //password = project.findProperty("nexus.password") as String
+                //username = project.findProperty("ossrh.username") as String
+                username = project.findProperty("nexus.username") as String
+                //password = project.findProperty("ossrh.password") as String
+                password = project.findProperty("nexus.password") as String
             }
         }
     }
