@@ -42,7 +42,7 @@ class UiaResponse<T> : IUiaResponse<T>, Serializable {
         @JvmStatic
         fun <T> success(data: T): UiaResponse<T> {
             val response: UiaResponse<T> = UiaResponse()
-            response.data =data
+            response.data = data
             response.isSuccess = true
             return response
         }

@@ -14,6 +14,8 @@ import cn.lnkdoc.sdk.uia.instance.gitlab.GitlabSdkInstance
 import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
 import cn.lnkdoc.sdk.uia.instance.google.GoogleSdkInstance
 import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
+import cn.lnkdoc.sdk.uia.instance.bccastle.BccastleSdkInstance
+import cn.lnkdoc.sdk.uia.instance.bccastle.property.BccastleProperty
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.weibo.WeiboSdkInstance
@@ -93,6 +95,11 @@ enum class Instance
      * weibo
      */
     WEIBO({ property -> weibo(property) }, WeiboProperty::class.java),
+
+    /**
+     * bccastle
+     */
+    BCCASTLE({ property -> bccastle(property) }, BccastleProperty::class.java),
     ;
 
     companion object {
@@ -228,4 +235,14 @@ private fun gitlab(property: IUiaProperty): GitlabSdkInstance {
  */
 private fun weibo(property: IUiaProperty): WeiboSdkInstance {
     return WeiboSdkInstance(property as WeiboProperty)
+}
+
+/**
+ * of bccastle
+ *
+ * @param property property
+ * @return instance
+ */
+private fun bccastle(property: IUiaProperty): BccastleSdkInstance {
+    return BccastleSdkInstance(property as BccastleProperty)
 }

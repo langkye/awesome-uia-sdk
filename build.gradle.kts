@@ -57,6 +57,7 @@ repositories {
 dependencies {
     api(httpclient5)
     api(okhttp)
+    api(okio)
     api(bcprovJdk15to18)
     api(slf4j_api)
     api(guava)
@@ -190,16 +191,27 @@ publishing {
             credentials {
                 // find property from ~/.gradle/gradle.properties
                 username = project.findProperty("ossrh.username") as String
+                //username = project.findProperty("nexus.username") as String
                 password = project.findProperty("ossrh.password") as String
+                //password = project.findProperty("nexus.password") as String
             }
         }
     }
 }
 
 signing {
+    //useInMemoryPgpKeys(findProperty("signingKey") as String?, findProperty("signingPassword") as String?)
     useGpgCmd()
     sign(publishing.publications["mavenJava"])
 }
 kotlin {
     jvmToolchain(8)
+}
+
+tasks.withType<PublishToMavenRepository> {
+    doFirst {
+        println("Publishing to repository: ${repository.url}")
+        println("Username: ${repository.credentials.username}")
+        //println("Password: ${repository.credentials.password}")
+    }
 }

@@ -1,9 +1,10 @@
-package cn.lnkdoc.sdk.uia.instance.wx.util
+package cn.lnkdoc.sdk.uia.instance.bccastle.util
 
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
-import cn.lnkdoc.sdk.uia.instance.wx.response.WxResponse
+import cn.lnkdoc.sdk.uia.instance.bccastle.response.BccastleResponse
 import com.alibaba.fastjson2.JSONObject
 import com.alibaba.fastjson2.TypeReference
+import com.alibaba.fastjson2.isJSONObject
 import org.slf4j.LoggerFactory
 import java.util.*
 
@@ -33,12 +34,17 @@ object CheckResponseUtil {
      */
     @Synchronized
     fun check(json: String?, isPrintStack: Boolean?) {
-        val wxResponse = JSONObject.parseObject(json, object : TypeReference<WxResponse?>() {})
-        if (Objects.nonNull(wxResponse?.errcode)) {
+        val success: Boolean = Objects.nonNull(json) && json.isJSONObject()
+        
+        if (!success) {
+            throw UiaException("response is null or not json: $json")
+        }
+        val bccastleResponse = JSONObject.parseObject(json, object : TypeReference<BccastleResponse?>() {})
+        if (Objects.nonNull(bccastleResponse?.errcode)) {
             if (isPrintStack == true) {
                 log.error(json)
             }
-            throw UiaException(wxResponse?.errmsg)
+            throw UiaException(bccastleResponse?.msg)
         }
     }
 }
