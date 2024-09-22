@@ -39,36 +39,39 @@ object VERSION {
     const val ROOM_VERSION =  ""
 
     const val JACKSON_MODULE_KOTLIN_VERSION = ""
-    const val FAST_JSON_VERSION = ""
     const val SLF4J_VERSION = "1.7.36"
     const val LOGBACK_VERSION = "1.2.13"
     const val LOGSTASH_LOGBACK_ENCODER_VERSION = ""
     const val APM_TOOLKIT_LOGBACK1_X_VERSION = ""
     const val ARTHAS_SPRING_BOOT_STARTER_VERSION = ""
     const val BCPROV_JDK15ON_VERSION = "1.70"
+    const val BCPROV_JDK15TO18_VERSION = "1.78.1"
+    const val BCPROV_JDK18ON_VERSION = "1.78.1"
     const val HUTOOL_VERSION = ""
-    const val COMMON_LANG3_VERSION = "3.13.0"
+    const val COMMON_LANG3_VERSION = "3.17.0"
     const val EASY_EXCEL_VERSION = ""
     const val EASY_CAPTCHA_VERSION = ""
-    const val GUAVA_VERSION = "33.2.1-jre"
+    const val GUAVA_VERSION = "33.3.0-jre"
     const val MYSQL8_VERSION = ""
     const val MYSQL6_VERSION = ""
     const val MYSQL5_VERSION = ""
     const val COMPILEFLOW_VERSION = ""
     const val SPRING_CLOUD_STARTER_BOOTSTRAP_VERSION = ""
     const val HTTPCLIENT_VERSION = "4.5.14"
-    const val HTTPCLIENT5_VERSION = "5.2.1"
-    const val OKHTTP_VERSION = "4.11.0"
-    const val OKIO = "3.9.0"
-    const val BCPROV_JDK15TO18_VERSION = "1.78.1"
-    const val FAST_JSON2_VERSION = "2.0.51"
-    const val FAST_JSON2KOTLIN_VERSION = "2.0.51"
+    const val HTTPCLIENT5_VERSION = "5.3.1"
+    const val OKHTTP_VERSION = "4.12.0"
+    const val OKIO_VERSION = "3.9.1"
+    const val FAST_JSON_VERSION = "1.2.83"
+    const val FAST_JSON2_VERSION = "2.0.53"
+    const val FAST_JSON2KOTLIN_VERSION = "2.0.53"
     const val JAVAHOST_VERSION = "0.9.12"
     const val VAVR_VERSION = "0.10.4"
-    const val COLLECTIONS4_VERSION = "4.4"
-    const val COMMONS_CODEC_VERSION = "1.16.0"
+    const val COLLECTIONS4_VERSION = "4.5.0-M1"
+    const val COMMONS_CODEC_VERSION = "1.17.1"
     const val KOTLINX_SERIALIZATION_JSON_VERSION = "1.6.0"
-    const val ALIPAY_SDK_JAVA_VERSION = "4.39.123.ALL"
+    const val ALIPAY_SDK_JAVA_VERSION = "4.39.208.ALL"
+    const val DOM4J_1_VERSION = "1.6.1"
+    const val DOM4J_VERSION = "2.1.4"
 }
 
 // ---------------------------------------------------------- Library ----------------------------------------------------------  
@@ -124,7 +127,7 @@ const val colorTrackTab = "com.github.hanlonglin:ColorTrackTabLayout:${VERSION.C
 const val httpclient = "org.apache.httpcomponents:httpclient:${VERSION.HTTPCLIENT_VERSION}"
 const val httpclient5 = "org.apache.httpcomponents.client5:httpclient5:${VERSION.HTTPCLIENT5_VERSION}"
 const val okhttp = "com.squareup.okhttp3:okhttp:${VERSION.OKHTTP_VERSION}"
-const val okio = "com.squareup.okio:okio:${VERSION.OKIO}"
+const val okio = "com.squareup.okio:okio:${VERSION.OKIO_VERSION}"
 const val bcprovJdk15to18 = "org.bouncycastle:bcprov-jdk15to18:${VERSION.BCPROV_JDK15TO18_VERSION}"
 const val fastjson2 = "com.alibaba.fastjson2:fastjson2:${VERSION.FAST_JSON2_VERSION}"
 const val fastjson2kotlin = "com.alibaba.fastjson2:fastjson2-kotlin:${VERSION.FAST_JSON2KOTLIN_VERSION}"
@@ -164,6 +167,8 @@ const val lombok = "org.projectlombok:lombok:${VERSION.LOMBOK_VERSION}"
 @Suppress("unused")
 const val bcprov_jdk15on = "org.bouncycastle:bcprov-jdk15on:${VERSION.BCPROV_JDK15ON_VERSION}"
 @Suppress("unused")
+const val bcprov_jdk18on = "org.bouncycastle:bcprov-jdk18on:${VERSION.BCPROV_JDK18ON_VERSION}"
+@Suppress("unused")
 const val hutool_all = "cn.hutool:hutool-all:${VERSION.HUTOOL_VERSION}"
 const val common_lang3 = "org.apache.commons:commons-lang3:${VERSION.COMMON_LANG3_VERSION}"
 @Suppress("unused")
@@ -195,6 +200,10 @@ const val logback_classic = "ch.qos.logback:logback-classic:${VERSION.LOGBACK_VE
 const val logstash_logback_encoder = "net.logstash.logback:logstash-logback-encoder:${VERSION.LOGSTASH_LOGBACK_ENCODER_VERSION}"
 @Suppress("unused")
 const val apm_toolkit_logback_1_x = "org.apache.skywalking:apm-toolkit-logback-1.x:${VERSION.APM_TOOLKIT_LOGBACK1_X_VERSION}"
+@Suppress("unused")
+const val dom4j_1 = "dom4j:dom4j:${VERSION.DOM4J_1_VERSION}"
+@Suppress("unused")
+const val dom4j = "org.dom4j:dom4j:${VERSION.DOM4J_VERSION}"
 
 //plugins
 @Suppress("unused")
