@@ -56,9 +56,13 @@ repositories {
 
 dependencies {
     api(httpclient5)
-    api(okhttp)
+    api(okhttp) {
+        exclude(group = "com.squareup.okio", module = "okio")
+    }
     api(okio)
     api(bcprovJdk15to18)
+    //api(bcprov_jdk15on)
+    api(bcprov_jdk18on)
     api(slf4j_api)
     api(guava)
     api(fastjson2)
@@ -75,7 +79,11 @@ dependencies {
     //api(kotlin(stdlib_jdk8))
     api(kotlin_stdlib_jdk8)
     api(kotlin_reflect)
-    api(alipay_sdk_java)
+    api(alipay_sdk_java) {
+        exclude(group = "dom4j", module = "dom4j")
+        exclude(group = "org.bouncycastle", module = "bcprov-jdk15on")
+    }
+    api(dom4j)
 
     testImplementation(junit)
 }
