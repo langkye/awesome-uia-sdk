@@ -43,4 +43,5 @@ build/
 /logs/
 /logs/*.log
 
+### Project ###
 .gradle
