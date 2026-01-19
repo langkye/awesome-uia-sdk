@@ -2,6 +2,7 @@
 <!-- TOC -->
 * [Awesome Uia SDK - Java](#awesome-uia-sdk---java)
 * [Supports](#supports)
+* [Project Overview](#project-overview)
 * [Usage](#usage)
   * [Add dependency](#add-dependency)
     * [Maven](#maven)
@@ -14,6 +15,10 @@
 <!-- TOC -->
 
 ---
+
+## Project Overview
+The Awesome Uia SDK is a Java/Kotlin library designed for unified identity authentication. It targets JVM 8 and uses Gradle for its build system.
+
 
 ## Supports
 
@@ -52,9 +57,18 @@
 
 - kotlin dsl
   ```kts
-  // https://mvnrepository.com/artifact/cn.lnkdoc.sdk/awesome-uia-sdk
-  implementation("cn.lnkdoc.sdk:awesome-uia-sdk:${awesome_uia_sdk_version}")
+  // We recommend using the BOM for version management:
+  implementation(platform("cn.lnkdoc.sdk:awesome-uia-sdk-bom:1.0.0.RELEASE"))
+
+  // Choose the platform you need
+  implementation("cn.lnkdoc.sdk:awesome-uia-sdk-core")
+  implementation("cn.lnkdoc.sdk:awesome-uia-alipay-sdk")
+  
+  // Or use the "All-in-one" module for backward compatibility:
+  // implementation("cn.lnkdoc.sdk:awesome-uia-all-sdk:1.0.0.RELEASE")
   ```
+
+See [MIGRATION.md](MIGRATION.md) for detailed migration guide.
 
 ### Examples
 #### Bjtoon（北京通）

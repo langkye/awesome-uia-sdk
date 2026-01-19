@@ -72,10 +72,12 @@ object VERSION {
     const val ALIPAY_SDK_JAVA_VERSION = "4.39.208.ALL"
     const val DOM4J_1_VERSION = "1.6.1"
     const val DOM4J_VERSION = "2.1.4"
+    const val AUTO_SERVICE_VERSION = "1.1.1"
 }
 
 // ---------------------------------------------------------- Library ----------------------------------------------------------  
 //系统库
+@Suppress("unused")
 const val stdlib_jdk8 = "stdlib-jdk8"
 const val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${VERSION.KOTLIN_VERSION}"
 const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${VERSION.KOTLIN_STDLIB_VERSION}"
@@ -175,7 +177,12 @@ const val common_lang3 = "org.apache.commons:commons-lang3:${VERSION.COMMON_LANG
 const val easyexcel = "com.alibaba:easyexcel:${VERSION.EASY_EXCEL_VERSION}"
 @Suppress("unused")
 const val easy_captcha = "com.github.whvcse:easy-captcha:${VERSION.EASY_CAPTCHA_VERSION}"
+@Suppress("unused")
 const val guava = "com.google.guava:guava:${VERSION.GUAVA_VERSION}"
+@Suppress("unused")
+const val autoService = "com.google.auto.service:auto-service:${VERSION.AUTO_SERVICE_VERSION}"
+@Suppress("unused")
+const val autoServiceAnnotations = "com.google.auto.service:auto-service-annotations:${VERSION.AUTO_SERVICE_VERSION}"
 
 //dubbo
 @Suppress("unused")

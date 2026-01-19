@@ -4,7 +4,6 @@ plugins {
     `kotlin-dsl`
 }
 
-
 buildscript {
     extra["variable"] = "value"
 
@@ -15,20 +14,8 @@ buildscript {
 repositories {
     mavenLocal()
     //mavenCentral()
-    maven {
-        isAllowInsecureProtocol = true
-        url = uri("https://repo.maven.apache.org/maven2")
-    }
-    maven {
-        isAllowInsecureProtocol = true
-        url = uri("https://s01.oss.sonatype.org/")
-    }
-    maven {
-        isAllowInsecureProtocol = true
-        url = uri("https://repo.maven.apache.org/maven2/")
-    }
-    maven {
-        isAllowInsecureProtocol = true
-        url = uri("https://maven.aliyun.com/repository/public")
-    }
+    maven { setUrl("https://repo.maven.apache.org/maven2") }
+    maven { setUrl("https://s01.oss.sonatype.org/") }
+    maven { setUrl("https://repo.maven.apache.org/maven2/") }
+    maven { setUrl("https://maven.aliyun.com/repository/public") }
 }
