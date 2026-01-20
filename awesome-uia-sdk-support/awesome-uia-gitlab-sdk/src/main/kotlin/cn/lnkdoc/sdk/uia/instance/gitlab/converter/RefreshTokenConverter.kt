@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.gitlab.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
 import cn.lnkdoc.sdk.uia.instance.gitlab.request.RefreshTokenRequest
 import com.alibaba.fastjson2.into
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -15,7 +16,8 @@ import java.nio.charset.StandardCharsets
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class RefreshTokenConverter : AccessTokenConverter(), IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class RefreshTokenConverter : AccessTokenConverter(), IUiaConverter {
     /**
      * convert response
      *

@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.jban.response.JbanResponse
 import cn.lnkdoc.sdk.uia.instance.jban.util.ApiUtil.getAppAccessToken
 import com.alibaba.fastjson2.JSONObject
 import com.alibaba.fastjson2.into
+import com.google.auto.service.AutoService
 import io.vavr.Tuple3
 import okhttp3.Headers
 import okhttp3.MediaType.Companion.toMediaType
@@ -22,7 +23,8 @@ import org.apache.hc.core5.http.ContentType
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class UserInfoConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class UserInfoConverter : IUiaConverter {
     /**
      * convert response
      *

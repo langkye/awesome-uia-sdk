@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
 import cn.lnkdoc.sdk.uia.instance.google.request.AccessTokenRequest
 import com.alibaba.fastjson2.into
 import com.alibaba.fastjson2.parseObject
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -16,6 +17,7 @@ import java.nio.charset.StandardCharsets
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
+@AutoService(IUiaConverter::class)
 open class AccessTokenConverter : IUiaConverter {
     /**
      * convert response

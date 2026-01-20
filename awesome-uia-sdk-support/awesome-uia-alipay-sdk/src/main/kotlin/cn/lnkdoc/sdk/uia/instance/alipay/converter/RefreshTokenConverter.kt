@@ -12,6 +12,7 @@ import com.alibaba.fastjson2.parseObject
 import com.alipay.api.AlipayClient
 import com.alipay.api.AlipayResponse
 import com.alipay.api.request.AlipaySystemOauthTokenRequest
+import com.google.auto.service.AutoService
 import io.vavr.Tuple3
 
 /**
@@ -19,7 +20,8 @@ import io.vavr.Tuple3
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class RefreshTokenConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class RefreshTokenConverter : IUiaConverter {
     /**
      * convert response
      *

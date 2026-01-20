@@ -10,6 +10,7 @@ plugins {
 allprojects {
     group = GROUP_ID
     version = PROJECT_VERSION
+    description = DESCRIPTION
 
     repositories {
         maven { setUrl("https://maven.aliyun.com/repository/public") }

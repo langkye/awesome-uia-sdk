@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.gitlab.domain.UserInfo
 import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
 import cn.lnkdoc.sdk.uia.instance.gitlab.request.UserInfoRequest
 import com.alibaba.fastjson2.into
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
 /**
@@ -13,6 +14,7 @@ import io.vavr.Tuple2
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused", "Unchecked_cast", "Duplicated_code_fragment")
+@AutoService(IUiaConverter::class)
 open class UserInfoConverter : IUiaConverter {
     /**
      * convert body

@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 import cn.lnkdoc.sdk.uia.instance.wx.request.AccessTokenRequest
 import com.alibaba.fastjson2.JSON
 import com.alibaba.fastjson2.TypeReference
+import com.google.auto.service.AutoService
 import io.vavr.Tuple3
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -15,7 +16,8 @@ import okhttp3.Request
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class AccessTokenConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class AccessTokenConverter : IUiaConverter {
     /**
      * convert response
      *

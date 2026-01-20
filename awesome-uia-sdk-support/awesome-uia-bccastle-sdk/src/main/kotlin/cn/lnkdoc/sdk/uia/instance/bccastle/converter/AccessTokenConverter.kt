@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.instance.bccastle.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.bccastle.request.AccessTokenRequest
 import com.alibaba.fastjson2.JSON
 import com.alibaba.fastjson2.TypeReference
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
 /**
@@ -14,7 +15,8 @@ import io.vavr.Tuple2
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class AccessTokenConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class AccessTokenConverter : IUiaConverter {
     /**
      * convert body
      *

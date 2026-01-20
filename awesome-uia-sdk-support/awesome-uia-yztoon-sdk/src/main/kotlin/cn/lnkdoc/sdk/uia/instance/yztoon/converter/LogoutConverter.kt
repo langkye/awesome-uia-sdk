@@ -4,6 +4,7 @@ import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.LogoutRequest
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
 /**
@@ -11,7 +12,8 @@ import io.vavr.Tuple2
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class LogoutConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class LogoutConverter : IUiaConverter {
     /**
      * convert response
      *

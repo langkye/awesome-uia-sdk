@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.google.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
 import cn.lnkdoc.sdk.uia.instance.google.request.RefreshTokenRequest
 import com.alibaba.fastjson2.into
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
 /**
@@ -13,7 +14,8 @@ import io.vavr.Tuple2
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class RefreshTokenConverter : AccessTokenConverter(), IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class RefreshTokenConverter : AccessTokenConverter(), IUiaConverter {
     /**
      * convert response
      *

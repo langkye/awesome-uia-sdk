@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.domain.UserInfo
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.UserInfoRequest
 import com.alibaba.fastjson2.into
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
 /**
@@ -13,7 +14,8 @@ import io.vavr.Tuple2
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class UserInfoConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class UserInfoConverter : IUiaConverter {
     /**
      * convert response
      *

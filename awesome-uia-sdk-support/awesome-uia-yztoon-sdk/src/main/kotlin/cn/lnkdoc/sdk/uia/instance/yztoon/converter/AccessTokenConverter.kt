@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.AccessTokenRequest
 import com.alibaba.fastjson2.JSON
 import com.alibaba.fastjson2.into
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 import org.apache.commons.lang3.StringUtils
 import org.slf4j.LoggerFactory
@@ -16,7 +17,8 @@ import org.slf4j.LoggerFactory
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class AccessTokenConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class AccessTokenConverter : IUiaConverter {
     /**
      * convert response
      *

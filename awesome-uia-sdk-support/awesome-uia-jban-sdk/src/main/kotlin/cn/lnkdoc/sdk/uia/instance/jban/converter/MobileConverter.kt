@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.jban.request.JbanMobileMd5UserRequest
 import cn.lnkdoc.sdk.uia.instance.jban.response.JbanResponse
 import cn.lnkdoc.sdk.uia.instance.jban.util.ApiUtil.getTeamAccessToken
 import com.alibaba.fastjson2.into
+import com.google.auto.service.AutoService
 import io.vavr.Tuple3
 import okhttp3.Headers
 import okhttp3.OkHttpClient
@@ -18,7 +19,8 @@ import okhttp3.Request
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class MobileConverter : IUiaConverter {
+@AutoService(IUiaConverter::class)
+open class MobileConverter : IUiaConverter {
     /**
      * convert response
      *

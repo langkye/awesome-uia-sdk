@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.github.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.github.request.AccessTokenRequest
 import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
 import com.alibaba.fastjson2.*
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
 
@@ -14,6 +15,7 @@ import io.vavr.Tuple2
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
+@AutoService(IUiaConverter::class)
 open class AccessTokenConverter : IUiaConverter {
     private var name: String = AccessTokenRequest::class.java.getName()
     

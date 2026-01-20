@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.gitee.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
 import cn.lnkdoc.sdk.uia.instance.gitee.request.RefreshTokenRequest
 import com.alibaba.fastjson2.*
+import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
 /**
@@ -13,6 +14,7 @@ import io.vavr.Tuple2
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
+@AutoService(IUiaConverter::class)
 open class RefreshTokenConverter : IUiaConverter {
     private var name: String = RefreshTokenRequest::class.java.getName()
     
