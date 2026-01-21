@@ -1,4 +1,3 @@
-@Suppress("unused")
 object VERSION {
 
     //spring-cloud
@@ -77,55 +76,35 @@ object VERSION {
 
 // ---------------------------------------------------------- Library ----------------------------------------------------------  
 //系统库
-@Suppress("unused")
 const val stdlib_jdk8 = "stdlib-jdk8"
 const val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${VERSION.KOTLIN_VERSION}"
 const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${VERSION.KOTLIN_STDLIB_VERSION}"
 const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${VERSION.KOTLIN_STDLIB_VERSION}"
-@Suppress("unused")
 const val kotlin_script_runtime = "org.jetbrains.kotlin:kotlin-script-runtime:${VERSION.KOTLIN_STDLIB_VERSION}"
-@Suppress("unused")
 const val kotlin_test = "org.jetbrains.kotlin:kotlin-test:${VERSION.KOTLIN_STDLIB_VERSION}"
-@Suppress("unused")
 const val kotlin_maven_allpen = "org.jetbrains.kotlin:kotlin-maven-allopen:${VERSION.KOTLIN_STDLIB_VERSION}"
-@Suppress("unused")
 const val kotlin_allpen = "org.jetbrains.kotlin:kotlin-allopen:${VERSION.KOTLIN_STDLIB_VERSION}"
-@Suppress("unused")
 const val kotlin_noarg = "org.jetbrains.kotlin:kotlin-noarg:${VERSION.KOTLIN_STDLIB_VERSION}"
-@Suppress("unused")
 const val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${VERSION.KOTLIN_STDLIB_VERSION}"
 const val site_gradle_plugin = "com.github.starestarrysky.site-gradle-plugin"
 const val jvm = "jvm"
 
-@Suppress("unused")
 const val core_ktx = "androidx.core:core-ktx:${VERSION.CORE_KTX_VERSION}"
-@Suppress("unused")
 const val appcompat = "androidx.appcompat:appcompat:${VERSION.APPCOMPAT_VERSION}"
-@Suppress("unused")
 const val constraintlayout = "androidx.constraintlayout:constraintlayout:${VERSION.CONSTRAINTLAYOUT_VERSION}"
 const val junit = "junit:junit:${VERSION.JUNIT_VERSION}"
-@Suppress("unused")
 const val androidx_junit = "androidx.test.ext:junit:${VERSION.ANDROIDX_JUNIT_VERSION}"
-@Suppress("unused")
 const val espresso_core = "androidx.test.espresso:espresso-core:${VERSION.ESPRESSO_CORE_VERSION}"
-@Suppress("unused")
 const val material = "com.google.android.material:material:${VERSION.MATERIAL_VERSION}"
 
 //三方库
-@Suppress("unused")
 const val retrofit = "com.squareup.retrofit2:retrofit:${VERSION.RETROFIT_VERSION}"
-@Suppress("unused")
 const val glide = "com.github.bumptech.glide:glide:${VERSION.GLIDE_VERSION}"
 const val gson = "com.google.code.gson:gson:${VERSION.GSON_VERSION}"
-@Suppress("unused")
 const val eventbus = "org.greenrobot:eventbus:${VERSION.EVENTBUS_VERSION}"
-@Suppress("unused")
 const val soulPermission = "com.qw:soulpermission:${VERSION.SOUL_PERMISSION_VERSION}"
-@Suppress("unused")
 const val niceDialog =  "com.github.SheHuan:NiceDialog:${VERSION.NICE_DIALOG_VERSION}"
-@Suppress("unused")
 const val colorTrackTab = "com.github.hanlonglin:ColorTrackTabLayout:${VERSION.COLOR_TRACK_TAB_VERSION}"
-@Suppress("unused")
 const val httpclient = "org.apache.httpcomponents:httpclient:${VERSION.HTTPCLIENT_VERSION}"
 const val httpclient5 = "org.apache.httpcomponents.client5:httpclient5:${VERSION.HTTPCLIENT5_VERSION}"
 const val okhttp = "com.squareup.okhttp3:okhttp:${VERSION.OKHTTP_VERSION}"
@@ -140,78 +119,46 @@ const val commons_codec = "commons-codec:commons-codec:${VERSION.COMMONS_CODEC_V
 const val kotlinx_serialization_json = "org.jetbrains.kotlinx:kotlinx-serialization-json:${VERSION.KOTLINX_SERIALIZATION_JSON_VERSION}"
 const val alipay_sdk_java = "com.alipay.sdk:alipay-sdk-java:${VERSION.ALIPAY_SDK_JAVA_VERSION}"
 
-@Suppress("unused")
 const val jackson_module_kotlin = "com.fasterxml.jackson.module:jackson-module-kotlin:${VERSION.JACKSON_MODULE_KOTLIN_VERSION}"
-@Suppress("unused")
 const val fastjson = "com.alibaba:fastjson:${VERSION.FAST_JSON_VERSION}"
-@Suppress("unused")
 const val spring_cloud_dependencies = "org.springframework.cloud:spring-cloud-dependencies:${VERSION.SPRING_CLOUD_VERSION}"
-@Suppress("unused")
 const val spring_cloud_alibaba_dependencies = "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${VERSION.SPRING_CLOUD_ALIBABA_VERSION}"
-@Suppress("unused")
 const val spring_cloud_starter_bootstrap = "org.springframework.cloud:spring-cloud-starter-bootstrap:${VERSION.SPRING_CLOUD_STARTER_BOOTSTRAP_VERSION}"
 
-@Suppress("unused")
 const val spring_boot_starter_web = "org.springframework.boot:spring-boot-starter-web:${VERSION.SPRING_BOOT_VERSION}"
-@Suppress("unused")
 const val spring_boot_devtools = "org.springframework.boot:spring-boot-devtools"
-@Suppress("unused")
 const val arthas_spring_boot_starter = "com.taobao.arthas:arthas-spring-boot-starter:${VERSION.ARTHAS_SPRING_BOOT_STARTER_VERSION}"
 
 
-@Suppress("unused")
 const val room =  "androidx.room:room-runtime:${VERSION.ROOM_VERSION}"
-@Suppress("unused")
 const val room_compiler =  "androidx.room:room-compiler:${VERSION.ROOM_VERSION}"
 
-@Suppress("unused")
 const val lombok = "org.projectlombok:lombok:${VERSION.LOMBOK_VERSION}"
-@Suppress("unused")
 const val bcprov_jdk15on = "org.bouncycastle:bcprov-jdk15on:${VERSION.BCPROV_JDK15ON_VERSION}"
-@Suppress("unused")
 const val bcprov_jdk18on = "org.bouncycastle:bcprov-jdk18on:${VERSION.BCPROV_JDK18ON_VERSION}"
-@Suppress("unused")
 const val hutool_all = "cn.hutool:hutool-all:${VERSION.HUTOOL_VERSION}"
 const val common_lang3 = "org.apache.commons:commons-lang3:${VERSION.COMMON_LANG3_VERSION}"
-@Suppress("unused")
 const val easyexcel = "com.alibaba:easyexcel:${VERSION.EASY_EXCEL_VERSION}"
-@Suppress("unused")
 const val easy_captcha = "com.github.whvcse:easy-captcha:${VERSION.EASY_CAPTCHA_VERSION}"
-@Suppress("unused")
 const val guava = "com.google.guava:guava:${VERSION.GUAVA_VERSION}"
-@Suppress("unused")
 const val autoService = "com.google.auto.service:auto-service:${VERSION.AUTO_SERVICE_VERSION}"
-@Suppress("unused")
 const val autoServiceAnnotations = "com.google.auto.service:auto-service-annotations:${VERSION.AUTO_SERVICE_VERSION}"
 
-//dubbo
-@Suppress("unused")
-const val dubbo = "org.apache.dubbo:dubbo-spring-boot-starter:${VERSION.DUBBO_VERSION}"
-
 //work flow
-@Suppress("unused")
 const val compileflow = "com.alibaba.compileflow:compileflow:${VERSION.COMPILEFLOW_VERSION}"
 
 //mysql
-@Suppress("unused")
 const val mysql8 = "mysql:mysql-connector-java:${VERSION.MYSQL8_VERSION}"
-@Suppress("unused")
 const val mysql5 = "mysql:mysql-connector-java:${VERSION.MYSQL5_VERSION}"
 
 //log
 const val slf4j_api = "org.slf4j:slf4j-api:${VERSION.SLF4J_VERSION}"
-@Suppress("unused")
 const val logback_core = "ch.qos.logback:logback-core:${VERSION.LOGBACK_VERSION}"
 const val logback_classic = "ch.qos.logback:logback-classic:${VERSION.LOGBACK_VERSION}"
-@Suppress("unused")
 const val logstash_logback_encoder = "net.logstash.logback:logstash-logback-encoder:${VERSION.LOGSTASH_LOGBACK_ENCODER_VERSION}"
-@Suppress("unused")
 const val apm_toolkit_logback_1_x = "org.apache.skywalking:apm-toolkit-logback-1.x:${VERSION.APM_TOOLKIT_LOGBACK1_X_VERSION}"
-@Suppress("unused")
 const val dom4j_1 = "dom4j:dom4j:${VERSION.DOM4J_1_VERSION}"
-@Suppress("unused")
 const val dom4j = "org.dom4j:dom4j:${VERSION.DOM4J_VERSION}"
 
 //plugins
-@Suppress("unused")
 const val spring_boot_gradle_plugin = "org.springframework.boot:spring-boot-gradle-plugin:${VERSION.SPRING_BOOT_VERSION}"

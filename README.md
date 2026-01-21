@@ -58,14 +58,14 @@ The Awesome Uia SDK is a Java/Kotlin library designed for unified identity authe
 - kotlin dsl
   ```kts
   // We recommend using the BOM for version management:
-  implementation(platform("cn.lnkdoc.sdk:awesome-uia-sdk-bom:1.0.0.RELEASE"))
+  implementation(platform("cn.lnkdoc.sdk:awesome-uia-sdk-dependencies:3.x+"))
 
   // Choose the platform you need
   implementation("cn.lnkdoc.sdk:awesome-uia-sdk-core")
   implementation("cn.lnkdoc.sdk:awesome-uia-alipay-sdk")
   
   // Or use the "All-in-one" module for backward compatibility:
-  // implementation("cn.lnkdoc.sdk:awesome-uia-all-sdk:1.0.0.RELEASE")
+  // implementation("cn.lnkdoc.sdk:awesome-uia-all-sdk:3.x+")
   ```
 
 See [MIGRATION.md](MIGRATION.md) for detailed migration guide.

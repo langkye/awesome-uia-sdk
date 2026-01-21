@@ -6,7 +6,7 @@ plugins {
 dependencies {
     constraints {
         val version = project.version.toString()
-        api("$GROUP_ID:$CORE_MODULE:$version")
+        api("$GROUP_ID:$CORE_NAME:$version")
         api("$GROUP_ID:${resolveSupportModuleName("alipay")}:$version")
         api("$GROUP_ID:${resolveSupportModuleName("bccastle")}:$version")
         api("$GROUP_ID:${resolveSupportModuleName("bjtoon")}:$version")
@@ -18,6 +18,6 @@ dependencies {
         api("$GROUP_ID:${resolveSupportModuleName("weibo")}:$version")
         api("$GROUP_ID:${resolveSupportModuleName("wx")}:$version")
         api("$GROUP_ID:${resolveSupportModuleName("yztoon")}:$version")
-        api("$GROUP_ID:$ALL_MODULE:$version")
+        api("$GROUP_ID:$ALL_NAME:$version")
     }
 }

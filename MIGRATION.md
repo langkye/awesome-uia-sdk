@@ -12,7 +12,7 @@
 | `awesome-uia-wx-sdk`     | 微信平台实现 | `instance.wx` |
 | `...`                    | 其他平台模块 | `instance.<platform>` |
 | `awesome-uia-all-sdk`    | 聚合模块（包含所有平台，用于向后兼容） | N/A |
-| `awesome-uia-sdk-bom`    | 版本管理 BOM | N/A |
+| `awesome-uia-sdk-dependencies`    | 版本管理 BOM | N/A |
 
 ## 2. 关键变更：插件化装配机制
 
@@ -43,7 +43,7 @@ implementation("cn.lnkdoc.sdk:awesome-uia-all-sdk:1.0.0.RELEASE")
 **Gradle (Kotlin):**
 ```kotlin
 // 引入 BOM 确保版本一致
-implementation(platform("cn.lnkdoc.sdk:awesome-uia-sdk-bom:1.0.0.RELEASE"))
+implementation(platform("cn.lnkdoc.sdk:awesome-uia-sdk-dependencies:3.x+"))
 
 // 需要的平台
 implementation("cn.lnkdoc.sdk:awesome-uia-alipay-sdk")

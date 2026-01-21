@@ -11,5 +11,6 @@ dependencies {
     api(project(":awesome-uia-sdk-support:${resolveSupportModuleName("wx")}"))
     api(project(":awesome-uia-sdk-support:${resolveSupportModuleName("yztoon")}"))
     
-    testImplementation(junit)
+    //testImplementation("junit:junit")
+    testImplementation(kotlin("test"))
 }

@@ -1,8 +1,17 @@
 rootProject.name = "awesome-uia-sdk"
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    // 关键：让插件解析阶段也能从 build-logic 这个 included build 中找到插件
+    includeBuild("build-logic")
+}
 
 
-include("awesome-uia-sdk-bom")
+include("awesome-uia-bom")
+include("awesome-uia-sdk-dependencies")
 include("awesome-uia-sdk-common:awesome-uia-sdk-core")
 include("awesome-uia-sdk-support:awesome-uia-alipay-sdk")
 include("awesome-uia-sdk-support:awesome-uia-bccastle-sdk")
