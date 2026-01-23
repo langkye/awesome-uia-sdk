@@ -27,5 +27,9 @@ gradlePlugin {
             id = "uia.library"
             implementationClass = "cn.lnkdoc.sdk.plugin.LibraryConventionPlugin"
         }
+        register("UiaPlatform") {
+            id = "uia.platform"
+            implementationClass = "cn.lnkdoc.sdk.plugin.PlatformConventionPlugin"
+        }
     }
 }

@@ -13,10 +13,10 @@ plugins {
 
     //alias(libs.plugins.springBoot) apply false
     //alias(libs.plugins.springDependencyManagement) apply false
-    alias(libs.plugins.kotlinJvm) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.kapt) apply false
-    alias(libs.plugins.kotlinSpring) apply false
-    alias(libs.plugins.siteGradlePlugin)
+    alias(libs.plugins.kotlin.spring) apply false
+    alias(libs.plugins.site.gradle.plugin)
     id("org.gradle.idea")
 }
 
@@ -50,6 +50,7 @@ subprojects {
     
     if (isJavaPlatform(project.name)) {
         apply(plugin = "java-platform")
+        apply(plugin = "uia.platform")
     }
     if (!isJavaPlatform(project.name)) {
 
@@ -76,7 +77,7 @@ subprojects {
             options.compilerArgs.add("-Xlint:deprecation")
             options.compilerArgs.add("-Xlint:-unchecked")
             if (name == "compileJava") {
-                options.release.set(8) // main -> --release 8
+                options.release.set(resolveReleaseJdkVersion(TARGET_JAVA_VERSION)) // main -> --release 8
             }
         }
 
@@ -87,9 +88,9 @@ subprojects {
             //}
             if (name == "compileKotlin") {
                 compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_1_8)
+                    jvmTarget.set(JvmTarget.fromTarget(TARGET_JAVA_VERSION.toString()))
                     // 更严格：限制可用 JDK API 到 8（建议开启，避免误用 JDK9+ API）
-                    freeCompilerArgs.add("-Xjdk-release=8")
+                    freeCompilerArgs.add("-Xjdk-release=${resolveReleaseJdkVersion(TARGET_JAVA_VERSION)}")
                     freeCompilerArgs.add("-Xjsr305=strict")
                 }
             }
@@ -98,13 +99,13 @@ subprojects {
         // ---------- test：开发/测试使用 JDK17+ ----------
         tasks.withType<JavaCompile>().configureEach {
             if (name == "compileTestJava") {
-                options.release.set(17)
+                options.release.set(TOOLCHAIN_JAVA_VERSION)
             }
         }
         tasks.withType<KotlinCompile>().configureEach {
             if (name == "compileTestKotlin") {
                 compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_17)
+                    jvmTarget.set(JvmTarget.fromTarget(TOOLCHAIN_JAVA_VERSION.toString()))
                 }
             }
         }
@@ -113,7 +114,7 @@ subprojects {
             // 测试运行时使用 JDK17 的 launcher
             javaLauncher.set(
                 javaToolchains.launcherFor {
-                    languageVersion.set(JavaLanguageVersion.of(17))
+                    languageVersion.set(JavaLanguageVersion.of(TOOLCHAIN_JAVA_VERSION))
                 }
             )
             useJUnitPlatform()
@@ -140,7 +141,7 @@ subprojects {
         tasks.matching { it.name == "kaptGenerateStubsTestKotlin" }.configureEach {
             @Suppress("UNCHECKED_CAST")
             (this as KotlinCompile).compilerOptions {
-                jvmTarget.set(JvmTarget.JVM_17)
+                jvmTarget.set(JvmTarget.fromTarget(TOOLCHAIN_JAVA_VERSION.toString()))
             }
         }
 
@@ -148,7 +149,7 @@ subprojects {
         configurations.matching {
             it.name == "testCompileClasspath" || it.name == "testRuntimeClasspath"
         }.configureEach {
-            attributes.attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 17)
+            attributes.attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, TOOLCHAIN_JAVA_VERSION)
         }
     }
 
@@ -180,6 +181,14 @@ subprojects {
 
         publishing {
             publications {
+                withType<MavenPublication>().configureEach {
+                    versionMapping {
+                        allVariants {
+                            fromResolutionResult()
+                        }
+                    }
+                }
+
                 create<MavenPublication>("mavenJava") {
                     if (isJavaPlatform(project.name)) {
                         from(components["javaPlatform"])
@@ -271,7 +280,7 @@ tasks.findByName("sourcesJar")?.enabled = false
 tasks.findByName("javadocJar")?.enabled = false
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(TOOLCHAIN_JAVA_VERSION)
 }
 
 tasks.withType<PublishToMavenRepository> {

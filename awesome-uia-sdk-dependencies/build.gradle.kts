@@ -1,6 +1,16 @@
 plugins {
     `java-platform`
     `maven-publish`
+    id("uia.platform")
+}
+
+javaPlatform {
+    allowDependencies()
+}
+
+uiaPlatform {
+    libraries(libs.commons.codec)
+    bundles(libs.bundles.project.requirement)
 }
 
 dependencies {
@@ -19,5 +29,6 @@ dependencies {
         api("$GROUP_ID:${resolveSupportModuleName("wx")}:$version")
         api("$GROUP_ID:${resolveSupportModuleName("yztoon")}:$version")
         api("$GROUP_ID:$ALL_NAME:$version")
+        //api("org.apache.commons:commons-lang3:${libs.versions.commonsLang3.get()}")
     }
 }

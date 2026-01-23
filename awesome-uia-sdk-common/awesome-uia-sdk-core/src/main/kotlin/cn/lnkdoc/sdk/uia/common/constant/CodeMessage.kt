@@ -42,7 +42,7 @@ class CodeMessage {
      * @return message
      */
     fun getMessage(paramValue: String?): String {
-        return RegExUtils.replacePattern(message, "\\$\\{.*\\}", paramValue)
+        return RegExUtils.replacePattern(message as CharSequence, "\\$\\{.*\\}", paramValue)
     }
 
     /**
@@ -55,7 +55,7 @@ class CodeMessage {
         val msg = AtomicReference(message)
         paramValues.forEach { (k: String, v: String?) ->
             val string =
-                RegExUtils.replacePattern(msg.get(), "\\$\\{$k\\}", v)
+                RegExUtils.replacePattern(msg.get() as CharSequence, "\\$\\{$k\\}", v)
             msg.set(string)
         }
         return msg.get()

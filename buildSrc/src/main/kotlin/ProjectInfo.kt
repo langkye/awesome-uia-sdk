@@ -6,7 +6,7 @@ const val DESCRIPTION = """
     Copyright © 2023 lnkdoc All rights reserved.
 """
 
-const val TARGET_JAVA_VERSION = 8
+const val TARGET_JAVA_VERSION = 1.8
 const val TOOLCHAIN_JAVA_VERSION = 17
 const val BOM_NAME = "awesome-uia-bom"
 const val ALL_NAME = "awesome-uia-all-sdk"
@@ -27,4 +27,11 @@ fun isJavaPlatform(name: String): Boolean {
 
 fun isInternalModule(name: String): Boolean {
     return listOf(CORE, BOM_NAME, BUILD_LOGIC_NAME, COMMON_NAME, SUPPORT_NAME).contains(name)
+}
+
+fun resolveReleaseJdkVersion(version: Number): Int {
+    // 如果是浮点类型取最后一位，如1.8 -> 8；整数返回自身
+    val versionString = version.toString()
+    val versionNumber = if (versionString.contains(".")) versionString.split(".").last().toInt() else version.toInt()
+    return versionNumber;
 }
