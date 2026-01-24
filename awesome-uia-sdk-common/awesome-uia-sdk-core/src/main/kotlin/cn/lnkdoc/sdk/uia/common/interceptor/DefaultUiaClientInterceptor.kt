@@ -37,10 +37,8 @@ class DefaultUiaClientInterceptor: AbstractUiaClientInterceptor() {
      */
     override fun interceptResponse(response: Response) {
         // 打印响应数据（可选）
-        if (response.body != null) {
-            val responseBody = response.peekBody(Long.MAX_VALUE)
-            log.info("Received response for [{}] with status code [{}]", response.request.url, response.code)
-            log.info("Response body: {}", responseBody.string())
-        }
+        val responseBody = response.peekBody(Long.MAX_VALUE)
+        log.info("Received response for [{}] with status code [{}]", response.request.url, response.code)
+        log.info("Response body: {}", responseBody.string())
     }
 }

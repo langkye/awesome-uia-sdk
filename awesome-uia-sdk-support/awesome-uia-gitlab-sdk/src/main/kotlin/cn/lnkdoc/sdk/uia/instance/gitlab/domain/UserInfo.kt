@@ -85,7 +85,7 @@ class UserInfo {
      * `
      */
     @set:JSONField(name = "`")
-    var `external` = null?: Boolean
+    var `external`: Boolean? = null
 
     /**
      * extra_shared_runners_minutes_limit

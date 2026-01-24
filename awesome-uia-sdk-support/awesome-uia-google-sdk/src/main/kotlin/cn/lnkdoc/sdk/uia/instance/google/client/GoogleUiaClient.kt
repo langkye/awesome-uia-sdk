@@ -99,7 +99,7 @@ class GoogleUiaClient private constructor() : IUiaClient {
                 // fetch request
                 val responseBody = response.body
                 required(responseBody, "请求无响应内容：[$url]")
-                string = responseBody!!.string()
+                string = responseBody.string()
                 success = true
                 return string
             }

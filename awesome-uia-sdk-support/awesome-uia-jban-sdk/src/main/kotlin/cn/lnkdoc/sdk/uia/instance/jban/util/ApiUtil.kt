@@ -61,7 +61,7 @@ object ApiUtil {
                 // fetch request
                 val responseBody = response.body
                 required(responseBody, "请求无响应内容：[$url]")
-                string = responseBody!!.string()
+                string = responseBody.string()
                 val jbanResponse: JbanResponse<TeamAccessToken> = string.into<JbanResponse<TeamAccessToken>>()
                 success = true
                 val responseSuccess = "0".toInt() == jbanResponse.code
@@ -118,7 +118,7 @@ object ApiUtil {
                 // fetch request
                 val responseBody = response.body
                 required(responseBody, "请求无响应内容：[$url]")
-                string = responseBody!!.string()
+                string = responseBody.string()
                 val jbanResponse: JbanResponse<AppAccessToken> = string.into<JbanResponse<AppAccessToken>>()
                 success = true
                 val responseSuccess = "0".toInt() == jbanResponse.code

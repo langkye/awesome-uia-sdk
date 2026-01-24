@@ -2,6 +2,7 @@ package cn.lnkdoc.sdk.uia.instance.bjtoon.util.sign
 
 import cn.lnkdoc.sdk.uia.instance.bjtoon.util.encryption.MD5Coder
 import org.apache.commons.lang3.StringUtils
+import org.apache.commons.lang3.Strings
 import java.util.*
 
 
@@ -46,7 +47,7 @@ object SignUtil {
      */
     @JvmStatic
     fun getSign(content: String, signType: String?): String? {
-        return if (StringUtils.equalsIgnoreCase("md5", signType)) {
+        return if (Strings.CI.equals("md5", signType)) {
             MD5Coder.MD5(content)
         } else null
     }
