@@ -6,7 +6,7 @@ import com.alibaba.fastjson2.util.BeanUtils
 
 
 /**
- * 将对象的驼峰字段转换为下划线Json字符串
+ * 序列化策略：将对象的驼峰字段转换为下划线Json字符串
  */
 @Suppress("unused")
 class SnakeCaseNameFilter : NameFilter {
