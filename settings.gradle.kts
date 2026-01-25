@@ -13,6 +13,7 @@ pluginManagement {
 include("awesome-uia-bom")
 include("awesome-uia-sdk-dependencies")
 include("awesome-uia-sdk-common:awesome-uia-sdk-core")
+include("awesome-uia-sdk-common:awesome-uia-sdk-serializer-fastjson")
 include("awesome-uia-sdk-support:awesome-uia-alipay-sdk")
 include("awesome-uia-sdk-support:awesome-uia-bccastle-sdk")
 include("awesome-uia-sdk-support:awesome-uia-bjtoon-sdk")
