@@ -4,6 +4,10 @@ plugins {
 
 apply(plugin = "uia.library")
 
+uiaLibrary {
+    removeLibrariesFromPom(libs.logback.classic)
+}
+
 dependencies {
     api("org.jetbrains.kotlinx:kotlinx-serialization-json")
     api("org.jetbrains.kotlin:kotlin-stdlib")

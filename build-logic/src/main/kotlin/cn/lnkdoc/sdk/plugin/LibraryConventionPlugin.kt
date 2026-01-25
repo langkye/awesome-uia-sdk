@@ -1,7 +1,13 @@
 package cn.lnkdoc.sdk.plugin
 
+import groovy.util.Node
+import groovy.util.NodeList
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.MinimalExternalModuleDependency
+import org.gradle.api.provider.Provider
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.artifacts.ModuleDependency
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.dependencies
@@ -16,6 +22,8 @@ class LibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.jvm")
         //pluginManager.apply("org.jetbrains.kotlin.plugin.spring")
 
+        // 扩展：用于移除发布依赖
+        val ext = extensions.create("uiaLibrary", UiaLibraryExtension::class.java)
 
         // 1) 创建一个“可声明、不可消费、不可解析”的内部配置：只用来挂 BOM
         val internalBomCfg = configurations.maybeCreate("uiaInternalBom").apply {
@@ -49,6 +57,66 @@ class LibraryConventionPlugin : Plugin<Project> {
         }
 
 
+        // 在配置完成后统一处理移除规则
+        afterEvaluate {
+            val pomRemovals = mutableSetOf<Ga>()
+            ext.pomBundleProviders.forEach { provider ->
+                val dep = provider.get()
+                println("parser library: ${dep.module.group}:${dep.module.name}")
+                pomRemovals.add(Ga(dep.module.group, dep.module.name))
+            }
+
+            val classpathRemovals = mutableSetOf<Ga>()
+            ext.classpathBundleProviders.forEach { provider ->
+                val dep = provider.get()
+                classpathRemovals.add(Ga(dep.module.group, dep.module.name))
+            }
+
+            // 1) POM 移除
+            plugins.withId("maven-publish") {
+                extensions.getByType(PublishingExtension::class.java)
+                    .publications.withType(MavenPublication::class.java)
+                    .configureEach {
+                        pom.withXml {
+                            fun nodeLocalName(node: Node): String {
+                                val name = node.name().toString()
+                                // Handle namespaced nodes: "{uri}local" or "prefix:local"
+                                return when {
+                                    name.startsWith("{") && name.contains("}") ->
+                                        name.substringAfter("}")
+                                    name.contains(":") ->
+                                        name.substringAfter(":")
+                                    else -> name
+                                }
+                            }
+
+                            val depsNode = asNode().children()
+                                .firstOrNull { it is Node && nodeLocalName(it) == "dependencies" } as? Node
+                                    ?: return@withXml
+                            println("start resolve dependency if remove :$pomRemovals")
+                            val toRemove = mutableListOf<Node>()
+                            depsNode.children().forEach { dep ->
+                                val d = dep as? Node ?: return@forEach
+                                if (nodeLocalName(d) != "dependency") return@forEach
+                                val gid = (d.get("groupId") as NodeList).text()
+                                val aid = (d.get("artifactId") as NodeList).text()
+                                val ga = Ga(gid, aid)
+                                if (ga in pomRemovals) {
+                                    toRemove.add(d)
+                                }
+                            }
+                            toRemove.forEach { it.parent().remove(it) }
+                        }
+                    }
+            }
+
+            // 2) classpath 全配置排除
+            configurations.configureEach {
+                classpathRemovals.forEach { ga ->
+                    exclude(mapOf("group" to ga.group, "module" to ga.name))
+                }
+            }
+        }
 
 
 
@@ -101,5 +169,21 @@ class LibraryConventionPlugin : Plugin<Project> {
         tasks.withType<Test>().configureEach {
             useJUnitPlatform()
         }
+    }
+}
+
+data class Ga(val group: String, val name: String)
+
+open class UiaLibraryExtension {
+    internal val pomBundleProviders = mutableListOf<Provider<MinimalExternalModuleDependency>>()
+    internal val classpathBundleProviders = mutableListOf<Provider<MinimalExternalModuleDependency>>()
+
+    fun removeLibrariesFromPom(vararg providers: Provider<MinimalExternalModuleDependency>) {
+        println("add library providers:${providers.joinToString(",")}")
+        pomBundleProviders += providers
+    }
+
+    fun removeLibrariesFromClasspath(vararg providers: Provider<MinimalExternalModuleDependency>) {
+        classpathBundleProviders += providers
     }
 }
