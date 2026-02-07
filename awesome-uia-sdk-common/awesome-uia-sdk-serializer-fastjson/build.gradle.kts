@@ -10,6 +10,8 @@ uiaLibrary {
 }
 
 dependencies {
+    api(project(":${resolveCommonModuleName(shortName = "serializer-core")}"))
+    
     api(libs.fastjson)
     api(libs.fastjson2)
     api(libs.fastjson2.kotlin)

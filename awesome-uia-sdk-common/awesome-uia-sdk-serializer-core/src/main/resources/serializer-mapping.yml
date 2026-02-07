@@ -1,0 +1,19 @@
+default:
+  namingStrategy: SNAKE_CASE
+  dateFormat: yyyy-MM-dd
+  dateTimeFormat: yyyy-MM-dd HH:mm:ss
+
+mappings:
+  cn.lnkdoc.sdk.uia.instance.wx.domain.AccessToken:
+    fields:
+      accessToken:
+        name:
+          value: access_token
+      expiresIn:
+        name:
+          serialize: expires_in
+          deserialize: expires_in
+      createTime:
+        format:
+          pattern: yyyy-MM-dd HH:mm:ss
+        serialize: false
