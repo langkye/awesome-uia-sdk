@@ -10,7 +10,7 @@ uiaLibrary {
 }
 
 dependencies {
-    api("com.alibaba:fastjson")
-    api("com.alibaba.fastjson2:fastjson2")
-    api("com.alibaba.fastjson2:fastjson2-kotlin")
+    api(libs.fastjson)
+    api(libs.fastjson2)
+    api(libs.fastjson2.kotlin)
 }

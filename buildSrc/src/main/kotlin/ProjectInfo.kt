@@ -17,6 +17,11 @@ const val BUILD_LOGIC_NAME = "build-logic"
 const val COMMON_NAME = "awesome-uia-sdk-common"
 const val SUPPORT_NAME = "awesome-uia-sdk-support"
 
+fun resolveCommonModuleName(shortName: String): String {
+    val sn = shortName.replace("awesome-uia-sdk-", "")
+    return "${COMMON_NAME}:awesome-uia-sdk-${sn}"
+}
+
 fun resolveSupportModuleName(shortName: String): String {
     return "awesome-uia-$shortName-sdk"
 }
