@@ -17,7 +17,6 @@ include("awesome-uia-sdk-common:awesome-uia-sdk-core")
 include("awesome-uia-sdk-common:awesome-uia-sdk-serializer-core")
 include("awesome-uia-sdk-common:awesome-uia-sdk-serializer-jackson")
 include("awesome-uia-sdk-common:awesome-uia-sdk-serializer-gson")
-include("awesome-uia-sdk-common:awesome-uia-sdk-serializer-fastjson2")
 include("awesome-uia-sdk-common:awesome-uia-sdk-serializer-fastjson")
 
 include("awesome-uia-sdk-support:awesome-uia-alipay-sdk")

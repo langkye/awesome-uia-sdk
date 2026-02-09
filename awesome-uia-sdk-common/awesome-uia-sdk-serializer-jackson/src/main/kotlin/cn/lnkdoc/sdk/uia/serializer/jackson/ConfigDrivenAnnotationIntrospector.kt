@@ -36,22 +36,26 @@ class ConfigDrivenAnnotationIntrospector(private val ruleResolver: RuleResolver)
         val clazz = member.declaringClass ?: return null
         val fieldName = getFieldName(member) ?: return null
 
-        return ruleResolver.resolveFieldName(clazz, fieldName, direction)
+        // println("[DEBUG_LOG] resolveName for $fieldName in ${clazz.simpleName}, direction $direction")
+        val resolved = ruleResolver.resolveFieldName(clazz, fieldName, direction, member.annotated)
+        // println("[DEBUG_LOG] resolved: $resolved")
+        return resolved
     }
 
     override fun hasIgnoreMarker(m: AnnotatedMember): Boolean {
-        if (super.hasIgnoreMarker(m)) return true
-        
-        val clazz = m.declaringClass ?: return false
-        val fieldName = getFieldName(m) ?: return false
+        // First check our config/annotation
+        val clazz = m.declaringClass ?: return super.hasIgnoreMarker(m)
+        val fieldName = getFieldName(m) ?: return super.hasIgnoreMarker(m)
 
-        // Check if it's explicitly disabled in config for BOTH or relevant direction
-        // For simplicity, if disabled for serialization, hasIgnoreMarker returns true
-        if (!ruleResolver.resolveInclusion(clazz, fieldName, Direction.SERIALIZE)) {
+        // println("[DEBUG_LOG] hasIgnoreMarker for $fieldName in ${clazz.simpleName}")
+        val include = ruleResolver.resolveInclusion(clazz, fieldName, Direction.SERIALIZE, m.annotated)
+        // println("[DEBUG_LOG] include: $include")
+        
+        if (!include) {
              return true
         }
 
-        return false
+        return super.hasIgnoreMarker(m)
     }
 
     private fun getFieldName(member: AnnotatedMember): String? {
@@ -60,16 +64,17 @@ class ConfigDrivenAnnotationIntrospector(private val ruleResolver: RuleResolver)
             is AnnotatedMethod -> {
                 val name = member.name
                 if (name.startsWith("get") || name.startsWith("is")) {
-                    // Fixme
                     com.fasterxml.jackson.databind.util.BeanUtil.okNameForGetter(member, false)
                 } else if (name.startsWith("set")) {
-                    // Fixme
                     com.fasterxml.jackson.databind.util.BeanUtil.okNameForSetter(member, false)
                 } else {
                     name
                 }
             }
-            is AnnotatedParameter -> member.name
+            is AnnotatedParameter -> {
+                // For Kotlin data class constructor parameters
+                member.name
+            }
             else -> member.name
         }
     }
