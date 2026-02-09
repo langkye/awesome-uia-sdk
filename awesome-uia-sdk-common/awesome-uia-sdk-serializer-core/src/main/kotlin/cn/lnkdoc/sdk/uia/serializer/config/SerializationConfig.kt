@@ -26,10 +26,17 @@ enum class Direction {
 }
 
 /**
+ * NamingStrategy
+ */
+enum class NamingStrategy {
+    SNAKE_CASE, KEBAB_CASE, UPPER_CAMEL_CASE, LOWER_CASE, DEFAULT
+}
+
+/**
  * DefaultRules
  */
 class DefaultRules {
-    var namingStrategy: String? = null
+    var namingStrategy: NamingStrategy? = null
     var dateFormat: String? = "yyyy-MM-dd"
     var timeFormat: String? = "HH:mm:ss"
     var dateTimeFormat: String? = "yyyy-MM-dd HH:mm:ss"
@@ -39,7 +46,7 @@ class DefaultRules {
  * ClassMapping
  */
 class ClassMapping {
-    var namingStrategy: String? = null
+    var namingStrategy: NamingStrategy? = null
     var fields: Map<String, FieldRule> = mutableMapOf()
 }
 

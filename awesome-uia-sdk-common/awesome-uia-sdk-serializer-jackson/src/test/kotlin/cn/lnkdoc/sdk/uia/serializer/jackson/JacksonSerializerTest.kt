@@ -2,6 +2,8 @@ package cn.lnkdoc.sdk.uia.serializer.jackson
 
 import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 import cn.lnkdoc.sdk.uia.serializer.JsonCodecRegistry
+import cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy
+import cn.lnkdoc.sdk.uia.serializer.config.SerializationConfig
 import cn.lnkdoc.sdk.uia.serializer.config.SerializationConfigLoader
 import cn.lnkdoc.sdk.uia.serializer.extensions.toJson
 import cn.lnkdoc.sdk.uia.serializer.extensions.into
@@ -104,8 +106,8 @@ class JacksonSerializerTest {
 
     @Test
     fun testAccessTokenSerializationWithSnakeCase() {
-        val config = cn.lnkdoc.sdk.uia.serializer.config.SerializationConfig().apply {
-            default.namingStrategy = "SNAKE_CASE"
+        val config = SerializationConfig().apply {
+            default.namingStrategy = NamingStrategy.SNAKE_CASE
         }
         val codec = JsonCodecRegistry.load(config, "jackson")
         val accessToken = AccessToken("token", "Bearer", "3600", "refresh_token_value")
@@ -130,7 +132,7 @@ class JacksonSerializerTest {
     @Test
     fun testMixedAnnotationWithSnakeCase() {
         val config = cn.lnkdoc.sdk.uia.serializer.config.SerializationConfig().apply {
-            default.namingStrategy = "SNAKE_CASE"
+            default.namingStrategy = cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy.SNAKE_CASE
         }
         val codec = JsonCodecRegistry.load(config, "jackson")
         val obj = MixedAnnotation("value")

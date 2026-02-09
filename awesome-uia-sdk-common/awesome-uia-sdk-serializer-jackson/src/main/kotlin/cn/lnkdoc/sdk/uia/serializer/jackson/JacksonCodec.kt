@@ -44,11 +44,11 @@ object JacksonCodecFactory {
         
         // Default naming strategy
         config.default.namingStrategy?.let { strategy ->
-            mapper.propertyNamingStrategy = when (strategy.uppercase()) {
-                "SNAKE_CASE" -> PropertyNamingStrategies.SNAKE_CASE
-                "LOWER_CAMEL_CASE" -> PropertyNamingStrategies.LOWER_CAMEL_CASE
-                "UPPER_CAMEL_CASE" -> PropertyNamingStrategies.UPPER_CAMEL_CASE
-                "KEBAB_CASE" -> PropertyNamingStrategies.KEBAB_CASE
+            mapper.propertyNamingStrategy = when (strategy) {
+                cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy.SNAKE_CASE -> PropertyNamingStrategies.SNAKE_CASE
+                cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy.UPPER_CAMEL_CASE -> PropertyNamingStrategies.UPPER_CAMEL_CASE
+                cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy.KEBAB_CASE -> PropertyNamingStrategies.KEBAB_CASE
+                cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy.LOWER_CASE -> PropertyNamingStrategies.LOWER_CASE
                 else -> PropertyNamingStrategies.LOWER_CAMEL_CASE
             }
         }

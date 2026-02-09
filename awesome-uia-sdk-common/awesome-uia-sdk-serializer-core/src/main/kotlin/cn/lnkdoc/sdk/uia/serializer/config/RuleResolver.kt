@@ -75,12 +75,12 @@ class RuleResolver(private val config: SerializationConfig) {
         return false
     }
 
-    private fun applyNamingStrategy(name: String, strategy: String?): String {
-        return when (strategy?.uppercase()) {
-            "SNAKE_CASE" -> toSnakeCase(name)
-            "KEBAB_CASE" -> toKebabCase(name)
-            "UPPER_CAMEL_CASE" -> name.replaceFirstChar { it.uppercase() }
-            "LOWER_CASE" -> name.lowercase()
+    private fun applyNamingStrategy(name: String, strategy: NamingStrategy?): String {
+        return when (strategy) {
+            NamingStrategy.SNAKE_CASE -> toSnakeCase(name)
+            NamingStrategy.KEBAB_CASE -> toKebabCase(name)
+            NamingStrategy.UPPER_CAMEL_CASE -> name.replaceFirstChar { it.uppercase() }
+            NamingStrategy.LOWER_CASE -> name.lowercase()
             else -> name
         }
     }
