@@ -42,6 +42,9 @@ class Instance private constructor(
             }
         }
 
+        /**
+         * The name support: [cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider.getName]
+         */
         @JvmStatic
         fun of(name: String): Instance {
             return nameCache[name.uppercase(Locale.getDefault())]

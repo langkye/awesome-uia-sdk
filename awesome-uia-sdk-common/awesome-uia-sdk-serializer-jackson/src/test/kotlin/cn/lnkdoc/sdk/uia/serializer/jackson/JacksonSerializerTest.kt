@@ -48,12 +48,12 @@ class JacksonSerializerTest {
 
     @Test
     fun testSerializationWithConfig() {
-        val yaml = """
+        val yaml = $$"""
             default:
               namingStrategy: SNAKE_CASE
               dateTimeFormat: yyyy-MM-dd HH:mm:ss
             mappings:
-              cn.lnkdoc.sdk.uia.serializer.jackson.JacksonSerializerTest${"$"}TestUser:
+              cn.lnkdoc.sdk.uia.serializer.jackson.JacksonSerializerTest$TestUser:
                 fields:
                   userName:
                     name:
@@ -87,7 +87,7 @@ class JacksonSerializerTest {
     
     @Test
     fun testAccessTokenSerializationUseAnnotation() {
-        val codec = JsonCodecRegistry.load(cn.lnkdoc.sdk.uia.serializer.config.SerializationConfig(), "jackson")
+        val codec = JsonCodecRegistry.load(SerializationConfig(), "jackson")
         val accessToken = AccessToken("token", "Bearer", "3600", "refresh_token_value")
         val json = accessToken.toJson(codec)
         println("[DEBUG_LOG] AccessToken JSON: $json")
@@ -131,8 +131,8 @@ class JacksonSerializerTest {
     
     @Test
     fun testMixedAnnotationWithSnakeCase() {
-        val config = cn.lnkdoc.sdk.uia.serializer.config.SerializationConfig().apply {
-            default.namingStrategy = cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy.SNAKE_CASE
+        val config = SerializationConfig().apply {
+            default.namingStrategy = NamingStrategy.SNAKE_CASE
         }
         val codec = JsonCodecRegistry.load(config, "jackson")
         val obj = MixedAnnotation("value")
