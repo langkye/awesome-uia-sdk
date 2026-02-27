@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class GiteeSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "GITEE"

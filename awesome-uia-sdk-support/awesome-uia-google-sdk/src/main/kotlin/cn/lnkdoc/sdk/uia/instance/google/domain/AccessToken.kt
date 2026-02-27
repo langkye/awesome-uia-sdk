@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.google.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @author langkye
@@ -11,32 +12,32 @@ open class AccessToken {
     /**
      * 访问令牌。通过该令牌调用需要授权类接口
      */
-    @set:JSONField(name = "access_token")
+    @set:UiaJsonField(name = "access_token")
     var accessToken: String? = null
     /**
      * refresh_token
      */
-    @set:JSONField(name = "refresh_token")
+    @set:UiaJsonField(name = "refresh_token")
     var refreshToken: String? = null
     /**
      * expires_in
      */
-    @set:JSONField(name = "expires_in")
+    @set:UiaJsonField(name = "expires_in")
     var expiresIn: Int? = null
     /**
      * scope
      */
-    @set:JSONField(name = "scope")
+    @set:UiaJsonField(name = "scope")
     var scope: String? = null
     /**
      * token_type
      */
-    @set:JSONField(name = "token_type")
+    @set:UiaJsonField(name = "token_type")
     var tokenType: String? = null
     /**
      * id_token
      */
-    @set:JSONField(name = "id_token")
+    @set:UiaJsonField(name = "id_token")
     var idToken: String? = null
     /**
      * raw
@@ -53,7 +54,7 @@ open class AccessToken {
     /**
      * error
      */
-    @set:JSONField(name = "error")
+    @set:UiaJsonField(name = "error")
     var error: String? = null
         set(value) {
             field = value
@@ -63,7 +64,7 @@ open class AccessToken {
     /**
      * error_description
      */
-    @set:JSONField(name = "error_description")
+    @set:UiaJsonField(name = "error_description")
     var errorDescription: String? = null
         set(value) {
             field = value

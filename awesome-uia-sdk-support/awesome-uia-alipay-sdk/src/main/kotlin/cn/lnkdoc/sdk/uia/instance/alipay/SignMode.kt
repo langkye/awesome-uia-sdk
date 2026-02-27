@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.alipay
 
+
 /**
  * 加签模式
  *
@@ -16,6 +17,5 @@ enum class SignMode (val signMode: String){
      * 公钥证书模式加签
      */
     CERT("CERT"),
-    ;
 
 }

@@ -1,4 +1,4 @@
-package cn.lnkdoc.sdk.uia.common.serializer.filter
+package cn.lnkdoc.sdk.uia.serializer.fastjson.filter
 
 import com.alibaba.fastjson2.PropertyNamingStrategy
 import com.alibaba.fastjson2.filter.NameFilter

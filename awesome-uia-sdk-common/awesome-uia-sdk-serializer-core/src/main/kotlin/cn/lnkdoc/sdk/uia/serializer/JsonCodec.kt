@@ -24,4 +24,10 @@ interface JsonCodec {
      * @return T
      */
     fun <T> fromJson(json: String, clazz: Class<T>): T
+
+    /**
+     * check json is JSONObject
+     * @param json json
+     */
+    fun isJSONObject(json: String): Boolean
 }

@@ -1,8 +1,8 @@
 package cn.lnkdoc.sdk.uia.instance.yztoon.domain
 
 import cn.lnkdoc.sdk.uia.common.util.string.CaseFormat
-import com.alibaba.fastjson2.JSONObject
-import com.alibaba.fastjson2.toJSONString
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.toJSONString
 import org.apache.commons.collections4.CollectionUtils
 import org.apache.commons.collections4.MapUtils
 import org.apache.commons.lang3.StringUtils
@@ -125,7 +125,8 @@ class UserInfo : Serializable {
                 if (MapUtils.isNotEmpty(map)) {
                     try {
                         val string = map.toJSONString()
-                        field = JSONObject.parseObject(string, UserExtInfo::class.java)
+                        field = string.into<UserExtInfo>()
+                        //field = JSONObject.parseObject(string, UserExtInfo::class.java)
                         isParse = true
                     } catch (e: Exception) {
                         logger.error("", e)

@@ -11,7 +11,7 @@ import cn.lnkdoc.sdk.uia.common.response.UiaResponse.Companion.success
 import cn.lnkdoc.sdk.uia.common.util.Assert.required
 import cn.lnkdoc.sdk.uia.instance.bccastle.property.BccastleProperty
 import cn.lnkdoc.sdk.uia.instance.bccastle.util.CheckResponseUtil.check
-import com.alibaba.fastjson2.isJSONObject
+import cn.lnkdoc.sdk.uia.serializer.extensions.isJSONObject
 import io.vavr.Tuple
 import io.vavr.Tuple2
 import okhttp3.Interceptor
@@ -19,6 +19,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.slf4j.LoggerFactory
+
 
 /**
  * @author langkye
@@ -119,7 +120,7 @@ class BccastleUiaClient private constructor() : IUiaClient {
         if (property.isUseInterceptor()) {
             builder.addInterceptor(interceptor)
         }
-        return builder.build();
+        return builder.build()
     }
 
     companion object {

@@ -53,4 +53,3 @@ object HexUtil {
         return hexString.toString().lowercase(Locale.getDefault())
     }
 }
-

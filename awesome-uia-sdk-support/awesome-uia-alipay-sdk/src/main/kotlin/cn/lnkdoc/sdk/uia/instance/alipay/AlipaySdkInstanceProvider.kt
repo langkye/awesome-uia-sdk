@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class AlipaySdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "ALIPAY"

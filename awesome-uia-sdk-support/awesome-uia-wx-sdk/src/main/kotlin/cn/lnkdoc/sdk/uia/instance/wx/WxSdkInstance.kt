@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 import cn.lnkdoc.sdk.uia.instance.wx.request.AccessTokenRequest
 import cn.lnkdoc.sdk.uia.instance.wx.request.UserInfoRequest
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

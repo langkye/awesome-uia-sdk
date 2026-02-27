@@ -5,12 +5,12 @@ import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.yztoon.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
 import cn.lnkdoc.sdk.uia.instance.yztoon.request.AccessTokenRequest
-import com.alibaba.fastjson2.JSON
-import com.alibaba.fastjson2.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 import org.apache.commons.lang3.StringUtils
 import org.slf4j.LoggerFactory
+
 
 /**
  * @author langkye
@@ -33,8 +33,7 @@ open class AccessTokenConverter : IUiaConverter {
             var message =
                 "convert to AccessToken failed from json: [$json]. because 'accessToken' not fund from response's json"
             try {
-                val jsonObject = JSON.parseObject(json)
-                message = jsonObject.getString("error_description")
+                message = json.into<Map<String, String>>()["error_description"]!!
             } catch (e: Exception) {
                 if (tuple._2.isPrintStack()) {
                     log.error("", e)

@@ -2,10 +2,10 @@ package cn.lnkdoc.sdk.uia.instance.wx.util
 
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.wx.response.WxResponse
-import com.alibaba.fastjson2.JSONObject
-import com.alibaba.fastjson2.TypeReference
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import org.slf4j.LoggerFactory
 import java.util.*
+
 
 /**
  * @author langkye
@@ -33,12 +33,12 @@ object CheckResponseUtil {
      */
     @Synchronized
     fun check(json: String?, isPrintStack: Boolean?) {
-        val wxResponse = JSONObject.parseObject(json, object : TypeReference<WxResponse?>() {})
-        if (Objects.nonNull(wxResponse?.errcode)) {
+        val wxResponse = json.into<WxResponse>()
+        if (Objects.nonNull(wxResponse.errcode)) {
             if (isPrintStack == true) {
                 log.error(json)
             }
-            throw UiaException(wxResponse?.errmsg)
+            throw UiaException(wxResponse.errmsg)
         }
     }
 }

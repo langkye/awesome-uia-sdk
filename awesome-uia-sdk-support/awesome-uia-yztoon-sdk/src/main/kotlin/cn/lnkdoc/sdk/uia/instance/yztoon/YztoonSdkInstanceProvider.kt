@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class YztoonSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "YZTOON"

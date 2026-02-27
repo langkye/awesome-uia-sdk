@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.github.request.AccessTokenRequest
 import cn.lnkdoc.sdk.uia.instance.github.client.GithubUiaClient
 import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class BjtoonSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "BJTOON"

@@ -6,14 +6,13 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.instance.alipay.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 import cn.lnkdoc.sdk.uia.instance.alipay.request.AccessTokenRequest
-import com.alibaba.fastjson2.JSON
-import com.alibaba.fastjson2.TypeReference
-import com.alibaba.fastjson2.parseObject
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.alipay.api.AlipayClient
 import com.alipay.api.AlipayResponse
 import com.alipay.api.request.AlipaySystemOauthTokenRequest
 import com.google.auto.service.AutoService
 import io.vavr.Tuple3
+
 
 /**
  * @author langkye
@@ -30,8 +29,8 @@ open class AccessTokenConverter : IUiaConverter {
      */
     override fun <T, R> convertResponse(body: R): T {
         val alipayResponse = body as AlipayResponse
-        val responseBody = alipayResponse.body.parseObject().getString("alipay_system_oauth_token_response")
-        val response = JSON.parseObject(responseBody, object : TypeReference<AccessToken?>() {}) as AccessToken
+        val responseBody = alipayResponse.body.into<HashMap<String, String>>()["alipay_system_oauth_token_response"]
+        val response = responseBody.into<AccessToken>()
         return response as T
     }
 

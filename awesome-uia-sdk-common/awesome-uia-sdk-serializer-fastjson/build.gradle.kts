@@ -1,5 +1,6 @@
 plugins {
     id("uia.library")
+    kotlin("kapt")
 }
 
 apply(plugin = "uia.library")
@@ -15,4 +16,10 @@ dependencies {
     api(libs.fastjson)
     api(libs.fastjson2)
     api(libs.fastjson2.kotlin)
+
+    compileOnly(libs.auto.service.annotations)
+    kapt(libs.auto.service)
+
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

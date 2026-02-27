@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.google.client.GoogleUiaClient
 import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
 import cn.lnkdoc.sdk.uia.instance.google.request.AccessTokenRequest
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

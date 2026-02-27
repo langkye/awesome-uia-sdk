@@ -4,12 +4,12 @@ import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.instance.wx.domain.UserInfo
 import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 import cn.lnkdoc.sdk.uia.instance.wx.request.UserInfoRequest
-import com.alibaba.fastjson2.JSON
-import com.alibaba.fastjson2.TypeReference
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple3
 import okhttp3.OkHttpClient
 import okhttp3.Request
+
 
 /**
  * @author langkye
@@ -26,7 +26,7 @@ open class UserInfoConverter : IUiaConverter {
      */
     override fun <T, R> convertResponse(body: R): T {
         val json = body as String
-        val accessToken = JSON.parseObject(json, object : TypeReference<UserInfo?>() {}) as UserInfo
+        val accessToken = json.into<UserInfo>()
         return accessToken as T
     }
 

@@ -5,9 +5,10 @@ import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.gitee.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
 import cn.lnkdoc.sdk.uia.instance.gitee.request.RefreshTokenRequest
-import com.alibaba.fastjson2.*
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
+
 
 /**
  * @author langkye
@@ -71,4 +72,3 @@ open class RefreshTokenConverter : IUiaConverter {
         return name
     }
 }
-

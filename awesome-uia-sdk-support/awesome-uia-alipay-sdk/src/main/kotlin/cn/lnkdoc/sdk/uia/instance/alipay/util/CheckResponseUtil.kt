@@ -1,9 +1,10 @@
 package cn.lnkdoc.sdk.uia.instance.alipay.util
 
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
-import com.alibaba.fastjson2.toJSONString
+import cn.lnkdoc.sdk.uia.serializer.extensions.toJSONString
 import com.alipay.api.AlipayResponse
 import org.slf4j.LoggerFactory
+
 
 /**
  * @author langkye
@@ -33,7 +34,7 @@ object CheckResponseUtil {
     fun check(response: AlipayResponse?, isPrintStack: Boolean?) {
         if (response?.isSuccess != true) {
             if (isPrintStack == true) {
-                log.error(response.toJSONString())
+                log.error(response?.toJSONString())
             }
             throw UiaException(response?.subMsg)
         }

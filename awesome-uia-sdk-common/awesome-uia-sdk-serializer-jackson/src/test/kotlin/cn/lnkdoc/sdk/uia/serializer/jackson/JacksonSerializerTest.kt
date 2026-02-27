@@ -5,7 +5,7 @@ import cn.lnkdoc.sdk.uia.serializer.JsonCodecRegistry
 import cn.lnkdoc.sdk.uia.serializer.config.NamingStrategy
 import cn.lnkdoc.sdk.uia.serializer.config.SerializationConfig
 import cn.lnkdoc.sdk.uia.serializer.config.SerializationConfigLoader
-import cn.lnkdoc.sdk.uia.serializer.extensions.toJson
+import cn.lnkdoc.sdk.uia.serializer.extensions.toJSONString
 import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -67,7 +67,7 @@ class JacksonSerializerTest {
 
         val user = TestUser("Jack", 20, Date(1738918440000)) // 2025-02-07 16:54:00 GMT+8 or similar
         
-        val json = user.toJson(codec)
+        val json = user.toJSONString(codec)
         println("[DEBUG_LOG] Generated JSON: $json")
 
         // Check if userName is mapped to "name"
@@ -89,7 +89,7 @@ class JacksonSerializerTest {
     fun testAccessTokenSerializationUseAnnotation() {
         val codec = JsonCodecRegistry.load(SerializationConfig(), "jackson")
         val accessToken = AccessToken("token", "Bearer", "3600", "refresh_token_value")
-        val json = accessToken.toJson(codec)
+        val json = accessToken.toJSONString(codec)
         println("[DEBUG_LOG] AccessToken JSON: $json")
         
         // 序列化验证：应该保持原属性名（因为只配置了 @set，没配置 @get）
@@ -111,7 +111,7 @@ class JacksonSerializerTest {
         }
         val codec = JsonCodecRegistry.load(config, "jackson")
         val accessToken = AccessToken("token", "Bearer", "3600", "refresh_token_value")
-        val json = accessToken.toJson(codec)
+        val json = accessToken.toJSONString(codec)
         println("[DEBUG_LOG] AccessToken Snake JSON: $json")
         
         // 应该都变成 snake_case
@@ -136,7 +136,7 @@ class JacksonSerializerTest {
         }
         val codec = JsonCodecRegistry.load(config, "jackson")
         val obj = MixedAnnotation("value")
-        val json = obj.toJson(codec)
+        val json = obj.toJSONString(codec)
         println("[DEBUG_LOG] Mixed Snake JSON: $json")
         
         // propertyName -> snake_case -> property_name

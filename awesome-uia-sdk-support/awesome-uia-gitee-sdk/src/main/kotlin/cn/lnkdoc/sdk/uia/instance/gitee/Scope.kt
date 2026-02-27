@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.gitee
 
+
 /**
  * @document https://gitee.com/oauth/applications
  * @author langkye
@@ -51,5 +52,4 @@ enum class Scope(val scope: String) {
      * 查看用户的个人邮箱信息
      */
     emails("emails"),
-    ;
 }

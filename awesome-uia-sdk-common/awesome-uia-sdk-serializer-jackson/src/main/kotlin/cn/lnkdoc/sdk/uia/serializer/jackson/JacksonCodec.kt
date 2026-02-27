@@ -23,6 +23,19 @@ class JacksonCodec(private val objectMapper: ObjectMapper) : JsonCodec {
     override fun <T> fromJson(json: String, clazz: Class<T>): T {
         return objectMapper.readValue(json, clazz)
     }
+
+    /**
+     * check json is JSONObject
+     * @param json json
+     */
+    override fun isJSONObject(json: String): Boolean {
+        try {
+            objectMapper.readTree(json)
+            return true
+        } catch (_: Exception) {
+            return false
+        }
+    }
 }
 
 /**

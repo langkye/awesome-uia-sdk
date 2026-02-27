@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.common.util.Assert
 import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

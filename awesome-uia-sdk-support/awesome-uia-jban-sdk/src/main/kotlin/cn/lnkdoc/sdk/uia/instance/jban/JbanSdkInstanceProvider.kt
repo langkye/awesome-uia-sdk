@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class JbanSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "JBAN"

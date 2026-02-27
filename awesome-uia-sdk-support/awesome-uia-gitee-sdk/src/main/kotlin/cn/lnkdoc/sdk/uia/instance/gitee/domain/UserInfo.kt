@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.gitee.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * access_token
@@ -10,65 +11,65 @@ import com.alibaba.fastjson2.annotation.JSONField
  */
 @Suppress("unused")
 class UserInfo {
-    @set:JSONField(name = "avatar_url")
+    @set:UiaJsonField(name = "avatar_url")
     var avatarUrl: String? = null
-    @set:JSONField(name = "bio")
+    @set:UiaJsonField(name = "bio")
     var bio: String? = null
-    @set:JSONField(name = "blog")
+    @set:UiaJsonField(name = "blog")
     var blog: String? = null
-    @set:JSONField(name = "created_at")
+    @set:UiaJsonField(name = "created_at")
     var createdAt: String? = null
-    @set:JSONField(name = "email")
+    @set:UiaJsonField(name = "email")
     var email: String? = null
-    @set:JSONField(name = "events_url")
+    @set:UiaJsonField(name = "events_url")
     var eventsUrl: String? = null
-    @set:JSONField(name = "followers")
+    @set:UiaJsonField(name = "followers")
     var followers: Int? = null
-    @set:JSONField(name = "followers_url")
+    @set:UiaJsonField(name = "followers_url")
     var followersUrl: String? = null
-    @set:JSONField(name = "following")
+    @set:UiaJsonField(name = "following")
     var following: Int? = null
-    @set:JSONField(name = "following_url")
+    @set:UiaJsonField(name = "following_url")
     var followingUrl: String? = null
-    @set:JSONField(name = "gists_url")
+    @set:UiaJsonField(name = "gists_url")
     var gistsUrl: String? = null
-    @set:JSONField(name = "html_url")
+    @set:UiaJsonField(name = "html_url")
     var htmlUrl: String? = null
-    @set:JSONField(name = "id")
+    @set:UiaJsonField(name = "id")
     var id: Int? = null
-    @set:JSONField(name = "login")
+    @set:UiaJsonField(name = "login")
     var login: String? = null
-    @set:JSONField(name = "name")
+    @set:UiaJsonField(name = "name")
     var name: String? = null
-    @set:JSONField(name = "organizations_url")
+    @set:UiaJsonField(name = "organizations_url")
     var organizationsUrl: String? = null
-    @set:JSONField(name = "public_gists")
+    @set:UiaJsonField(name = "public_gists")
     var publicGists: Int? = null
-    @set:JSONField(name = "public_repos")
+    @set:UiaJsonField(name = "public_repos")
     var publicRepos: Int? = null
-    @set:JSONField(name = "received_events_url")
+    @set:UiaJsonField(name = "received_events_url")
     var receivedEventsUrl: String? = null
-    @set:JSONField(name = "remark")
+    @set:UiaJsonField(name = "remark")
     var remark: String? = null
-    @set:JSONField(name = "repos_url")
+    @set:UiaJsonField(name = "repos_url")
     var reposUrl: String? = null
-    @set:JSONField(name = "stared")
+    @set:UiaJsonField(name = "stared")
     var stared: Int? = null
-    @set:JSONField(name = "starred_url")
+    @set:UiaJsonField(name = "starred_url")
     var starredUrl: String? = null
-    @set:JSONField(name = "subscriptions_url")
+    @set:UiaJsonField(name = "subscriptions_url")
     var subscriptionsUrl: String? = null
-    @set:JSONField(name = "type")
+    @set:UiaJsonField(name = "type")
     var type: String? = null
-    @set:JSONField(name = "updated_at")
+    @set:UiaJsonField(name = "updated_at")
     var updatedAt: String? = null
-    @set:JSONField(name = "url")
+    @set:UiaJsonField(name = "url")
     var url: String? = null
-    @set:JSONField(name = "watched")
+    @set:UiaJsonField(name = "watched")
     var watched: Int? = null
-    @set:JSONField(name = "weibo")
+    @set:UiaJsonField(name = "weibo")
     var weibo: String? = null
-    @set:JSONField(name = "message")
+    @set:UiaJsonField(name = "message")
     var message: String? = null
         set(value) {
             field = value

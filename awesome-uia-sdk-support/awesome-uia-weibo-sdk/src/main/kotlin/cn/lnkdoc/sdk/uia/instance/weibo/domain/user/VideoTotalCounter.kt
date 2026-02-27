@@ -1,10 +1,10 @@
 package cn.lnkdoc.sdk.uia.instance.weibo.domain.user
 
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 
-import com.alibaba.fastjson.annotation.JSONField
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class VideoTotalCounter {
-    @JSONField(name = "play_cnt")
+    @set:UiaJsonField(name = "play_cnt")
     var playCnt: Int? = null
 }

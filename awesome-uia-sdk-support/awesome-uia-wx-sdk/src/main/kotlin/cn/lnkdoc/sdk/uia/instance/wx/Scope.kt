@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.wx
 
+
 /**
  * 应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login
  *

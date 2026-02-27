@@ -5,7 +5,7 @@ import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.gitee.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.gitee.request.AccessTokenRequest
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
-import com.alibaba.fastjson2.*
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
@@ -72,4 +72,3 @@ open class AccessTokenConverter : IUiaConverter {
         return name
     }
 }
-

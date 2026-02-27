@@ -24,6 +24,5 @@ enum class Scope
      * auth_user
      */
     auth_user("auth_user"),
-    ;
 
 }

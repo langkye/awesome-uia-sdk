@@ -7,7 +7,7 @@ import cn.lnkdoc.sdk.uia.common.request.AbstractUiaRequest
 import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.common.util.Assert.required
 import cn.lnkdoc.sdk.uia.instance.weibo.property.WeiboProperty
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 
 
 /**
@@ -67,18 +67,17 @@ class UserInfoRequest : AbstractUiaRequest(), IUiaRequest {
         /**
          * 访问令牌。通过该令牌调用需要授权类接口
          */
-        @set:JSONField(name = "access_token")
+        @set:UiaJsonField(name = "access_token")
         var accessToken: String? = null
         /**
          * uid
          */
-        @set:JSONField(name = "uid")
+        @set:UiaJsonField(name = "uid")
         var uid: String? = null
         /**
          * screen_name
          */
-        @set:JSONField(name = "screen_name")
+        @set:UiaJsonField(name = "screen_name")
         var screenName: String? = null
     }
 }
-

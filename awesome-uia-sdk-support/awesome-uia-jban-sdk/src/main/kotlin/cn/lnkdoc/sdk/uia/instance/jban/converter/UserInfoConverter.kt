@@ -6,8 +6,8 @@ import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.jban.request.JbanUserInfoRequest
 import cn.lnkdoc.sdk.uia.instance.jban.response.JbanResponse
 import cn.lnkdoc.sdk.uia.instance.jban.util.ApiUtil.getAppAccessToken
-import com.alibaba.fastjson2.JSONObject
-import com.alibaba.fastjson2.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.toJSONString
 import com.google.auto.service.AutoService
 import io.vavr.Tuple3
 import okhttp3.Headers
@@ -17,6 +17,7 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.apache.hc.core5.http.ContentType
+
 
 /**
  * @author langkye
@@ -53,9 +54,9 @@ open class UserInfoConverter : IUiaConverter {
             .build()
 
         //请求体
-        val reqBody = JSONObject()
-        reqBody["appAccessToken"] = appAccessToken
-        reqBody["code"] = tuple._3.body
+        val reqBody = HashMap<String, Any>()
+        reqBody["appAccessToken"] = appAccessToken as Any
+        reqBody["code"] = tuple._3.body as Any
         val requestBody: RequestBody = reqBody.toJSONString().toRequestBody(ContentType.APPLICATION_JSON.mimeType.toMediaType())
 
         //请求对象

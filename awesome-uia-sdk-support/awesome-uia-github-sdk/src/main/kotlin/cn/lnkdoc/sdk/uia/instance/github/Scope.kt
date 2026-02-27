@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.github
 
+
 /**
  * @document https://docs.github.com/zh/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps
  * @author langkye

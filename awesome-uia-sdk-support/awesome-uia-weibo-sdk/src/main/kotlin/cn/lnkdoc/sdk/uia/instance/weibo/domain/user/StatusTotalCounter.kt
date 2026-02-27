@@ -1,18 +1,18 @@
 package cn.lnkdoc.sdk.uia.instance.weibo.domain.user
 
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 
-import com.alibaba.fastjson.annotation.JSONField
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class StatusTotalCounter {
-    @JSONField(name = "comment_cnt")
+    @set:UiaJsonField(name = "comment_cnt")
     var commentCnt: Int? = null
-    @JSONField(name = "comment_like_cnt")
+    @set:UiaJsonField(name = "comment_like_cnt")
     var commentLikeCnt: Int? = null
-    @JSONField(name = "like_cnt")
+    @set:UiaJsonField(name = "like_cnt")
     var likeCnt: Int? = null
-    @JSONField(name = "repost_cnt")
+    @set:UiaJsonField(name = "repost_cnt")
     var repostCnt: Int? = null
-    @JSONField(name = "total_cnt")
+    @set:UiaJsonField(name = "total_cnt")
     var totalCnt: Int? = null
 }

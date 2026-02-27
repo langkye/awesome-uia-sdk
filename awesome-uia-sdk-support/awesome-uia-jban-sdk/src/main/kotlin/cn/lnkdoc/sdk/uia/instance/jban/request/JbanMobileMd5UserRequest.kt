@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.common.util.encryption.EncryptUtils.mD5EncryptAsHex
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

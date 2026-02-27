@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon.util
 
+
 /**
  * Sign Interface
  *
@@ -18,4 +19,3 @@ interface UiaSigner {
      */
     fun sign(sourceContent: Any?, signType: String?, charset: String?): String?
 }
-

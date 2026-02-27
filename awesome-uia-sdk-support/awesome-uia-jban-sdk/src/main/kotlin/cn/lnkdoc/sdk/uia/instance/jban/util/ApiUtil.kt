@@ -7,13 +7,14 @@ import cn.lnkdoc.sdk.uia.instance.jban.domain.AppAccessToken
 import cn.lnkdoc.sdk.uia.instance.jban.domain.TeamAccessToken
 import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
 import cn.lnkdoc.sdk.uia.instance.jban.response.JbanResponse
-import com.alibaba.fastjson2.JSONObject
-import com.alibaba.fastjson2.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.toJSONString
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.apache.hc.core5.http.ContentType
 import org.slf4j.LoggerFactory
+
 
 /**
  * @author langkye
@@ -42,9 +43,9 @@ object ApiUtil {
         val mediaType: MediaType = ContentType.APPLICATION_JSON.mimeType.toMediaType()
 
         //body
-        val reqBody = JSONObject()
-        reqBody["appAccessToken"] = accessToken
-        reqBody["openTeamId"] = property.openTeamId
+        val reqBody = HashMap<String, Any>()
+        reqBody["appAccessToken"] = accessToken as Any
+        reqBody["openTeamId"] = property.openTeamId as Any
 
         // build requestBody
         val body: RequestBody = reqBody.toJSONString().toRequestBody(mediaType)
@@ -98,9 +99,9 @@ object ApiUtil {
 
 
         //body
-        val reqBody = JSONObject()
-        reqBody["appKey"] = property.clientId
-        reqBody["appSecret"] = property.clientSecret
+        val reqBody = HashMap<String, Any>()
+        reqBody["appKey"] = property.clientId as Any
+        reqBody["appSecret"] = property.clientSecret as Any
 
         // build requestBody
         val body: RequestBody = reqBody.toJSONString().toRequestBody(mediaType)

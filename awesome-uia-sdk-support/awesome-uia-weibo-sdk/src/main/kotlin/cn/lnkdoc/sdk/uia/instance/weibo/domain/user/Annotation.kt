@@ -1,9 +1,10 @@
 package cn.lnkdoc.sdk.uia.instance.weibo.domain.user
 
-import com.alibaba.fastjson.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class Annotation {
-    @JSONField(name = "mapi_request")
+    @set:UiaJsonField(name = "mapi_request")
     var mapiRequest: Boolean? = null
 }

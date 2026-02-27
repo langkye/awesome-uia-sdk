@@ -1,5 +1,6 @@
 [versions]
 alipay-sdk-java = "4.40.626.ALL"
+alipay-sdk-java-v3 = "3.1.70.ALL"
 auto-service = "1.1.1"
 bcprov-jdk18on = "1.78.1"
 bcprov-jdk15to18 = "1.78.1"
@@ -44,6 +45,7 @@ vavr = "0.11.0"
 ####################################################### [常用依赖] #####################################################
 [libraries]
 alipay-sdk-java = { module = "com.alipay.sdk:alipay-sdk-java", version.ref = "alipay-sdk-java" }
+alipay-sdk-java-v3 = { module = "com.alipay.sdk:alipay-sdk-java-v3", version.ref = "alipay-sdk-java-v3" }
 auto-service = { module = "com.google.auto.service:auto-service", version.ref = "auto-service" }
 auto-service-annotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "auto-service" }
 bcprov-jdk15to18 = { module = "org.bouncycastle:bcprov-jdk15to18", version.ref = "bcprov-jdk15to18" }

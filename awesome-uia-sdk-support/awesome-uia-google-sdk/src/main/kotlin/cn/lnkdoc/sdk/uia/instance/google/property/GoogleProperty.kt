@@ -3,6 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.google.property
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.instance.google.Scope
 
+
 /**
  * property
  *

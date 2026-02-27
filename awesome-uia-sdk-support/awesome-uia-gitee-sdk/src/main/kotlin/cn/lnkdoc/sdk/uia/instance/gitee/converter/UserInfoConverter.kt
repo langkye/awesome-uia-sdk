@@ -5,7 +5,7 @@ import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.gitee.domain.UserInfo
 import cn.lnkdoc.sdk.uia.instance.gitee.request.UserInfoRequest
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
-import com.alibaba.fastjson2.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
@@ -73,4 +73,3 @@ open class UserInfoConverter : IUiaConverter {
         return name
     }
 }
-

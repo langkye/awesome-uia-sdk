@@ -5,9 +5,10 @@ import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.google.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
 import cn.lnkdoc.sdk.uia.instance.google.request.RefreshTokenRequest
-import com.alibaba.fastjson2.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
+
 
 /**
  * @author langkye

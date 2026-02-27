@@ -53,4 +53,3 @@ class UserInfoRequest : AbstractUiaRequest(), IUiaRequest {
         return HttpMethod.GET
     }
 }
-

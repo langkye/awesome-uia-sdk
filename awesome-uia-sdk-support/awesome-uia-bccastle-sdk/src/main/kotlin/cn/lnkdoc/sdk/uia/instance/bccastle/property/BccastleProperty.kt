@@ -3,6 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.bccastle.property
 import cn.lnkdoc.sdk.uia.common.GrantType
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

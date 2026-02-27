@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.request.LogoutRequest
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

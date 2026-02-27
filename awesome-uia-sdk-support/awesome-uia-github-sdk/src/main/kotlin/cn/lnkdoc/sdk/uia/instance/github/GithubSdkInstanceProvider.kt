@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class GithubSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "GITHUB"

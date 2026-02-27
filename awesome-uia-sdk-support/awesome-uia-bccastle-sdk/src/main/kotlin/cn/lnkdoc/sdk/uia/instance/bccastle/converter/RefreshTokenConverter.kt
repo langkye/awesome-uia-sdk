@@ -5,10 +5,10 @@ import cn.lnkdoc.sdk.uia.common.constant.UiaConstants
 import cn.lnkdoc.sdk.uia.instance.bccastle.property.BccastleProperty
 import cn.lnkdoc.sdk.uia.instance.bccastle.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.bccastle.request.RefreshTokenRequest
-import com.alibaba.fastjson2.JSON
-import com.alibaba.fastjson2.TypeReference
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
+
 
 /**
  * @author langkye
@@ -45,7 +45,7 @@ open class RefreshTokenConverter : IUiaConverter {
      */
     override fun <T, R> convertResponse(body: R): T {
         val json = body as String
-        val accessToken = JSON.parseObject(json, object : TypeReference<RefreshToken?>() {}) as RefreshToken
+        val accessToken = json.into<RefreshToken>()
         return accessToken as T
     }
 

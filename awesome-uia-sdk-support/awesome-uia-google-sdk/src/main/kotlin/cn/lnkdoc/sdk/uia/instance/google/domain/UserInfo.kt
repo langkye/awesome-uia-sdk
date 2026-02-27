@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.google.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @document https://developers.google.com/identity/openid-connect/openid-connect?hl=zh-cn#discovery
@@ -12,32 +13,32 @@ class UserInfo {
     /**
      * sub
      */
-    @set:JSONField(name = "sub")
+    @set:UiaJsonField(name = "sub")
     var sub: String? = null
     /**
      * given_name
      */
-    @set:JSONField(name = "given_name")
+    @set:UiaJsonField(name = "given_name")
     var givenName: String? = null
     /**
      * family_name
      */
-    @set:JSONField(name = "family_name")
+    @set:UiaJsonField(name = "family_name")
     var familyName: String? = null
     /**
      * locale
      */
-    @set:JSONField(name = "locale")
+    @set:UiaJsonField(name = "locale")
     var locale: String? = null
     /**
      * name
      */
-    @set:JSONField(name = "name")
+    @set:UiaJsonField(name = "name")
     var name: String? = null
     /**
      * picture
      */
-    @set:JSONField(name = "picture")
+    @set:UiaJsonField(name = "picture")
     var picture: String? = null
     /**
      * raw
@@ -56,7 +57,7 @@ class UserInfo {
     /**
      * error
      */
-    @set:JSONField(name = "error")
+    @set:UiaJsonField(name = "error")
     var error: String? = null
         set(value) {
             field = value
@@ -66,7 +67,7 @@ class UserInfo {
     /**
      * error_description
      */
-    @set:JSONField(name = "error_description")
+    @set:UiaJsonField(name = "error_description")
     var errorDescription: String? = null
         set(value) {
             field = value

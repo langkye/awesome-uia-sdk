@@ -4,7 +4,6 @@ import java.io.Serializable
 
 
 /**
- *
  * AuthTicket Object to be returned
  *
  * @author qinyi
@@ -25,4 +24,3 @@ open class AuthTicket : Serializable {
         private const val serialVersionUID = -50843L
     }
 }
-

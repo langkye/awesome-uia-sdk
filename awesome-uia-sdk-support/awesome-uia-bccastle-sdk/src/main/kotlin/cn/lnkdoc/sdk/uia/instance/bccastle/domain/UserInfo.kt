@@ -2,6 +2,7 @@ package cn.lnkdoc.sdk.uia.instance.bccastle.domain
 
 import cn.lnkdoc.sdk.uia.instance.bccastle.response.BccastleResponse
 
+
 /**
  * 用户信息
  * <pre>

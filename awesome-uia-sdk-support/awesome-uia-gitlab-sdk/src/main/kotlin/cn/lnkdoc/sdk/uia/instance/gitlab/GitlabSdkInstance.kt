@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.gitlab.client.GitlabUiaClient
 import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
 import cn.lnkdoc.sdk.uia.instance.gitlab.request.AccessTokenRequest
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

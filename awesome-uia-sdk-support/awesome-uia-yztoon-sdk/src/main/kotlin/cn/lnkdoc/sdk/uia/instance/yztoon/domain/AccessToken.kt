@@ -1,7 +1,8 @@
 package cn.lnkdoc.sdk.uia.instance.yztoon.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 import java.io.Serializable
+
 
 /**
  * @author langkye
@@ -12,16 +13,16 @@ class AccessToken : Serializable {
     /**
      * expiresIn
      */
-    @set:JSONField(name = "expires_in")
+    @set:UiaJsonField(name = "expires_in")
     var expiresIn = 0
     /**
      * tokenType
      */
-    @set:JSONField(name = "token_type")
+    @set:UiaJsonField(name = "token_type")
     var tokenType: String? = null
     /**
      * accessToken
      */
-    @set:JSONField(name = "access_token")
+    @set:UiaJsonField(name = "access_token")
     var accessToken: String? = null
 }

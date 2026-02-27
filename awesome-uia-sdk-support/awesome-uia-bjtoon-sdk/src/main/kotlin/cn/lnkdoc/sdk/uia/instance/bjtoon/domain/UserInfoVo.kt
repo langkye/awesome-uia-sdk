@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon.domain
 
+
 /**
  *
  * UserInfo Object to be returned
@@ -13,4 +14,3 @@ package cn.lnkdoc.sdk.uia.instance.bjtoon.domain
  */
 @Suppress("unused")
 class UserInfoVo : UserInfo()
-

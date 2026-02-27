@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.gitlab.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @document https://developers.google.com/identity/openid-connect/openid-connect?hl=zh-cn#discovery
@@ -12,37 +13,37 @@ class AccessToken {
     /**
      * access_token
      */
-    @set:JSONField(name = "access_token")
+    @set:UiaJsonField(name = "access_token")
     var accessToken: String? = null
 
     /**
      * created_at
      */
-    @JSONField(name = "created_at")
+    @set:UiaJsonField(name = "created_at")
     var createdAt: Int? = null
 
     /**
      * expires_in
      */
-    @JSONField(name = "expires_in")
+    @set:UiaJsonField(name = "expires_in")
     var expiresIn: Int? = null
 
     /**
      * refresh_token
      */
-    @JSONField(name = "refresh_token")
+    @set:UiaJsonField(name = "refresh_token")
     var refreshToken: String?
             /**
              * scope
              */
             = null
-    @JSONField(name = "scope")
+    @set:UiaJsonField(name = "scope")
     var scope: String? = null
 
     /**
      * token_type
      */
-    @JSONField(name = "token_type")
+    @set:UiaJsonField(name = "token_type")
     var tokenType: String? = null
     /**
      * raw
@@ -60,7 +61,7 @@ class AccessToken {
     /**
      * error
      */
-    @set:JSONField(name = "error")
+    @set:UiaJsonField(name = "error")
     var error: String? = null
         set(value) {
             field = value
@@ -70,7 +71,7 @@ class AccessToken {
     /**
      * error_description
      */
-    @set:JSONField(name = "error_description")
+    @set:UiaJsonField(name = "error_description")
     var errorDescription: String? = null
         set(value) {
             field = value

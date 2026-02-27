@@ -3,6 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.wx.property
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.common.constant.UiaConstants
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

@@ -1,7 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon.domain
 
 /**
- *
  * AuthTicket Object to be returned
  *
  * @author qinyi
@@ -9,4 +8,3 @@ package cn.lnkdoc.sdk.uia.instance.bjtoon.domain
  */
 @Suppress("unused")
 class AuthTicketVo : AuthTicket()
-

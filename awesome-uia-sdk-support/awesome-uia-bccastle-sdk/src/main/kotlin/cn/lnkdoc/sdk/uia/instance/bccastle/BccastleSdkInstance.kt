@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.bccastle.property.BccastleProperty
 import cn.lnkdoc.sdk.uia.instance.bccastle.request.AccessTokenRequest
 import cn.lnkdoc.sdk.uia.instance.bccastle.request.UserInfoRequest
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

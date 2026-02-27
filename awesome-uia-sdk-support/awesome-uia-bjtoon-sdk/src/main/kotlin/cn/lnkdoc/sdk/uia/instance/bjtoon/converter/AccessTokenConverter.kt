@@ -7,7 +7,7 @@ import cn.lnkdoc.sdk.uia.instance.bjtoon.property.BjtoonProperty
 import cn.lnkdoc.sdk.uia.instance.bjtoon.request.AccessTokenRequest
 import cn.lnkdoc.sdk.uia.instance.bjtoon.response.BjtoonResponse
 import cn.lnkdoc.sdk.uia.instance.bjtoon.util.encryption.CryptoClient
-import com.alibaba.fastjson2.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 
@@ -74,4 +74,3 @@ open class AccessTokenConverter : IUiaConverter {
         return name
     }
 }
-

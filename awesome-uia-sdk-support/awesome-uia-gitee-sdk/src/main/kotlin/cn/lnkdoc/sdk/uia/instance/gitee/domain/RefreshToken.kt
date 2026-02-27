@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.gitee.domain
 
+
 /**
  * access_token
  * 
@@ -7,4 +8,4 @@ package cn.lnkdoc.sdk.uia.instance.gitee.domain
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-open class RefreshToken: AccessToken() 
+open class RefreshToken: AccessToken()

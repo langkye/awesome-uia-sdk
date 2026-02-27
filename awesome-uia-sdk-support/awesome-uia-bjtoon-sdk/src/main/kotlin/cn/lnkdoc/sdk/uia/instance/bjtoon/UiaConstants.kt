@@ -3,6 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.bjtoon
 import cn.lnkdoc.sdk.uia.common.GrantType
 import cn.lnkdoc.sdk.uia.common.constant.CodeMessage
 
+
 /**
  *
  * General Constants

@@ -3,8 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.bjtoon.util
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.common.constant.UiaConstants
 import cn.lnkdoc.sdk.uia.instance.bjtoon.response.BjtoonResponse
-import com.alibaba.fastjson2.JSONObject
-import com.alibaba.fastjson2.TypeReference
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import org.slf4j.LoggerFactory
 
 
@@ -35,7 +34,7 @@ object CheckResponseUtil {
     @JvmStatic
     @Synchronized
     fun check(json: String, isPrintStack: Boolean?) {
-        val response = JSONObject.parseObject<BjtoonResponse<*>>(json, object : TypeReference<BjtoonResponse<*>?>() {})
+        val response = json.into<BjtoonResponse<*>>()
 
         // check success
         val isSuccess = UiaConstants.RETURN_CODE_SUCCESS.code == response.meta!!.code && response.data != null

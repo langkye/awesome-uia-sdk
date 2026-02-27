@@ -66,4 +66,3 @@ class CodeMessage {
         return "code = " + this.code + ",message = " + message
     }
 }
-

@@ -5,12 +5,12 @@ import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.weibo.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.weibo.property.WeiboProperty
 import cn.lnkdoc.sdk.uia.instance.weibo.request.AccessTokenRequest
-import com.alibaba.fastjson2.into
-import com.alibaba.fastjson2.parseObject
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple2
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+
 
 /**
  * @author langkye
@@ -29,12 +29,8 @@ open class AccessTokenConverter : IUiaConverter {
         val tuple = body as Tuple2<String, WeiboProperty>
         // convert json
         val string = tuple._1
-
-        val stringJSONObject = string.parseObject()
-
-        stringJSONObject.into<AccessToken>()
-
-        val data = stringJSONObject.into<AccessToken>()
+        
+        val data = string.into<AccessToken>()
         data.raw = string
 
         if (!data.success) {

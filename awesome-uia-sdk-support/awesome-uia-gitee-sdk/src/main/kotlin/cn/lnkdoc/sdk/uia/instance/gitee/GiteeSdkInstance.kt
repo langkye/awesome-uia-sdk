@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.instance.gitee.client.GiteeUiaClient
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
 import cn.lnkdoc.sdk.uia.instance.gitee.request.AccessTokenRequest
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

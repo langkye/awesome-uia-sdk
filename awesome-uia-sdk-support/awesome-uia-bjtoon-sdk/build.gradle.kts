@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     api(project(":$CORE"))
-    api(project(":${resolveCommonModuleName("serializer-fastjson")}"))
+    api(project(":${resolveCommonModuleName("serializer-jackson")}"))
     
     api(libs.bcprov.jdk15to18)
     api(libs.bcprov.jdk18on)

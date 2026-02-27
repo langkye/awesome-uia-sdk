@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.gitlab.domain
 
-import com.alibaba.fastjson.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @author langkye
@@ -11,37 +12,37 @@ class RefreshToken {
     /**
      * access_token
      */
-    @JSONField(name = "access_token")
+    @set:UiaJsonField(name = "access_token")
     var accessToken: String? = null
 
     /**
      * created_at
      */
-    @JSONField(name = "created_at")
+    @set:UiaJsonField(name = "created_at")
     var createdAt: Int? = null
 
     /**
      * expires_in
      */
-    @JSONField(name = "expires_in")
+    @set:UiaJsonField(name = "expires_in")
     var expiresIn: Int? = null
 
     /**
      * refresh_token
      */
-    @JSONField(name = "refresh_token")
+    @set:UiaJsonField(name = "refresh_token")
     var refreshToken: String? = null
 
     /**
      * scope
      */
-    @JSONField(name = "scope")
+    @set:UiaJsonField(name = "scope")
     var scope: String? = null
 
     /**
      * token_type
      */
-    @JSONField(name = "token_type")
+    @set:UiaJsonField(name = "token_type")
     var tokenType: String? = null
     /**
      * raw
@@ -63,7 +64,7 @@ class RefreshToken {
     /**
      * error
      */
-    @set:com.alibaba.fastjson2.annotation.JSONField(name = "error")
+    @set:UiaJsonField(name = "error")
     var error: String? = null
         set(value) {
             field = value
@@ -73,7 +74,7 @@ class RefreshToken {
     /**
      * error_description
      */
-    @set:com.alibaba.fastjson2.annotation.JSONField(name = "error_description")
+    @set:UiaJsonField(name = "error_description")
     var errorDescription: String? = null
         set(value) {
             field = value

@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.weibo.response
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @author langkye
@@ -23,22 +24,22 @@ open class ErrorResponse {
     /**
      * error_code
      */
-    @set:JSONField(name = "error_code")
+    @set:UiaJsonField(name = "error_code")
     var errorCode: String? = null
     /**
      * request
      */
-    @set:JSONField(name = "request")
+    @set:UiaJsonField(name = "request")
     var request: String? = null
     /**
      * error_uri
      */
-    @set:JSONField(name = "error_uri")
+    @set:UiaJsonField(name = "error_uri")
     var errorUri: String? = null
     /**
      * error
      */
-    @set:JSONField(name = "error")
+    @set:UiaJsonField(name = "error")
     var error: String? = null
         set(value) {
             field = value
@@ -48,7 +49,7 @@ open class ErrorResponse {
     /**
      * error_description
      */
-    @set:JSONField(name = "error_description")
+    @set:UiaJsonField(name = "error_description")
     var errorDescription: String? = null
         set(value) {
             field = value

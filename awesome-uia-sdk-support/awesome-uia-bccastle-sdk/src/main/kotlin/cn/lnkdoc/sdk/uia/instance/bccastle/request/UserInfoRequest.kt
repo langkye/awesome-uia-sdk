@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.common.util.Assert.required
 import cn.lnkdoc.sdk.uia.instance.bccastle.property.BccastleProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

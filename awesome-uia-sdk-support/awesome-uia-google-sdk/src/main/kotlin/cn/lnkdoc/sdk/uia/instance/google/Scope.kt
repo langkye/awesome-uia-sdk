@@ -3,6 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.google
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
+
 /**
  * 下面仅列出了已启用的 API 的范围。如需在该屏幕中添加缺少的范围，请在 Google API 库中查找并启用所需的 API，或使用下面的“粘贴的范围”文本框。刷新页面即可查看您从库中启用的任何新 API。
  * @document https://developers.google.com/identity/protocols/oauth2/scopes?hl=zh-cn

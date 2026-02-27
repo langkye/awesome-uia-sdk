@@ -3,8 +3,9 @@ package cn.lnkdoc.sdk.uia.instance.jban.util
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.jban.domain.AccessToken
 import cn.lnkdoc.sdk.uia.instance.jban.response.JbanResponse
-import com.alibaba.fastjson2.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import org.slf4j.LoggerFactory
+
 
 /**
  * @author langkye

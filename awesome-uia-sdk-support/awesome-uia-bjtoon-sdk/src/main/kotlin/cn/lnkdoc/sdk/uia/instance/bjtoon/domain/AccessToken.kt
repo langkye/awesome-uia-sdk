@@ -1,6 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 import java.io.Serializable
 
 
@@ -16,23 +16,23 @@ open class AccessToken : Serializable {
     /**
      * accessToken
      */
-    @set:JSONField(name = "access_token")
-    @get:JSONField(name = "accessToken")
+    @set:UiaJsonField(name = "access_token")
+    @get:UiaJsonField(name = "accessToken")
     var accessToken: String? = null
     /**
      * tokenType
      */
-    @set:JSONField(name = "token_type")
+    @set:UiaJsonField(name = "token_type")
     var tokenType: String? = null
     /**
      * expiresIn
      */
-    @set:JSONField(name = "expires_in")
+    @set:UiaJsonField(name = "expires_in")
     var expiresIn: String? = null
     /**
      * refreshToken
      */
-    @set:JSONField(name = "refresh_token")
+    @set:UiaJsonField(name = "refresh_token")
     var refreshToken: String? = null
     
     companion object {

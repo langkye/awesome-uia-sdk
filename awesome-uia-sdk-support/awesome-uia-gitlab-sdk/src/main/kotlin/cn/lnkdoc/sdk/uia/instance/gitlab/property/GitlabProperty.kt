@@ -3,6 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.gitlab.property
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.instance.gitlab.Scope
 
+
 /**
  * property
  *

@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.github.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @author langkye
@@ -8,92 +9,92 @@ import com.alibaba.fastjson2.annotation.JSONField
  */ 
 @Suppress("unused")
 class UserInfo {
-    @set:JSONField(name = "avatar_url")
+    @set:UiaJsonField(name = "avatar_url")
     var avatarUrl: String? = null
-    @set:JSONField(name = "bio")
+    @set:UiaJsonField(name = "bio")
     var bio: String? = null
-    @set:JSONField(name = "blog")
+    @set:UiaJsonField(name = "blog")
     var blog: String? = null
-    @set:JSONField(name = "collaborators")
+    @set:UiaJsonField(name = "collaborators")
     var collaborators: Int? = null
-    @set:JSONField(name = "company")
+    @set:UiaJsonField(name = "company")
     var company: String? = null
-    @set:JSONField(name = "created_at")
+    @set:UiaJsonField(name = "created_at")
     var createdAt: String? = null
-    @set:JSONField(name = "disk_usage")
+    @set:UiaJsonField(name = "disk_usage")
     var diskUsage: Int? = null
-    @set:JSONField(name = "email")
+    @set:UiaJsonField(name = "email")
     var email: String? = null
-    @set:JSONField(name = "events_url")
+    @set:UiaJsonField(name = "events_url")
     var eventsUrl: String? = null
-    @set:JSONField(name = "followers")
+    @set:UiaJsonField(name = "followers")
     var followers: Int? = null
-    @set:JSONField(name = "followers_url")
+    @set:UiaJsonField(name = "followers_url")
     var followersUrl: String? = null
-    @set:JSONField(name = "following")
+    @set:UiaJsonField(name = "following")
     var following: Int? = null
-    @set:JSONField(name = "following_url")
+    @set:UiaJsonField(name = "following_url")
     var followingUrl: String? = null
-    @set:JSONField(name = "gists_url")
+    @set:UiaJsonField(name = "gists_url")
     var gistsUrl: String? = null
-    @set:JSONField(name = "gravatar_id")
+    @set:UiaJsonField(name = "gravatar_id")
     var gravatarId: String? = null
-    @set:JSONField(name = "hireable")
+    @set:UiaJsonField(name = "hireable")
     var hireable: String? = null
-    @set:JSONField(name = "html_url")
+    @set:UiaJsonField(name = "html_url")
     var htmlUrl: String? = null
-    @set:JSONField(name = "id")
+    @set:UiaJsonField(name = "id")
     var id: Int? = null
-    @set:JSONField(name = "location")
+    @set:UiaJsonField(name = "location")
     var location: String? = null
-    @set:JSONField(name = "login")
+    @set:UiaJsonField(name = "login")
     var login: String? = null
-    @set:JSONField(name = "name")
+    @set:UiaJsonField(name = "name")
     var name: String? = null
-    @set:JSONField(name = "node_id")
+    @set:UiaJsonField(name = "node_id")
     var nodeId: String? = null
-    @set:JSONField(name = "organizations_url")
+    @set:UiaJsonField(name = "organizations_url")
     var organizationsUrl: String? = null
-    @set:JSONField(name = "owned_private_repos")
+    @set:UiaJsonField(name = "owned_private_repos")
     var ownedPrivateRepos: Int? = null
-    @set:JSONField(name = "plan")
+    @set:UiaJsonField(name = "plan")
     var plan: Plan? = null
-    @set:JSONField(name = "private_gists")
+    @set:UiaJsonField(name = "private_gists")
     var privateGists: Int? = null
-    @set:JSONField(name = "public_gists")
+    @set:UiaJsonField(name = "public_gists")
     var publicGists: Int? = null
-    @set:JSONField(name = "public_repos")
+    @set:UiaJsonField(name = "public_repos")
     var publicRepos: Int? = null
-    @set:JSONField(name = "received_events_url")
+    @set:UiaJsonField(name = "received_events_url")
     var receivedEventsUrl: String? = null
-    @set:JSONField(name = "repos_url")
+    @set:UiaJsonField(name = "repos_url")
     var reposUrl: String? = null
-    @set:JSONField(name = "site_admin")
+    @set:UiaJsonField(name = "site_admin")
     var siteAdmin: Boolean? = null
-    @set:JSONField(name = "starred_url")
+    @set:UiaJsonField(name = "starred_url")
     var starredUrl: String? = null
-    @set:JSONField(name = "subscriptions_url")
+    @set:UiaJsonField(name = "subscriptions_url")
     var subscriptionsUrl: String? = null
-    @set:JSONField(name = "total_private_repos")
+    @set:UiaJsonField(name = "total_private_repos")
     var totalPrivateRepos: Int? = null
-    @set:JSONField(name = "twitter_username")
+    @set:UiaJsonField(name = "twitter_username")
     var twitterUsername: String? = null
-    @set:JSONField(name = "two_factor_authentication")
+    @set:UiaJsonField(name = "two_factor_authentication")
     var twoFactorAuthentication: Boolean? = null
-    @set:JSONField(name = "type")
+    @set:UiaJsonField(name = "type")
     var type: String? = null
-    @set:JSONField(name = "updated_at")
+    @set:UiaJsonField(name = "updated_at")
     var updatedAt: String? = null
-    @set:JSONField(name = "url")
+    @set:UiaJsonField(name = "url")
     var url: String? = null
     var raw: String? = null
-    @set:JSONField(name = "message")
+    @set:UiaJsonField(name = "message")
     var message: String? = null
         set(value) {
             field=value
             success = false
         }
-    @set:JSONField(name = "documentation_url")
+    @set:UiaJsonField(name = "documentation_url")
     var documentationUrl: String? = null
         set(value) {
             field=value
@@ -104,12 +105,12 @@ class UserInfo {
 
 @Suppress("unused")
 class Plan {
-    @set:JSONField(name = "collaborators")
+    @set:UiaJsonField(name = "collaborators")
     var collaborators: Int? = null
-    @set:JSONField(name = "name")
+    @set:UiaJsonField(name = "name")
     var name: String? = null
-    @set:JSONField(name = "private_repos")
+    @set:UiaJsonField(name = "private_repos")
     var privateRepos: Int? = null
-    @set:JSONField(name = "space")
+    @set:UiaJsonField(name = "space")
     var space: Int? = null
 }

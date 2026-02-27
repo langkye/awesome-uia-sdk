@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.weibo.property.WeiboProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class WeiboSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "WEIBO"

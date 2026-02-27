@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class GitlabSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "GITLAB"

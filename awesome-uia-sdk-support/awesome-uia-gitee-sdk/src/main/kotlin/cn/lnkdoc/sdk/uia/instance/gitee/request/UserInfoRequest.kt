@@ -8,6 +8,7 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.common.util.Assert.required
 import cn.lnkdoc.sdk.uia.instance.gitee.property.GiteeProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

@@ -2,11 +2,11 @@ package cn.lnkdoc.sdk.uia.instance.bccastle.util
 
 import cn.lnkdoc.sdk.uia.common.exception.UiaException
 import cn.lnkdoc.sdk.uia.instance.bccastle.response.BccastleResponse
-import com.alibaba.fastjson2.JSONObject
-import com.alibaba.fastjson2.TypeReference
-import com.alibaba.fastjson2.isJSONObject
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
+import cn.lnkdoc.sdk.uia.serializer.extensions.isJSONObject
 import org.slf4j.LoggerFactory
 import java.util.*
+
 
 /**
  * @author langkye
@@ -39,12 +39,12 @@ object CheckResponseUtil {
         if (!success) {
             throw UiaException("response is null or not json: $json")
         }
-        val bccastleResponse = JSONObject.parseObject(json, object : TypeReference<BccastleResponse?>() {})
-        if (Objects.nonNull(bccastleResponse?.errcode)) {
+        val bccastleResponse = json.into<BccastleResponse>()
+        if (Objects.nonNull(bccastleResponse.errcode)) {
             if (isPrintStack == true) {
                 log.error(json)
             }
-            throw UiaException(bccastleResponse?.msg)
+            throw UiaException(bccastleResponse.msg)
         }
     }
 }

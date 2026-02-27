@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.alipay.domain
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

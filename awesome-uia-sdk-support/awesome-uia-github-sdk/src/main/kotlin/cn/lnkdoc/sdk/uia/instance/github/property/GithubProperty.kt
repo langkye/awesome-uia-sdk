@@ -3,6 +3,7 @@ package cn.lnkdoc.sdk.uia.instance.github.property
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.instance.github.Scope
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

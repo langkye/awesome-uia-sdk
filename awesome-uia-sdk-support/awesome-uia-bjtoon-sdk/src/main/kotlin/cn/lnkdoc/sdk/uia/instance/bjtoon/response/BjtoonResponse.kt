@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.bjtoon.response
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
@@ -37,4 +38,3 @@ class BjtoonResponse<T> {
         var message: String? = null
     }
 }
-

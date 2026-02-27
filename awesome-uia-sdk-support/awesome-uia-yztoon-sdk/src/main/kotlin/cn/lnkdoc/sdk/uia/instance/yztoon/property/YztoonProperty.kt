@@ -4,6 +4,7 @@ import cn.lnkdoc.sdk.uia.common.GrantType
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.instance.yztoon.Scope
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

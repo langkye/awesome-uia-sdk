@@ -7,6 +7,7 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.common.util.Assert.required
 import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

@@ -4,6 +4,7 @@ import cn.lnkdoc.sdk.uia.common.SignType
 import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.instance.alipay.SignMode
 
+
 /**
  * property
  *

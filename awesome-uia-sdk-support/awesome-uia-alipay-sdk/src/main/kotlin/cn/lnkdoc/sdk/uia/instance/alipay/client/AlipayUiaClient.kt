@@ -10,7 +10,7 @@ import cn.lnkdoc.sdk.uia.common.util.Assert.required
 import cn.lnkdoc.sdk.uia.instance.alipay.SignMode
 import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 import cn.lnkdoc.sdk.uia.instance.alipay.util.CheckResponseUtil.check
-import com.alibaba.fastjson2.toJSONString
+import cn.lnkdoc.sdk.uia.serializer.extensions.toJSONString
 import com.alipay.api.*
 import io.vavr.Tuple
 import io.vavr.Tuple3

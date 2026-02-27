@@ -5,7 +5,8 @@ import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
 import cn.lnkdoc.sdk.uia.common.request.AbstractUiaRequest
 import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.instance.gitlab.property.GitlabProperty
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @author langkye
@@ -50,12 +51,12 @@ class AccessTokenRequest: AbstractUiaRequest(), IUiaRequest {
         /**
          * code
          */
-        @set:JSONField(name = "code")
+        @set:UiaJsonField(name = "code")
         var code: String? = null
         /**
          * code_verifier
          */
-        @set:JSONField(name = "code_verifier")
+        @set:UiaJsonField(name = "code_verifier")
         var codeVerifier: String? = null
     }
 }

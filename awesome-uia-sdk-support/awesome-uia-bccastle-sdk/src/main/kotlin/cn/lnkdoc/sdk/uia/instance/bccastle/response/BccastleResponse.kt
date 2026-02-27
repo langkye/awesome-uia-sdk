@@ -2,6 +2,7 @@ package cn.lnkdoc.sdk.uia.instance.bccastle.response
 
 import java.io.Serializable
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE

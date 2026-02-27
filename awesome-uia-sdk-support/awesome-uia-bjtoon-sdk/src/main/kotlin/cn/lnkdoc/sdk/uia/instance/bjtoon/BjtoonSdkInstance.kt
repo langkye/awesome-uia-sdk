@@ -42,4 +42,3 @@ class BjtoonSdkInstance(property: BjtoonProperty) : AbstractInstance(), ISdkInst
         return client.execute<Any>((accessToken as IUiaRequest)) as UiaResponse<T>
     }
 }
-

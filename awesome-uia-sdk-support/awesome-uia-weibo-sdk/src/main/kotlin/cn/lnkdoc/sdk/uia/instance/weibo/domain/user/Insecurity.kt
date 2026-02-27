@@ -1,10 +1,10 @@
 package cn.lnkdoc.sdk.uia.instance.weibo.domain.user
 
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 
-import com.alibaba.fastjson.annotation.JSONField
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class Insecurity {
-    @JSONField(name = "sexual_content")
+    @set:UiaJsonField(name = "sexual_content")
     var sexualContent: Boolean? = null
 }

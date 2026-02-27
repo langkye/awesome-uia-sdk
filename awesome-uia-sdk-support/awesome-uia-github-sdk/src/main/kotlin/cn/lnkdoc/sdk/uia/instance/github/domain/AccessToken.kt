@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.github.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @author langkye
@@ -11,25 +12,25 @@ class AccessToken {
     /**
      * accessToken
      */
-    @set:JSONField(name = "access_token")
+    @set:UiaJsonField(name = "access_token")
     var accessToken: String? = null
 
     /**
      * tokenType
      */
-    @set:JSONField(name = "token_type")
+    @set:UiaJsonField(name = "token_type")
     var tokenType: String? = null
 
     /**
      * scope
      */
-    @set:JSONField(name = "scope")
+    @set:UiaJsonField(name = "scope")
     var scope: String? = null
 
     /**
      * error
      */
-    @set:JSONField(name = "error")
+    @set:UiaJsonField(name = "error")
     var error: String? = null
         set(value) {
             field=value
@@ -42,7 +43,7 @@ class AccessToken {
     /**
      * error_description
      */
-    @set:JSONField(name = "error_description")
+    @set:UiaJsonField(name = "error_description")
     var errorDescription: String? = null
         set(value) {
             field=value
@@ -53,7 +54,7 @@ class AccessToken {
     /**
      * error_uri
      */
-    @set:JSONField(name = "error_uri")
+    @set:UiaJsonField(name = "error_uri")
     var errorUri: String? = null
         set(value) {
             field=value

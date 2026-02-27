@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.gitlab.domain
 
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @document https://developers.google.com/identity/openid-connect/openid-connect?hl=zh-cn#discovery
@@ -12,241 +13,241 @@ class UserInfo {
     /**
      * avatar_url
      */
-    @set:JSONField(name = "avatar_url")
+    @set:UiaJsonField(name = "avatar_url")
     var avatarUrl: String? = null
 
     /**
      * bio
      */
-    @set:JSONField(name = "bio")
+    @set:UiaJsonField(name = "bio")
     var bio: String? = null
 
     /**
      * bot
      */
-    @set:JSONField(name = "bot")
+    @set:UiaJsonField(name = "bot")
     var bot: Boolean? = null
 
     /**
      * can_create_group
      */
-    @set:JSONField(name = "can_create_group")
+    @set:UiaJsonField(name = "can_create_group")
     var canCreateGroup: Boolean? = null
 
     /**
      * can_create_project
      */
-    @set:JSONField(name = "can_create_project")
+    @set:UiaJsonField(name = "can_create_project")
     var canCreateProject: Boolean? = null
 
     /**
      * color_scheme_id
      */
-    @set:JSONField(name = "color_scheme_id")
+    @set:UiaJsonField(name = "color_scheme_id")
     var colorSchemeId: Int? = null
 
     /**
      * commit_email
      */
-    @set:JSONField(name = "commit_email")
+    @set:UiaJsonField(name = "commit_email")
     var commitEmail: String? = null
 
     /**
      * confirmed_at
      */
-    @set:JSONField(name = "confirmed_at")
+    @set:UiaJsonField(name = "confirmed_at")
     var confirmedAt: String? = null
 
     /**
      * created_at
      */
-    @set:JSONField(name = "created_at")
+    @set:UiaJsonField(name = "created_at")
     var createdAt: String? = null
 
     /**
      * current_sign_in_at
      */
-    @set:JSONField(name = "current_sign_in_at")
+    @set:UiaJsonField(name = "current_sign_in_at")
     var currentSignInAt: String? = null
 
     /**
      * discord
      */
-    @set:JSONField(name = "discord")
+    @set:UiaJsonField(name = "discord")
     var discord: String? = null
 
     /**
      * email
      */
-    @set:JSONField(name = "email")
+    @set:UiaJsonField(name = "email")
     var email: String? = null
 
     /**
      * `
      */
-    @set:JSONField(name = "`")
+    @set:UiaJsonField(name = "`")
     var `external`: Boolean? = null
 
     /**
      * extra_shared_runners_minutes_limit
      */
-    @set:JSONField(name = "extra_shared_runners_minutes_limit")
+    @set:UiaJsonField(name = "extra_shared_runners_minutes_limit")
     var extraSharedRunnersMinutesLimit: Any? = null
 
     /**
      * id
      */
-    @set:JSONField(name = "id")
+    @set:UiaJsonField(name = "id")
     var id: Int? = null
 
     /**
      * identities
      */
-    @set:JSONField(name = "identities")
+    @set:UiaJsonField(name = "identities")
     var identities: List<Identity>? = null
 
     /**
      * job_title
      */
-    @set:JSONField(name = "job_title")
+    @set:UiaJsonField(name = "job_title")
     var jobTitle: String? = null
 
     /**
      * last_activity_on
      */
-    @set:JSONField(name = "last_activity_on")
+    @set:UiaJsonField(name = "last_activity_on")
     var lastActivityOn: String? = null
 
     /**
      * last_sign_in_at
      */
-    @set:JSONField(name = "last_sign_in_at")
+    @set:UiaJsonField(name = "last_sign_in_at")
     var lastSignInAt: String? = null
 
     /**
      * linkedin
      */
-    @set:JSONField(name = "linkedin")
+    @set:UiaJsonField(name = "linkedin")
     var linkedin: String? = null
 
     /**
      * local_time
      */
-    @set:JSONField(name = "local_time")
+    @set:UiaJsonField(name = "local_time")
     var localTime: String? = null
 
     /**
      * location
      */
-    @set:JSONField(name = "location")
+    @set:UiaJsonField(name = "location")
     var location: String? = null
 
     /**
      * locked
      */
-    @set:JSONField(name = "locked")
+    @set:UiaJsonField(name = "locked")
     var locked: Boolean? = null
 
     /**
      * name
      */
-    @set:JSONField(name = "name")
+    @set:UiaJsonField(name = "name")
     var name: String? = null
 
     /**
      * organization
      */
-    @set:JSONField(name = "organization")
+    @set:UiaJsonField(name = "organization")
     var organization: String? = null
 
     /**
      * private_profile
      */
-    @set:JSONField(name = "private_profile")
+    @set:UiaJsonField(name = "private_profile")
     var privateProfile: Boolean? = null
 
     /**
      * projects_limit
      */
-    @set:JSONField(name = "projects_limit")
+    @set:UiaJsonField(name = "projects_limit")
     var projectsLimit: Int? = null
 
     /**
      * pronouns
      */
-    @set:JSONField(name = "pronouns")
+    @set:UiaJsonField(name = "pronouns")
     var pronouns: Any? = null
 
     /**
      * public_email
      */
-    @set:JSONField(name = "public_email")
+    @set:UiaJsonField(name = "public_email")
     var publicEmail: String? = null
 
     /**
      * scim_identities
      */
-    @set:JSONField(name = "scim_identities")
+    @set:UiaJsonField(name = "scim_identities")
     var scimIdentities: List<Any>? = null
 
     /**
      * shared_runners_minutes_limit
      */
-    @set:JSONField(name = "shared_runners_minutes_limit")
+    @set:UiaJsonField(name = "shared_runners_minutes_limit")
     var sharedRunnersMinutesLimit: Any? = null
 
     /**
      * skype
      */
-    @set:JSONField(name = "skype")
+    @set:UiaJsonField(name = "skype")
     var skype: String? = null
 
     /**
      * state
      */
-    @set:JSONField(name = "state")
+    @set:UiaJsonField(name = "state")
     var state: String? = null
 
     /**
      * theme_id
      */
-    @set:JSONField(name = "theme_id")
+    @set:UiaJsonField(name = "theme_id")
     var themeId: Int? = null
 
     /**
      * twitter
      */
-    @set:JSONField(name = "twitter")
+    @set:UiaJsonField(name = "twitter")
     var twitter: String? = null
 
     /**
      * two_factor_enabled
      */
-    @set:JSONField(name = "two_factor_enabled")
+    @set:UiaJsonField(name = "two_factor_enabled")
     var twoFactorEnabled: Boolean? = null
 
     /**
      * username
      */
-    @set:JSONField(name = "username")
+    @set:UiaJsonField(name = "username")
     var username: String? = null
 
     /**
      * web_url
      */
-    @set:JSONField(name = "web_url")
+    @set:UiaJsonField(name = "web_url")
     var webUrl: String? = null
 
     /**
      * website_url
      */
-    @set:JSONField(name = "website_url")
+    @set:UiaJsonField(name = "website_url")
     var websiteUrl: String? = null
 
     /**
      * work_information
      */
-    @set:JSONField(name = "work_information")
+    @set:UiaJsonField(name = "work_information")
     var workInformation: String? = null
     /**
      * raw
@@ -268,7 +269,7 @@ class UserInfo {
     /**
      * error
      */
-    @set:JSONField(name = "error")
+    @set:UiaJsonField(name = "error")
     var error: String? = null
         set(value) {
             field = value
@@ -278,7 +279,7 @@ class UserInfo {
     /**
      * error_description
      */
-    @set:JSONField(name = "error_description")
+    @set:UiaJsonField(name = "error_description")
     var errorDescription: String? = null
         set(value) {
             field = value
@@ -294,18 +295,18 @@ class Identity {
     /**
      * extern_uid
      */
-    @set:JSONField(name = "extern_uid")
+    @set:UiaJsonField(name = "extern_uid")
     var externUid: String? = null
 
     /**
      * provider
      */
-    @set:JSONField(name = "provider")
+    @set:UiaJsonField(name = "provider")
     var provider: String? = null
 
     /**
      * saml_provider_id
      */
-    @set:JSONField(name = "saml_provider_id")
+    @set:UiaJsonField(name = "saml_provider_id")
     var samlProviderId: Any? = null
 }

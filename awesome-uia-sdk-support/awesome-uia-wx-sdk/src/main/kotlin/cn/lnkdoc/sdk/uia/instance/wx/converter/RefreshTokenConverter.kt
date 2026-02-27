@@ -4,12 +4,12 @@ import cn.lnkdoc.sdk.uia.common.converter.IUiaConverter
 import cn.lnkdoc.sdk.uia.instance.wx.domain.RefreshToken
 import cn.lnkdoc.sdk.uia.instance.wx.property.WxProperty
 import cn.lnkdoc.sdk.uia.instance.wx.request.RefreshTokenRequest
-import com.alibaba.fastjson2.JSON
-import com.alibaba.fastjson2.TypeReference
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.google.auto.service.AutoService
 import io.vavr.Tuple3
 import okhttp3.OkHttpClient
 import okhttp3.Request
+
 
 /**
  * @author langkye
@@ -26,7 +26,7 @@ open class RefreshTokenConverter : IUiaConverter {
      */
     override fun <T, R> convertResponse(body: R): T {
         val json = body as String
-        val accessToken = JSON.parseObject(json, object : TypeReference<RefreshToken?>() {}) as RefreshToken
+        val accessToken = json.into<RefreshToken>()
         return accessToken as T
     }
 

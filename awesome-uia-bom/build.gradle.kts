@@ -74,5 +74,6 @@ dependencies {
         api(libs.bcprov.jdk15to18)
         // sdk
         api(libs.alipay.sdk.java)
+        api(libs.alipay.sdk.java.v3)
     }
 }

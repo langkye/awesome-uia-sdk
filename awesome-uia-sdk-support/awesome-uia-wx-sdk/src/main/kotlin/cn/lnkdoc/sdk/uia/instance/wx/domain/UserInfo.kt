@@ -2,6 +2,7 @@ package cn.lnkdoc.sdk.uia.instance.wx.domain
 
 import cn.lnkdoc.sdk.uia.instance.wx.response.WxResponse
 
+
 /**
  * 用户信息
  * <pre>

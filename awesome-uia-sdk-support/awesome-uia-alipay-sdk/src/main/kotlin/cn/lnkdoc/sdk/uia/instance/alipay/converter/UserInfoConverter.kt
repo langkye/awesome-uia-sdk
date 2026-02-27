@@ -5,14 +5,13 @@ import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.instance.alipay.domain.UserInfo
 import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 import cn.lnkdoc.sdk.uia.instance.alipay.request.UserInfoRequest
-import com.alibaba.fastjson2.JSON
-import com.alibaba.fastjson2.TypeReference
-import com.alibaba.fastjson2.parseObject
+import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import com.alipay.api.AlipayClient
 import com.alipay.api.AlipayResponse
 import com.alipay.api.request.AlipayUserInfoShareRequest
 import com.google.auto.service.AutoService
 import io.vavr.Tuple3
+
 
 /**
  * @author langkye
@@ -29,8 +28,8 @@ open class UserInfoConverter : IUiaConverter {
      */
     override fun <T, R> convertResponse(body: R): T {
         val alipayResponse = body as AlipayResponse
-        val responseBody = alipayResponse.body.parseObject().getString("alipay_user_info_share_response")
-        val response = JSON.parseObject(responseBody, object : TypeReference<UserInfo?>() {}) as UserInfo
+        val responseBody = alipayResponse.body.into<HashMap<String, String>>()["alipay_user_info_share_response"]
+        val response = responseBody.into<UserInfo>()
         response.raw = alipayResponse.body
 
         return response as T

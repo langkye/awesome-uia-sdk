@@ -1,7 +1,8 @@
 package cn.lnkdoc.sdk.uia.instance.wx.domain
 
 import cn.lnkdoc.sdk.uia.instance.wx.response.WxResponse
-import com.alibaba.fastjson2.annotation.JSONField
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
+
 
 /**
  * @author langkye
@@ -12,17 +13,17 @@ class RefreshToken : WxResponse() {
     /**
      * 接口调用凭证
      */
-    @set:JSONField(name = "access_token")
+    @set:UiaJsonField(name = "access_token")
     var accessToken: String? = null
     /**
      * access_token接口调用凭证超时时间，单位（秒）
      */
-    @set:JSONField(name = "expires_in")
+    @set:UiaJsonField(name = "expires_in")
     var expiresIn: Long? = null
     /**
      * 用户刷新access_token
      */
-    @set:JSONField(name = "refresh_token")
+    @set:UiaJsonField(name = "refresh_token")
     var refreshToken: String? = null
     /**
      * 授权用户唯一标识

@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.SdkInstanceProvider
 import cn.lnkdoc.sdk.uia.instance.google.property.GoogleProperty
 import com.google.auto.service.AutoService
 
+
 @AutoService(SdkInstanceProvider::class)
 class GoogleSdkInstanceProvider : SdkInstanceProvider {
     override fun getName(): String = "GOOGLE"

@@ -1,12 +1,12 @@
 package cn.lnkdoc.sdk.uia.instance.weibo.domain.user
 
+import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 
-import com.alibaba.fastjson.annotation.JSONField
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class HotPage {
-    @JSONField(name = "feed_detail_type")
+    @set:UiaJsonField(name = "feed_detail_type")
     var feedDetailType: Int? = null
-    @JSONField(name = "fid")
+    @set:UiaJsonField(name = "fid")
     var fid: String? = null
 }

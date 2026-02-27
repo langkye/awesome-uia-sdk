@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.common.request.AbstractUiaRequest
 import cn.lnkdoc.sdk.uia.common.request.IUiaRequest
 import cn.lnkdoc.sdk.uia.instance.alipay.property.AlipayProperty
 
+
 /**
  * @author langkye
  * @since 1.0.0.RELEASE
