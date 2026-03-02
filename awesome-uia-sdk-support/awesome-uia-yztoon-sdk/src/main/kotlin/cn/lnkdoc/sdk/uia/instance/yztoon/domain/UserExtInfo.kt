@@ -57,11 +57,11 @@ class UserExtInfo {
      */
     var industryCode: String? = null
     /**
-     * 注册地址行政区划代码
+     * 经营(业务)范围
      */
     var businessScope: String? = null
     /**
-     * 经营(业务)范围
+     * 注册地址行政区划代码
      */
     var areaCode: String? = null
     /**

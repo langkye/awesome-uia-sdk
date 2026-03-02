@@ -6,6 +6,7 @@ import cn.lnkdoc.sdk.uia.instance.AbstractInstance
 import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.yztoon.client.YztoonUiaClient
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
+import cn.lnkdoc.sdk.uia.instance.yztoon.request.LogoutRequest
 
 
 /**
@@ -38,5 +39,15 @@ class YztoonSdkInstance(property: YztoonProperty) : AbstractInstance(), ISdkInst
      */
     override fun <T, R> getUserInfo(accessToken: R): UiaResponse<T> {
         return client.execute<Any>((accessToken as IUiaRequest)) as UiaResponse<T>
+    }
+
+    /**
+     * logout
+     *
+     * @param accessToken accessToken
+     * @return UserInfo
+     */
+    fun <T, R> logout(accessToken: R): UiaResponse<T> {
+        return client.execute<Any>((accessToken as LogoutRequest)) as UiaResponse<T>
     }
 }
