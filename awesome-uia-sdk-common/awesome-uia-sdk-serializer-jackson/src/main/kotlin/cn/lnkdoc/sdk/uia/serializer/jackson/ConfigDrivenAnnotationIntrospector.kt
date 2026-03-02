@@ -78,9 +78,10 @@ class ConfigDrivenAnnotationIntrospector(private val ruleResolver: RuleResolver)
         }
     }
 
+    @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
     private fun isBooleanGetter(member: AnnotatedMethod): Boolean {
         val rt = member.rawType
-        return rt == java.lang.Boolean::class.java || rt == java.lang.Boolean.TYPE
+        return rt == Boolean::class.java || rt == java.lang.Boolean::class.java || rt == java.lang.Boolean.TYPE
     }
 
     /**
