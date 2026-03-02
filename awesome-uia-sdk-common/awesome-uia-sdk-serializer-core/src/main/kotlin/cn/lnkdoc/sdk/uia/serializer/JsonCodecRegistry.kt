@@ -22,9 +22,10 @@ object JsonCodecRegistry {
      * @param preferred preferred
      * @return JsonCodec
      */
-    fun load(config: SerializationConfig, preferred: String? = "jackson"): JsonCodec {
-        val name = preferred ?: "jackson"
+    fun load(config: SerializationConfig? = null, preferred: String? = null): JsonCodec {
+        val name = preferred ?: JsonCodecContext.getDefaultCodecName()
+        val serializationConfig = config ?: JsonCodecContext.getDefaultSerializationConfig()
         val provider = providers[name] ?: throw IllegalArgumentException("No JsonCodecProvider found for name: $name")
-        return provider.create(config)
+        return provider.create(serializationConfig)
     }
 }

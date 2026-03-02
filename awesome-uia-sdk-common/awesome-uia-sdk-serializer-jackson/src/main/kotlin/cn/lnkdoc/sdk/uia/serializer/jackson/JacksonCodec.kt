@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import java.lang.reflect.Type
 import java.text.SimpleDateFormat
 
 /**
@@ -22,6 +23,12 @@ class JacksonCodec(private val objectMapper: ObjectMapper) : JsonCodec {
 
     override fun <T> fromJson(json: String, clazz: Class<T>): T {
         return objectMapper.readValue(json, clazz)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T> fromJson(json: String, type: Type): T {
+        val javaType = objectMapper.typeFactory.constructType(type)
+        return objectMapper.readValue(json, javaType) as T
     }
 
     /**

@@ -9,6 +9,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import java.lang.reflect.Field
+import java.lang.reflect.Type
 
 
 /**
@@ -24,6 +25,11 @@ class GsonCodec(private val gson: Gson) : JsonCodec {
 
     override fun <T> fromJson(json: String, clazz: Class<T>): T {
         return gson.fromJson(json, clazz)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T> fromJson(json: String, type: Type): T {
+        return gson.fromJson(json, type) as T
     }
 
     /**

@@ -63,12 +63,11 @@ class ConfigDrivenAnnotationIntrospector(private val ruleResolver: RuleResolver)
             is AnnotatedField -> member.name
             is AnnotatedMethod -> {
                 val name = member.name
-                if (name.startsWith("get") || name.startsWith("is")) {
-                    com.fasterxml.jackson.databind.util.BeanUtil.okNameForGetter(member, false)
-                } else if (name.startsWith("set")) {
-                    com.fasterxml.jackson.databind.util.BeanUtil.okNameForSetter(member, false)
-                } else {
-                    name
+                when {
+                    name.startsWith("get") -> legacyManglePropertyName(name, 3)
+                    name.startsWith("is") && isBooleanGetter(member) -> legacyManglePropertyName(name, 2)
+                    name.startsWith("set") -> legacyManglePropertyName(name, 3)
+                    else -> name
                 }
             }
             is AnnotatedParameter -> {
@@ -77,5 +76,38 @@ class ConfigDrivenAnnotationIntrospector(private val ruleResolver: RuleResolver)
             }
             else -> member.name
         }
+    }
+
+    private fun isBooleanGetter(member: AnnotatedMethod): Boolean {
+        val rt = member.rawType
+        return rt == java.lang.Boolean::class.java || rt == java.lang.Boolean.TYPE
+    }
+
+    /**
+     * Legacy property-name mangling (equivalent to BeanUtil legacy behavior).
+     * Keeps compatibility with stdNaming = false.
+     */
+    private fun legacyManglePropertyName(basename: String, offset: Int): String? {
+        val end = basename.length
+        if (end == offset) return null
+        val c = basename[offset]
+        val d = c.lowercaseChar()
+        if (c == d) {
+            return basename.substring(offset)
+        }
+        val sb = StringBuilder(end - offset)
+        sb.append(d)
+        var i = offset + 1
+        while (i < end) {
+            val c2 = basename[i]
+            val d2 = c2.lowercaseChar()
+            if (c2 == d2) {
+                sb.append(basename, i, end)
+                break
+            }
+            sb.append(d2)
+            i++
+        }
+        return sb.toString()
     }
 }

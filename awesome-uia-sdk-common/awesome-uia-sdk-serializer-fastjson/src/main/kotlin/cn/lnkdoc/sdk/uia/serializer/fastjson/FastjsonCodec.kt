@@ -5,18 +5,13 @@ import cn.lnkdoc.sdk.uia.serializer.config.Direction
 import cn.lnkdoc.sdk.uia.serializer.config.RuleResolver
 import cn.lnkdoc.sdk.uia.serializer.config.SerializationConfig
 import com.alibaba.fastjson.JSON
-import com.alibaba.fastjson.JSONObject
 import com.alibaba.fastjson.parser.ParserConfig
-import com.alibaba.fastjson.util.TypeUtils
 import com.alibaba.fastjson.serializer.SerializeFilter
 import com.alibaba.fastjson.serializer.SerializeConfig
 import com.alibaba.fastjson.serializer.SerializerFeature
 import com.alibaba.fastjson.serializer.NameFilter
-import com.alibaba.fastjson.serializer.ValueFilter
-import com.alibaba.fastjson.serializer.PropertyPreFilter
 import com.alibaba.fastjson.serializer.PropertyFilter
-import java.lang.reflect.Field
-import java.lang.reflect.Method
+import java.lang.reflect.Type
 
 /**
  * FastjsonCodec
@@ -41,6 +36,11 @@ class FastjsonCodec(
 
     override fun <T> fromJson(json: String, clazz: Class<T>): T {
         return JSON.parseObject(json, clazz, parserConfig)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T> fromJson(json: String, type: Type): T {
+        return JSON.parseObject(json, type, parserConfig) as T
     }
 
     /**

@@ -21,4 +21,7 @@ dependencies {
     api(libs.dom4j)
     implementation(libs.auto.service.annotations)
     kapt(libs.auto.service)
+
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
