@@ -30,7 +30,7 @@ class WxUiaClient private constructor() : IUiaClient {
     /**
      * property
      */
-    private var property: WxProperty? = null
+    private lateinit var property: WxProperty
 
     /**
      * execute
@@ -46,7 +46,7 @@ class WxUiaClient private constructor() : IUiaClient {
             val string = sendRequest(request)
 
             // check success
-            check(string, property!!.isPrintStack())
+            check(string, property.isPrintStack())
 
             // convert 
             val converts = request.getConvert<Any, Any>()
@@ -57,7 +57,7 @@ class WxUiaClient private constructor() : IUiaClient {
             // check success
             success(resp)
         } catch (e: Exception) {
-            if (property!!.isPrintStack()) {
+            if (property.isPrintStack()) {
                 log.error("", e)
             }
             fail(e.message)
@@ -66,7 +66,7 @@ class WxUiaClient private constructor() : IUiaClient {
 
     private fun sendRequest(request: IUiaRequest): String {
         // build request url
-        val url = request.url(property!!)
+        val url = request.url(property)
         val logMessage = String.format("[%s][%s]", request.method(), url)
         var success = false
         var string = ""

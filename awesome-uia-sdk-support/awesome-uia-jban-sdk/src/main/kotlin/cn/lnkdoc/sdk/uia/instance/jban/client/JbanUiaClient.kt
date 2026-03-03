@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory
 @Suppress("Unchecked_cast", "unused")
 class JbanUiaClient private constructor() : IUiaClient {
     private val client = OkHttpClient().newBuilder().build()
-    private var property: JbanProperty? = null
+    private lateinit var property: JbanProperty
 
     /**
      * execute
@@ -50,7 +50,7 @@ class JbanUiaClient private constructor() : IUiaClient {
             // check success
             success(resp)
         } catch (e: Exception) {
-            if (property!!.isPrintStack()) {
+            if (property.isPrintStack()) {
                 log.error("", e)
             }
             fail(e.message)
@@ -59,7 +59,7 @@ class JbanUiaClient private constructor() : IUiaClient {
 
     private fun sendRequest(request: IUiaRequest): String {
         // build request url
-        val url = request.url(property!!)
+        val url = request.url(property)
         val logMessage = String.format("[%s][%s]", request.method(), url)
         var success = false
         var string = ""
@@ -86,7 +86,7 @@ class JbanUiaClient private constructor() : IUiaClient {
                 return string
             }
         } catch (e: Exception) {
-            if (property!!.isPrintStack()) {
+            if (property.isPrintStack()) {
                 log.error("", e)
             }
             throw UiaException(e)

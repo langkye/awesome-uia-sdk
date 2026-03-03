@@ -17,7 +17,7 @@ abstract class AbstractUiaClientInterceptor: Interceptor, IUiaClientInterceptor 
         //************ 拦截请求 ************//
         // 获取请求
         val request: Request = chain.request()
-        this.interceptRequest(request);
+        this.interceptRequest(request)
         
         //************ 拦截响应 ************//
         // 处理请求，并获取响应

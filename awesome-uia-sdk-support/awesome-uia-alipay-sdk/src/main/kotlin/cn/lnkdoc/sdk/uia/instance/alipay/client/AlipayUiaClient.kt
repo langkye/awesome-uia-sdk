@@ -31,7 +31,7 @@ class AlipayUiaClient private constructor() : IUiaClient {
     /**
      * property
      */
-    private var property: AlipayProperty? = null
+    private lateinit var property: AlipayProperty
 
     /**
      * execute
@@ -47,7 +47,7 @@ class AlipayUiaClient private constructor() : IUiaClient {
             val response = sendRequest(request)
 
             // check success
-            check(response, property?.isPrintStack())
+            check(response, property.isPrintStack())
 
             // convert 
             val converts = request.getConvert<Any, Any>()
@@ -58,7 +58,7 @@ class AlipayUiaClient private constructor() : IUiaClient {
             // check success
             success(resp)
         } catch (e: Exception) {
-            if (property!!.isPrintStack()) {
+            if (property.isPrintStack()) {
                 log.error("", e)
             }
             fail(e.message)
@@ -71,7 +71,7 @@ class AlipayUiaClient private constructor() : IUiaClient {
         initClient()
         
         // build request url
-        val url = request.url(property!!)
+        val url = request.url(property)
         val method = request.method()
         val logMessage = String.format("[%s][%s]", method, url)
         var success = true
@@ -103,29 +103,29 @@ class AlipayUiaClient private constructor() : IUiaClient {
     
     private fun initClient() {
         // 公钥模式加签
-        if (property?.signMode == SignMode.PUBLIC_KEY.signMode) {
+        if (property.signMode == SignMode.PUBLIC_KEY.signMode) {
             val alipayConfig = AlipayConfig()
-            alipayConfig.serverUrl = property?.alipayGatewayUrl
-            alipayConfig.appId = property?.appId
-            alipayConfig.privateKey = property?.appPrivateKey
-            alipayConfig.format = property?.format
-            alipayConfig.charset = property?.charset
-            alipayConfig.alipayPublicKey = property?.alipayPublicKey
-            alipayConfig.signType = property?.signType
+            alipayConfig.serverUrl = property.alipayGatewayUrl
+            alipayConfig.appId = property.appId
+            alipayConfig.privateKey = property.appPrivateKey
+            alipayConfig.format = property.format
+            alipayConfig.charset = property.charset
+            alipayConfig.alipayPublicKey = property.alipayPublicKey
+            alipayConfig.signType = property.signType
             client = DefaultAlipayClient(alipayConfig)
         } 
         // 公钥证书模式加签
-        else{
+        else {
             val certAlipayRequest = CertAlipayRequest()
-            certAlipayRequest.serverUrl = property?.alipayGatewayUrl
-            certAlipayRequest.appId = property?.appId
-            certAlipayRequest.privateKey = property?.appPrivateKey
-            certAlipayRequest.format = property?.format
-            certAlipayRequest.charset = property?.charset
-            certAlipayRequest.signType = property?.signType
-            certAlipayRequest.certPath = property?.appCertPath
-            certAlipayRequest.alipayPublicCertPath = property?.alipayCertPath
-            certAlipayRequest.rootCertPath = property?.alipayRootCertPath
+            certAlipayRequest.serverUrl = property.alipayGatewayUrl
+            certAlipayRequest.appId = property.appId
+            certAlipayRequest.privateKey = property.appPrivateKey
+            certAlipayRequest.format = property.format
+            certAlipayRequest.charset = property.charset
+            certAlipayRequest.signType = property.signType
+            certAlipayRequest.certPath = property.appCertPath
+            certAlipayRequest.alipayPublicCertPath = property.alipayCertPath
+            certAlipayRequest.rootCertPath = property.alipayRootCertPath
             client = DefaultAlipayClient(certAlipayRequest)
         }
     }
