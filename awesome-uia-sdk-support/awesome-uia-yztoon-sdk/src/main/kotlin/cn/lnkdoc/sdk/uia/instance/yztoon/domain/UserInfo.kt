@@ -1,6 +1,7 @@
 package cn.lnkdoc.sdk.uia.instance.yztoon.domain
 
 import cn.lnkdoc.sdk.uia.common.util.string.CaseFormat
+import cn.lnkdoc.sdk.uia.instance.yztoon.response.YztoonResponse
 import cn.lnkdoc.sdk.uia.serializer.extensions.into
 import cn.lnkdoc.sdk.uia.serializer.extensions.toJSONString
 import org.apache.commons.collections4.CollectionUtils
@@ -19,7 +20,7 @@ import java.io.Serializable
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class UserInfo : Serializable {
+class UserInfo : YztoonResponse<Any>(), Serializable {
     private val logger : Logger = LoggerFactory.getLogger(UserInfo::class.java)
     
     /**

@@ -10,6 +10,7 @@ import cn.lnkdoc.sdk.uia.common.response.UiaResponse.Companion.success
 import cn.lnkdoc.sdk.uia.common.util.Assert.required
 import cn.lnkdoc.sdk.uia.common.util.trust.TrustDomain.trust
 import cn.lnkdoc.sdk.uia.instance.yztoon.property.YztoonProperty
+import cn.lnkdoc.sdk.uia.instance.yztoon.util.CheckResponseUtil
 import io.vavr.Tuple
 import io.vavr.Tuple2
 import okhttp3.*
@@ -36,7 +37,7 @@ private constructor() : IUiaClient {
     /**
      * property
      */
-    private var property: YztoonProperty? = null
+    private lateinit var property: YztoonProperty
 
     /**
      * execute
@@ -51,6 +52,9 @@ private constructor() : IUiaClient {
             // send request
             val string = sendRequest(request)
 
+            // check success
+            CheckResponseUtil.check(string, property.isPrintStack(), property.isTranslateMessage())
+
             // match converter
             val converters = request.getConvert<Any, Any>()
             required(converters, "not found converter for [" + request.javaClass.getName() + "]")
@@ -60,7 +64,7 @@ private constructor() : IUiaClient {
             val t = converter.convertResponse<RESP, Tuple2<String, YztoonProperty?>>(Tuple.of(string, property))
             success(t)
         } catch (e: Exception) {
-            if (property!!.isPrintStack()) {
+            if (property.isPrintStack()) {
                 log.error("", e)
             }
             fail(e.message)
@@ -69,7 +73,7 @@ private constructor() : IUiaClient {
 
     private fun sendRequest(request: IUiaRequest): String {
         // build request url
-        val url = request.url(property!!)
+        val url = request.url(property)
         val logMessage = String.format("[%s][%s]", request.method(), url)
         var success = false
         var string = ""

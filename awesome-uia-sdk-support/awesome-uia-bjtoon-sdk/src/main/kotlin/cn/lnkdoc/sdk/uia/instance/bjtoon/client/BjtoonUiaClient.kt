@@ -40,7 +40,7 @@ class BjtoonUiaClient private constructor() : IUiaClient {
             val string = sendRequest(request)
 
             // check success
-            CheckResponseUtil.check(string)
+            CheckResponseUtil.check(string, property.isPrintStack())
 
             // convert
             // match converter

@@ -16,6 +16,10 @@ class YztoonProperty : IUiaProperty {
      */
     var printStack = false
     /**
+     * translateMessage
+     */
+    var translateMessage = false
+    /**
      * domain
      */
     var domain: String? = null
@@ -78,5 +82,13 @@ class YztoonProperty : IUiaProperty {
      */
     override fun isPrintStack(): Boolean {
         return printStack
+    }
+    /**
+     * getter
+     *
+     * @return printStack
+     */
+    fun isTranslateMessage(): Boolean {
+        return translateMessage
     }
 }

@@ -17,6 +17,7 @@ dependencies {
     api(libs.okhttp) {
         exclude(group = "com.squareup.okio", module = "okio")
     }
+    api(libs.okhttp.jvm)
     api(libs.okio)
     api(libs.slf4j.api)
     api(libs.guava)

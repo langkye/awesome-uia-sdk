@@ -26,7 +26,7 @@ junit-bom = "6.0.1"
 junit-jupiter = "6.0.1"
 kotlin = "2.3.0"
 kotlinx-serialization-json = "1.9.0"
-logback = "1.5.22"
+logback = "1.5.32"
 logstash = "7.2"
 mapstruct = "1.6.3"
 okio = "3.16.4"
@@ -85,6 +85,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 logstash-logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logstash" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3"}
+okhttp-jvm = { module = "com.squareup.okhttp3:okhttp-jvm", version.ref = "okhttp3"}
 okio = { module = "com.squareup.okio:okio", version.ref = "okio"}
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml"}
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf-java"}
@@ -105,9 +106,12 @@ common-utils = [
     "fastjson2"
 ]
 project-requirement = [
+    "common-lang",
+    "okhttp",
+    "okhttp-jvm",
+    "okio",
     "stdlib",
     "stdlib-jdk8",
-    "common-lang",
 ]
 
 ####################################################### [常用插件] #####################################################

@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.common.interceptor
 
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.Request
+import okhttp3.Response
 import okio.Buffer
 import org.slf4j.LoggerFactory
 

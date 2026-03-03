@@ -1,5 +1,6 @@
 package cn.lnkdoc.sdk.uia.instance.yztoon.domain
 
+import cn.lnkdoc.sdk.uia.instance.yztoon.response.YztoonResponse
 import cn.lnkdoc.sdk.uia.serializer.annotation.UiaJsonField
 import java.io.Serializable
 
@@ -9,7 +10,7 @@ import java.io.Serializable
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class AccessToken : Serializable {
+class AccessToken : YztoonResponse<Any>(), Serializable {
     /**
      * expiresIn
      */
