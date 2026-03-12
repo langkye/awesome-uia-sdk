@@ -23,7 +23,7 @@ plugins {
 val signingKeyId = project.findProperty("signing.keyId") as String?
 //val signingKey = project.findProperty("signing.key") as String?
 val keyFilePath = project.findProperty("signing.keyFilePath") as String?
-val keyFile = if(keyFilePath != null) file(keyFilePath) else null
+val keyFile = if (keyFilePath != null) file(keyFilePath) else null
 val signingPassword = project.findProperty("signing.password") as String?
 println("[${project.name}] load signingKeyId: $signingKeyId")
 println("[${project.name}] read keyFilePath: $keyFilePath")
@@ -42,12 +42,12 @@ allprojects {
 }
 
 subprojects {
-    
+
     if (!isInternalModule(project.name)) {
         apply(plugin = "maven-publish")
         apply(plugin = "signing")
     }
-    
+
     if (isJavaPlatform(project.name)) {
         apply(plugin = "java-platform")
         apply(plugin = "uia.platform")
@@ -58,7 +58,21 @@ subprojects {
         apply(plugin = "java-library")
         apply(plugin = "kotlin")
         apply(plugin = "kotlin-kapt")
-        
+
+        val targetJava =
+            // spring-boot-3 => jdk17+
+            if (project.name.contains("spring-boot-3", true)) {
+                TOOLCHAIN_JAVA_VERSION
+            }
+            // spring-boot-4 => jdk17+
+            else if (project.name.contains("spring-boot-4", true)) {
+                TOOLCHAIN_JAVA_VERSION
+            } 
+            // other
+            else {
+                TARGET_JAVA_VERSION
+            }
+
         dependencies {
             //implementation("com.google.auto.service:auto-service-annotations")
             //"kapt"("com.google.auto.service:auto-service")
@@ -77,7 +91,7 @@ subprojects {
             options.compilerArgs.add("-Xlint:deprecation")
             options.compilerArgs.add("-Xlint:-unchecked")
             if (name == "compileJava") {
-                options.release.set(resolveReleaseJdkVersion(TARGET_JAVA_VERSION)) // main -> --release 8
+                options.release.set(resolveReleaseJdkVersion(targetJava)) // main -> --release 8
             }
         }
 
@@ -88,9 +102,9 @@ subprojects {
             //}
             if (name == "compileKotlin") {
                 compilerOptions {
-                    jvmTarget.set(JvmTarget.fromTarget(TARGET_JAVA_VERSION.toString()))
+                    jvmTarget.set(JvmTarget.fromTarget(targetJava.toString()))
                     // 更严格：限制可用 JDK API 到 8（建议开启，避免误用 JDK9+ API）
-                    freeCompilerArgs.add("-Xjdk-release=${resolveReleaseJdkVersion(TARGET_JAVA_VERSION)}")
+                    freeCompilerArgs.add("-Xjdk-release=${resolveReleaseJdkVersion(targetJava)}")
                     freeCompilerArgs.add("-Xjsr305=strict")
                 }
             }
@@ -144,6 +158,12 @@ subprojects {
                 jvmTarget.set(JvmTarget.fromTarget(TOOLCHAIN_JAVA_VERSION.toString()))
             }
         }
+        tasks.matching { it.name == "kaptGenerateStubsKotlin" }.configureEach {
+            @Suppress("UNCHECKED_CAST")
+            (this as KotlinCompile).compilerOptions {
+                jvmTarget.set(JvmTarget.fromTarget(targetJava.toString()))
+            }
+        }
 
         // 如果你还在用 JUnit 6（需要 17+），确保 test 配置解析按 JVM17
         configurations.matching {
@@ -162,11 +182,13 @@ subprojects {
             //    //useInMemoryPgpKeys(signingKey, signingPassword)
             //    useInMemoryPgpKeys(signingKeyId, signingPassword)
             //}
+            // 有key文件
             if (keyFilePath != null && keyFile?.exists() == true) {
                 // 读取文件内容并使用内存签名
                 val keyContent = keyFile.readText()
                 useInMemoryPgpKeys(signingKeyId, keyContent, signingPassword ?: "")
             }
+            // 无key文件
             else {
                 // 如果没有提供内存密钥，则回退到使用本地 gpg 代理
                 useGpgCmd()
@@ -190,9 +212,12 @@ subprojects {
                 }
 
                 create<MavenPublication>("mavenJava") {
+                    // bom项目
                     if (isJavaPlatform(project.name)) {
                         from(components["javaPlatform"])
-                    } else{
+                    } 
+                    // 普通项目
+                    else {
                         from(components["java"])
                     }
 
@@ -246,13 +271,15 @@ subprojects {
             repositories {
                 maven {
                     val releasesRepositoryUrl = RELEASE_URL
-                    val snapshotsRepositoryUrl= SNAPSHOTS_URL
+                    val snapshotsRepositoryUrl = SNAPSHOTS_URL
 
                     isAllowInsecureProtocol = true
                     name = project.name
                     description = project.description
 
-                    url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepositoryUrl else releasesRepositoryUrl)
+                    url = uri(
+                        if (version.toString().endsWith("SNAPSHOT")) snapshotsRepositoryUrl else releasesRepositoryUrl
+                    )
 
                     credentials {
                         // find property from ~/.gradle/gradle.properties
@@ -264,7 +291,7 @@ subprojects {
                 }
             }
         }
-        
+
         tasks.withType<PublishToMavenRepository> {
             doFirst {
                 println("Publishing ${project.name} to repository: ${repository.url}")

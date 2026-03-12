@@ -1,6 +1,6 @@
 // ---------------------------------------------------------- Project info ----------------------------------------------------------
 const val GROUP_ID = "cn.lnkdoc.sdk"
-const val PROJECT_VERSION = "3.x-SNAPSHOT"
+const val PROJECT_VERSION = "3.0.0-SNAPSHOT"
 const val DESCRIPTION = """
     Awesome Uia SDK for Java
     Copyright © 2023 lnkdoc All rights reserved.
@@ -16,6 +16,7 @@ const val DEPENDENCIES_NAME = "awesome-uia-sdk-dependencies"
 const val BUILD_LOGIC_NAME = "build-logic"
 const val COMMON_NAME = "awesome-uia-sdk-common"
 const val SUPPORT_NAME = "awesome-uia-sdk-support"
+const val STARTER_NAME = "awesome-uia-sdk-starter"
 
 fun resolveCommonModuleName(shortName: String): String {
     val sn = shortName.replace("awesome-uia-sdk-", "")
@@ -31,12 +32,20 @@ fun isJavaPlatform(name: String): Boolean {
 }
 
 fun isInternalModule(name: String): Boolean {
-    return listOf(CORE, BOM_NAME, BUILD_LOGIC_NAME, COMMON_NAME, SUPPORT_NAME).contains(name)
+    return listOf(CORE, 
+        BOM_NAME, 
+        BUILD_LOGIC_NAME, 
+        COMMON_NAME, 
+        SUPPORT_NAME, 
+        STARTER_NAME,
+    ).contains(name) 
+            || name.matches(Regex("^awesome-uia-sdk-spring-boot-.*-starter$"))
+            || name.matches(Regex("^awesome-uia-sdk-solon-boot-.*-starter$"))
 }
 
 fun resolveReleaseJdkVersion(version: Number): Int {
     // 如果是浮点类型取最后一位，如1.8 -> 8；整数返回自身
     val versionString = version.toString()
     val versionNumber = if (versionString.contains(".")) versionString.split(".").last().toInt() else version.toInt()
-    return versionNumber;
+    return versionNumber
 }

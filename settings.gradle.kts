@@ -33,32 +33,32 @@ include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-2-starter:awesome-u
 include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-2-starter:awesome-uia-wx-sdk-spring-boot-2-starter")
 include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-2-starter:awesome-uia-yztoon-sdk-spring-boot-2-starter")
 
-//// Spring boot 3 Starter
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-alipay-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-bccastle-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-bjtoon-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-gitee-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-github-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-gitlab-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-google-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-jban-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-weibo-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-wx-sdk-spring-boot-3-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-yztoon-sdk-spring-boot-3-starter")
-//
-//// Spring boot 4 Starter
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-alipay-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-bccastle-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-bjtoon-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-gitee-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-github-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-gitlab-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-google-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-jban-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-weibo-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-wx-sdk-spring-boot-4-starter")
-//include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-yztoon-sdk-spring-boot-4-starter")
-//
+// Spring boot 3 Starter
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-alipay-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-bccastle-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-bjtoon-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-gitee-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-github-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-gitlab-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-google-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-jban-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-weibo-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-wx-sdk-spring-boot-3-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-3-starter:awesome-uia-yztoon-sdk-spring-boot-3-starter")
+
+// Spring boot 4 Starter
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-alipay-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-bccastle-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-bjtoon-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-gitee-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-github-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-gitlab-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-google-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-jban-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-weibo-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-wx-sdk-spring-boot-4-starter")
+include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-4-starter:awesome-uia-yztoon-sdk-spring-boot-4-starter")
+
 //// Solon boot 2 Starter
 //include("awesome-uia-sdk-starter:awesome-uia-sdk-solon-boot-2-starter:awesome-uia-alipay-sdk-solon-boot-2-starter")
 //include("awesome-uia-sdk-starter:awesome-uia-sdk-solon-boot-2-starter:awesome-uia-bccastle-sdk-solon-boot-2-starter")
@@ -71,7 +71,7 @@ include("awesome-uia-sdk-starter:awesome-uia-sdk-spring-boot-2-starter:awesome-u
 //include("awesome-uia-sdk-starter:awesome-uia-sdk-solon-boot-2-starter:awesome-uia-weibo-sdk-solon-boot-2-starter")
 //include("awesome-uia-sdk-starter:awesome-uia-sdk-solon-boot-2-starter:awesome-uia-wx-sdk-solon-boot-2-starter")
 //include("awesome-uia-sdk-starter:awesome-uia-sdk-solon-boot-2-starter:awesome-uia-yztoon-sdk-solon-boot-2-starter")
-//
+
 //// Spring boot 3 Starter
 //include("awesome-uia-sdk-starter:awesome-uia-sdk-solon-boot-3-starter:awesome-uia-alipay-sdk-solon-boot-3-starter")
 //include("awesome-uia-sdk-starter:awesome-uia-sdk-solon-boot-3-starter:awesome-uia-bccastle-sdk-solon-boot-3-starter")
