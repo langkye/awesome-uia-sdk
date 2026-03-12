@@ -8,7 +8,7 @@ import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class JbanProperty : IUiaProperty {
+open class JbanProperty : IUiaProperty {
     /**
      * printStack
      */

@@ -8,7 +8,7 @@ import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class WeiboProperty : IUiaProperty {
+open class WeiboProperty : IUiaProperty {
     /**
      * printStack
      */

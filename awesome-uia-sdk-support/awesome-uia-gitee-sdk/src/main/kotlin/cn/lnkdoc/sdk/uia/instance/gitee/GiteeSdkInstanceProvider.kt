@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class GiteeSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "GITEE"
+	companion object {
+        const val NAME: String = "GITEE"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = GiteeProperty::class.java
 

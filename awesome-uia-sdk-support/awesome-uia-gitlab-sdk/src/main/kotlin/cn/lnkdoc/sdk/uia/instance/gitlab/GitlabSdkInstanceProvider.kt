@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class GitlabSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "GITLAB"
+	companion object {
+        const val NAME: String = "GITLAB"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = GitlabProperty::class.java
 

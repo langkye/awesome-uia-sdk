@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class GoogleSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "GOOGLE"
+	companion object {
+        const val NAME: String = "GOOGLE"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = GoogleProperty::class.java
 

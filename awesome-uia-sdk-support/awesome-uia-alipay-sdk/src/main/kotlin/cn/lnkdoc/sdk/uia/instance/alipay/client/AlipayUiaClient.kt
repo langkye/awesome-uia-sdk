@@ -146,11 +146,15 @@ class AlipayUiaClient private constructor() : IUiaClient {
             return client
         }
 
-        private fun checkMustRequired(property: AlipayProperty?) {
+        private fun checkMustRequired(property: AlipayProperty) {
             required(property, "the configuration is required")
-            //required(property.domain, "the domain configuration is required")
-            //required(property.clientId, "the clientId configuration is required")
-            //required(property.clientSecret, "the clientSecret configuration is required")
+            required(property.alipayGatewayUrl, "the alipayGatewayUrl configuration is required")
+            required(property.appId, "the appId configuration is required")
+            required(property.appPrivateKey, "the appPrivateKey configuration is required")
+            required(property.signMode, "the signMode configuration is required")
+            required(property.signType, "the signType configuration is required")
+            required(property.format, "the format configuration is required")
+            required(property.charset, "the charset configuration is required")
         }
     }
 }

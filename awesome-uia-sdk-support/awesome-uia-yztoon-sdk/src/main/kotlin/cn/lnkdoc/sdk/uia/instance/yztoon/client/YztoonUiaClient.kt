@@ -136,7 +136,7 @@ private constructor() : IUiaClient {
         }
 
         private fun checkMustRequired(property: YztoonProperty) {
-            required(property, "the yztoonConfiguration is required")
+            required(property, "the configuration is required")
             required(property.domain, "the domain configuration is required")
             required(property.clientId, "the clientId configuration is required")
             required(property.clientSecret, "the clientSecret configuration is required")

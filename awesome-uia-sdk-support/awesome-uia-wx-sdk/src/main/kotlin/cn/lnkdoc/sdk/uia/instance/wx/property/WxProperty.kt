@@ -9,7 +9,7 @@ import cn.lnkdoc.sdk.uia.common.constant.UiaConstants
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class WxProperty : IUiaProperty {
+open class WxProperty : IUiaProperty {
     /**
      * printStack
      */

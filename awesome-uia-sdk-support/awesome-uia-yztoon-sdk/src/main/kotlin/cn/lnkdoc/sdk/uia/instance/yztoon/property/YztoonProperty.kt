@@ -10,7 +10,7 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.Scope
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class YztoonProperty : IUiaProperty {
+open class YztoonProperty : IUiaProperty {
     /**
      * printStack
      */

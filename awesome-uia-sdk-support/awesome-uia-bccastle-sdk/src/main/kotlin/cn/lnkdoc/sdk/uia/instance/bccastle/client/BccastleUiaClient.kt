@@ -140,7 +140,7 @@ class BccastleUiaClient private constructor() : IUiaClient {
         }
 
         private fun checkMustRequired(property: BccastleProperty) {
-            required(property, "the uiaConfiguration is required")
+            required(property, "the configuration is required")
             required(property.domain, "the domain configuration is required")
             required(property.clientId, "the clientId configuration is required")
             required(property.clientSecret, "the clientSecret configuration is required")

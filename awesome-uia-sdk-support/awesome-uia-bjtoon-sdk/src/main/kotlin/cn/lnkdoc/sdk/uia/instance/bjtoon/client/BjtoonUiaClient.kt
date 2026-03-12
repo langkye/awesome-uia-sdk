@@ -118,11 +118,13 @@ class BjtoonUiaClient private constructor() : IUiaClient {
         }
 
         private fun checkMustRequired(property: BjtoonProperty) {
-            required(property, "the yztoonConfiguration is required")
+            required(property, "the configuration is required")
             required(property.domain, "the domain configuration is required")
             required(property.clientId, "the clientId configuration is required")
             required(property.clientSecret, "the clientSecret configuration is required")
-            required(property.registerPath, "the registerPath configuration is required")
+            required(property.accessTokenPath, "the accessTokenPath configuration is required")
+            required(property.userInfoPath, "the userInfoPath configuration is required")
+            required(property.ssoStatusPath, "the ssoStatusPath configuration is required")
         }
     }
 }

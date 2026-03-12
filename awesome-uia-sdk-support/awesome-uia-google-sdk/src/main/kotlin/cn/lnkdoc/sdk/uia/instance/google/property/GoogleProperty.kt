@@ -12,7 +12,7 @@ import cn.lnkdoc.sdk.uia.instance.google.Scope
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class GoogleProperty : IUiaProperty {
+open class GoogleProperty : IUiaProperty {
     /**
      * printStack
      */

@@ -9,7 +9,7 @@ import cn.lnkdoc.sdk.uia.common.property.IUiaProperty
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class BccastleProperty : IUiaProperty {
+open class BccastleProperty : IUiaProperty {
     /**
      * printStack
      */

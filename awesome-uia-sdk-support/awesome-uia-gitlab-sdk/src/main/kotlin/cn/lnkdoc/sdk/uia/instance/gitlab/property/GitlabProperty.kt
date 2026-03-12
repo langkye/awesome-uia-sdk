@@ -11,7 +11,7 @@ import cn.lnkdoc.sdk.uia.instance.gitlab.Scope
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class GitlabProperty : IUiaProperty {
+open class GitlabProperty : IUiaProperty {
     /**
      * printStack
      */

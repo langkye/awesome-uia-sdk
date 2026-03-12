@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class YztoonSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "YZTOON"
+	companion object {
+        const val NAME: String = "YZTOON"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = YztoonProperty::class.java
 

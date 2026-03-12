@@ -112,11 +112,14 @@ class JbanUiaClient private constructor() : IUiaClient {
         }
 
         private fun checkMustRequired(property: JbanProperty) {
-            required(property, "the yztoonConfiguration is required")
+            required(property, "the configuration is required")
             required(property.domain, "the domain configuration is required")
             required(property.clientId, "the clientId configuration is required")
             required(property.clientSecret, "the clientSecret configuration is required")
             required(property.openTeamId, "the redirectUrl configuration is required")
+            required(property.accessTokenPath, "the accessTokenPath configuration is required")
+            required(property.appAccessTokenPath, "the appAccessTokenPath configuration is required")
+            required(property.teamAccessTokenPath, "the teamAccessTokenPath configuration is required")
         }
     }
 }

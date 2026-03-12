@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.lnkdoc.sdk.uia.starter.bjtoon.BjtoonSdkAutoConfiguration

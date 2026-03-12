@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class JbanSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "JBAN"
+	companion object {
+        const val NAME: String = "JBAN"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = JbanProperty::class.java
 

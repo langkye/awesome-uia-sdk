@@ -70,6 +70,43 @@ The Awesome Uia SDK is a Java/Kotlin library designed for unified identity authe
 
 See [MIGRATION.md](MIGRATION.md) for detailed migration guide.
 
+### Spring Boot Starter Usage
+
+#### 1. Add dependency
+Choose the starter according to your Spring Boot version (2, 3, or 4) and the platform you need.
+
+```kts
+// Example for Alipay with Spring Boot 2.x
+implementation("cn.lnkdoc.sdk:awesome-uia-alipay-sdk-spring-boot-2-starter")
+```
+
+#### 2. Configure properties
+Add configuration in your `application.yml` or `application.properties`:
+
+```yaml
+uia-sdk:
+  alipay:
+    app-id: "your-app-id"
+    app-private-key: "your-private-key"
+    alipay-public-key: "your-public-key"
+    # ... other properties
+```
+
+#### 3. Inject and Use
+The SDK instance will be automatically configured and available in the Spring context.
+
+```kotlin
+@Service
+class MyService(private val alipaySdkInstance: ISdkInstance) {
+    fun handleLogin(code: String) {
+        val request = AccessTokenRequest()
+        request.body = code
+        val response = alipaySdkInstance.getAccessToken(request)
+        // handle response...
+    }
+}
+```
+
 ### Examples
 #### Bjtoon（北京通）
 ##### Java

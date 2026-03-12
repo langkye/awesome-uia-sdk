@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class WeiboSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "WEIBO"
+	companion object {
+        const val NAME: String = "WEIBO"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = WeiboProperty::class.java
 

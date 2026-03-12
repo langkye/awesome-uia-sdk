@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.alipay.SignMode
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class AlipayProperty : IUiaProperty {
+open class AlipayProperty : IUiaProperty {
     /**
      * printStack
      */

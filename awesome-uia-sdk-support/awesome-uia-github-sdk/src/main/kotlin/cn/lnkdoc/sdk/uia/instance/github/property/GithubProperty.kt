@@ -9,7 +9,7 @@ import cn.lnkdoc.sdk.uia.instance.github.Scope
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused")
-class GithubProperty : IUiaProperty {
+open class GithubProperty : IUiaProperty {
     /**
      * printStack
      */

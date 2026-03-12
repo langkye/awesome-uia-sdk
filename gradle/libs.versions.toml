@@ -35,8 +35,9 @@ protobuf-java = "4.33.1"
 slf4j = "2.0.16"
 site-gradle-plugin = "1.0.2"
 snakeyaml = "2.5"
+spring-boot2 = "2.7.18"
 spring-boot3 = "3.5.7"
-spring-boot = "4.0.0"
+spring-boot4 = "4.0.0"
 spring-dependency-management = "1.1.7"
 testcontainers = "2.0.2"
 transmittable-thread-local = "2.14.5"
@@ -90,7 +91,13 @@ okio = { module = "com.squareup.okio:okio", version.ref = "okio"}
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml"}
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf-java"}
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
-spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
+spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot4" }
+spring-boot2-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "spring-boot2" }
+spring-boot2-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot2" }
+spring-boot3-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "spring-boot3" }
+spring-boot3-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot3" }
+spring-boot4-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "spring-boot4" }
+spring-boot4-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot4" }
 spring-dependency-management-gradle-plugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-dependency-management" }
 stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin"}
 stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin"}
@@ -120,5 +127,5 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 site-gradle-plugin = { id = "com.github.starestarrysky.site-gradle-plugin", version.ref = "site-gradle-plugin" }
-spring-boot-dependencies = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-boot-dependencies = { id = "org.springframework.boot", version.ref = "spring-boot4" }
 spring-dependencies = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }

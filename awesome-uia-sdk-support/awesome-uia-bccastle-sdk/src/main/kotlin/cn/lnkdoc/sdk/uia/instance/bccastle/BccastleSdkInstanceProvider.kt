@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class BccastleSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "BCCASTLE"
+	companion object {
+        const val NAME: String = "BCCASTLE"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = BccastleProperty::class.java
 

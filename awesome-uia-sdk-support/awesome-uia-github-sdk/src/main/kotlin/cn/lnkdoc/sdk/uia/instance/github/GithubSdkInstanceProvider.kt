@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class GithubSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "GITHUB"
+	companion object {
+        const val NAME: String = "GITHUB"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = GithubProperty::class.java
 

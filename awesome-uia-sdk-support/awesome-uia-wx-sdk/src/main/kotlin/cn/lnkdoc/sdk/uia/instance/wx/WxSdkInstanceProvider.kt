@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class WxSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "WX"
+	companion object {
+        const val NAME: String = "WX"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = WxProperty::class.java
 

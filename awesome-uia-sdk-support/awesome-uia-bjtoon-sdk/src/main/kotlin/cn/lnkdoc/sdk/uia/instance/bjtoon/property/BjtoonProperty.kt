@@ -9,7 +9,7 @@ import cn.lnkdoc.sdk.uia.common.constant.UiaConstants
  * @since 1.0.0.RELEASE
  */
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class BjtoonProperty : IUiaProperty {
+open class BjtoonProperty : IUiaProperty {
     /**
      * printStack
      */

@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class BjtoonSdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "BJTOON"
+    companion object {
+        const val NAME: String = "BJTOON"
+    }
+    
+    override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = BjtoonProperty::class.java
 

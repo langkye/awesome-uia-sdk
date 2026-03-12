@@ -9,7 +9,11 @@ import com.google.auto.service.AutoService
 
 @AutoService(SdkInstanceProvider::class)
 class AlipaySdkInstanceProvider : SdkInstanceProvider {
-    override fun getName(): String = "ALIPAY"
+    companion object {
+        const val NAME: String = "ALIPAY"
+    }
+
+	override fun getName(): String = NAME
 
     override fun getPropertyClass(): Class<out IUiaProperty> = AlipayProperty::class.java
 
