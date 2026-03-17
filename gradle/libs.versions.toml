@@ -35,6 +35,8 @@ protobuf-java = "4.33.1"
 slf4j = "2.0.16"
 site-gradle-plugin = "1.0.2"
 snakeyaml = "2.5"
+solon2 = "2.9.4"
+solon3 = "3.9.5"
 spring-boot2 = "2.7.18"
 spring-boot3 = "3.5.7"
 spring-boot4 = "4.0.0"
@@ -91,6 +93,10 @@ okio = { module = "com.squareup.okio:okio", version.ref = "okio"}
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml"}
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf-java"}
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+solon-parent = { module = "org.noear:solon-parent", version.ref = "solon3"}
+solon2-api = { module = "org.noear:solon", version.ref = "solon2" }
+solon3-api = { module = "org.noear:solon", version.ref = "solon3" }
+solon3-configuration-processor = { module = "org.noear:solon-configuration-processor", version.ref = "solon3" }
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot4" }
 spring-boot2-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure", version.ref = "spring-boot2" }
 spring-boot2-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot2" }

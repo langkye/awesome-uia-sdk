@@ -67,7 +67,11 @@ subprojects {
             // spring-boot-4 => jdk17+
             else if (project.name.contains("spring-boot-4", true)) {
                 TOOLCHAIN_JAVA_VERSION
-            } 
+            }
+            // solon-3 => jdk17+
+            else if (project.name.contains("solon-boot-3", true)) {
+                TOOLCHAIN_JAVA_VERSION
+            }
             // other
             else {
                 TARGET_JAVA_VERSION
