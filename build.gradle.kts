@@ -18,6 +18,8 @@ plugins {
     alias(libs.plugins.kotlin.spring) apply false
     alias(libs.plugins.site.gradle.plugin)
     id("org.gradle.idea")
+    alias(libs.plugins.jreleaser)
+    //alias(libs.plugins.kordamp)
 }
 
 val signingKeyId = project.findProperty("signing.keyId") as String?
@@ -46,6 +48,8 @@ subprojects {
     if (!isInternalModule(project.name)) {
         apply(plugin = "maven-publish")
         apply(plugin = "signing")
+        apply(plugin = "org.jreleaser")
+        //apply(plugin = "org.kordamp.gradle.java-project")
     }
 
     if (isJavaPlatform(project.name)) {
@@ -219,7 +223,7 @@ subprojects {
                     // bom项目
                     if (isJavaPlatform(project.name)) {
                         from(components["javaPlatform"])
-                    } 
+                    }
                     // 普通项目
                     else {
                         from(components["java"])
@@ -274,8 +278,8 @@ subprojects {
 
             repositories {
                 maven {
-                    val releasesRepositoryUrl = RELEASE_URL
-                    val snapshotsRepositoryUrl = SNAPSHOTS_URL
+                    val releasesRepositoryUrl = RELEASE_CENTRAL_URL
+                    val snapshotsRepositoryUrl = SNAPSHOTS_CENTRAL_URL
 
                     isAllowInsecureProtocol = true
                     name = project.name
@@ -289,11 +293,121 @@ subprojects {
                         // find property from ~/.gradle/gradle.properties
                         //username = project.findProperty("ossrh.username") as String
                         username = project.findProperty("nexus.username") as String
+                        //username = project.findProperty("private.username") as String
                         //password = project.findProperty("ossrh.password") as String
                         password = project.findProperty("nexus.password") as String
+                        //password = project.findProperty("private.password") as String
                     }
                 }
+
+                // ② 新增：本地 staging 仓库，供 JReleaser 使用
+                maven {
+                    name = "localStaging"
+                    // 这里用 layout.buildDirectory 保证每个子模块各自的 build 目录
+                    url = uri(layout.buildDirectory.dir("staging-deploy"))
+                }
             }
+        }
+
+        // https://jreleaser.org/guide/latest/reference/project.html
+        // https://jreleaser.org/guide/latest/examples/maven/maven-central.html#_portal_publisher_api
+        jreleaser {
+            project {
+                //name = project.name
+                version.set(PROJECT_VERSION)
+                description.set(DESCRIPTION)
+                authors.add("langkye")
+                license = "Apache-2.0"
+                inceptionYear = "2023"
+                tags.set(listOf("awesome", "uia", "sdk"))
+                maintainers.set(listOf("langkye"))
+                copyright = "Copyright © 2023 lnkdoc All rights reserved."
+                vendor = "Lnkdoc Inc"
+
+                links {
+                    homepage = "https://github.com/langkye/awesome-uia-sdk"
+                    documentation = "https://github.com/langkye/awesome-uia-sdk"
+                    license = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    bugTracker = "https://github.com/langkye/awesome-uia-sdk/issues"
+                    vcsBrowser = "https://github.com/langkye/awesome-uia-sdk"
+                }
+
+                snapshot {
+                    pattern = ".*-SNAPSHOT.*"
+                    fullChangelog = true
+                }
+
+                // A list of icons.
+                icon {
+                    // Publicly available URL. PNG format is preferred.
+                    //  
+                    url = "https://img2024.cnblogs.com/blog/2065380/202603/2065380-20260318105846014-737009118.png"
+
+                    // Marks this icon as the primary one.
+                    // Only a single icon may be set as primary.
+                    // 
+                    primary = true
+                    // Image width in pixels.
+                    // 
+                    width = 250
+                    // Image height in pixels.
+                    // 
+                    height = 250
+                    // Additional properties used when evaluating templates.
+                    // Key will be capitalized and prefixed with `icon`, i.e, `icon`.
+                    extraProperties.put("favicon", "icon")
+                }
+            }
+
+            signing {
+                active = org.jreleaser.model.Active.ALWAYS
+                armored = true
+            }
+
+            deploy {
+                maven {
+                    mavenCentral {
+                        create("sonatypePortal") {
+                            active = org.jreleaser.model.Active.RELEASE
+                            url = "https://central.sonatype.com/api/v1/publisher/"
+                            //closeRepository = true
+                            //releaseRepository = true
+                            stagingRepository("build/staging-deploy")
+                            //stagingRepository("build/libs")
+                            //stagingRepository("build")
+                            connectTimeout = 20
+                            readTimeout = 60
+                            //autoPublish = false
+                        }
+                    }
+
+                    //nexus2 {
+                    //    create("privateNexus") {
+                    //        active = org.jreleaser.model.Active.RELEASE
+                    //        url = PRIVATE_RELEASE_URL
+                    //        snapshotUrl = PRIVATE_SNAPSHOTS_URL
+                    //        snapshotSupported = true
+                    //        closeRepository = true
+                    //        releaseRepository = true
+                    //        stagingRepository("build/staging-deploy")
+                    //        //stagingRepository("build/libs")
+                    //        //stagingRepository("build")
+                    //        connectTimeout = 20
+                    //        readTimeout = 60
+                    //    }
+                    //}
+                }
+            }
+
+            //distributions {
+            //    // 让 JReleaser 从 Maven publication 读取构件
+            //    // 如果你后续有额外发布目标，可以在这里继续扩展
+            //}
+        }
+
+        // 确保 jreleaserDeploy 之前，先把构件发布到本地 staging 仓库
+        tasks.matching { it.name == "jreleaserDeploy" }.configureEach {
+            dependsOn("publishAllPublicationsToLocalStagingRepository")
         }
 
         tasks.withType<PublishToMavenRepository> {

@@ -21,9 +21,11 @@ httpclient5 = "5.3.1"
 jackson-v2 = "2.21.0"
 jackson-bom = "3.1.0-rc1"
 javahost = "0.9.12"
+jreleaser = "1.21.0"
 junit-junit = "4.13.2"
 junit-bom = "6.0.1"
 junit-jupiter = "6.0.1"
+kordamp = "0.54.0"
 kotlin = "2.3.0"
 kotlinx-serialization-json = "1.9.0"
 logback = "1.5.32"
@@ -129,6 +131,8 @@ project-requirement = [
 
 ####################################################### [常用插件] #####################################################
 [plugins]
+jreleaser = { id = "org.jreleaser", version.ref = "jreleaser" }
+kordamp = { id = "org.kordamp.gradle.java-project", version.ref = "kordamp" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
