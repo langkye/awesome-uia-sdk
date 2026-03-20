@@ -1,5 +1,13 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
+import org.gradle.api.execution.TaskExecutionListener
+import org.gradle.api.tasks.TaskState
+import java.net.HttpURLConnection
+import java.net.URL
+import java.net.URLEncoder
+import java.time.Instant
+import java.util.Base64
 
 plugins {
     `java-library`
@@ -40,6 +48,119 @@ allprojects {
         maven { setUrl("https://repo.maven.apache.org/maven2") }
         maven { setUrl("https://s01.oss.sonatype.org/") }
         mavenLocal()
+    }
+}
+
+// ----------------------------------------------------------
+// 发布状态管理
+// ----------------------------------------------------------
+val releaseStateRoot = rootProject.layout.buildDirectory.dir("release-state/${PROJECT_VERSION}").get().asFile
+val releaseManifestFile = releaseStateRoot.resolve("manifest.txt")
+val releaseStagedDir = releaseStateRoot.resolve("staged")
+val releaseDeployedDir = releaseStateRoot.resolve("deployed")
+val releaseFailedDir = releaseStateRoot.resolve("failed")
+
+fun releaseStagedFile(moduleName: String) = releaseStagedDir.resolve("$moduleName.done")
+fun releaseDeployedFile(moduleName: String) = releaseDeployedDir.resolve("$moduleName.done")
+fun releaseFailedFile(moduleName: String) = releaseFailedDir.resolve("$moduleName.log")
+
+fun appendManifestLine(moduleName: String) {
+    releaseStateRoot.mkdirs()
+    val line = "$moduleName|$GROUP_ID|$PROJECT_VERSION"
+    val existing = if (releaseManifestFile.exists()) releaseManifestFile.readLines() else emptyList()
+    if (line !in existing) {
+        releaseManifestFile.appendText(line + System.lineSeparator())
+    }
+}
+
+fun markReleaseStaged(moduleName: String, reason: String) {
+    val file = releaseStagedFile(moduleName)
+    file.parentFile.mkdirs()
+    file.writeText(
+        buildString {
+            appendLine("module=$moduleName")
+            appendLine("group=$GROUP_ID")
+            appendLine("version=$PROJECT_VERSION")
+            appendLine("reason=$reason")
+            appendLine("timestamp=${Instant.now()}")
+        }
+    )
+}
+
+fun markReleaseDeployed(moduleName: String, reason: String) {
+    val file = releaseDeployedFile(moduleName)
+    file.parentFile.mkdirs()
+    file.writeText(
+        buildString {
+            appendLine("module=$moduleName")
+            appendLine("group=$GROUP_ID")
+            appendLine("version=$PROJECT_VERSION")
+            appendLine("reason=$reason")
+            appendLine("timestamp=${Instant.now()}")
+        }
+    )
+}
+
+fun markReleaseFailed(moduleName: String, message: String) {
+    val file = releaseFailedFile(moduleName)
+    file.parentFile.mkdirs()
+    file.writeText(
+        buildString {
+            appendLine("module=$moduleName")
+            appendLine("group=$GROUP_ID")
+            appendLine("version=$PROJECT_VERSION")
+            appendLine("timestamp=${Instant.now()}")
+            appendLine(message)
+        }
+    )
+}
+
+fun isReleaseStaged(moduleName: String): Boolean = releaseStagedFile(moduleName).exists()
+fun isReleaseDeployed(moduleName: String): Boolean = releaseDeployedFile(moduleName).exists()
+
+fun looksLikePartialDeployFailure(message: String): Boolean {
+    return message.contains("already deployed", ignoreCase = true) ||
+        message.contains("Some artifacts were already deployed", ignoreCase = true) ||
+        message.contains("staging repository", ignoreCase = true)
+}
+
+/**
+ * Central Portal published API
+ * GET /api/v1/publisher/published?namespace=...&name=...&version=...
+ */
+fun remoteVersionExists(moduleName: String): Boolean {
+    return try {
+        val baseUrl = "https://central.sonatype.com/api/v1/publisher/published"
+        val namespace = URLEncoder.encode(GROUP_ID, Charsets.UTF_8.name())
+        val name = URLEncoder.encode(moduleName, Charsets.UTF_8.name())
+        val version = URLEncoder.encode(PROJECT_VERSION, Charsets.UTF_8.name())
+
+        val url = "$baseUrl?namespace=$namespace&name=$name&version=$version"
+        val conn = (URL(url).openConnection() as HttpURLConnection).apply {
+            requestMethod = "GET"
+            connectTimeout = 5_000
+            readTimeout = 5_000
+            instanceFollowRedirects = true
+
+            // todo
+            val user = project.findProperty("JRELEASER_MAVENCENTRAL_USERNAME") as String?
+            val pass = project.findProperty("JRELEASER_MAVENCENTRAL_PASSWORD") as String?
+            if (!user.isNullOrBlank() && !pass.isNullOrBlank()) {
+                val token = Base64.getEncoder()
+                    .encodeToString("$user:$pass".toByteArray(Charsets.UTF_8))
+                setRequestProperty("Authorization", "Basic $token")
+            }
+        }
+
+        if (conn.responseCode != 200) {
+            println("[ERROR] [${conn.responseCode}] ${conn.responseMessage}")
+            return false
+        }
+        val body = conn.inputStream.bufferedReader().use { it.readText() }
+        body.contains("\"published\":true", ignoreCase = true)
+    } catch (ex: Exception) {
+        println("[ERROR] ${ex.message}")
+        false
     }
 }
 
@@ -311,6 +432,7 @@ subprojects {
 
         // https://jreleaser.org/guide/latest/reference/project.html
         // https://jreleaser.org/guide/latest/examples/maven/maven-central.html#_portal_publisher_api
+        // https://jreleaser.org/guide/latest/examples/maven/maven-central.html#_gradle
         jreleaser {
             project {
                 //name = project.name
@@ -405,15 +527,117 @@ subprojects {
             //}
         }
 
-        // 确保 jreleaserDeploy 之前，先把构件发布到本地 staging 仓库
-        tasks.matching { it.name == "jreleaserDeploy" }.configureEach {
-            dependsOn("publishAllPublicationsToLocalStagingRepository")
+        tasks.matching { it.name == "publishAllPublicationsToLocalStagingRepository" }.configureEach {
+            onlyIf {
+                !isReleaseDeployed(project.name)
+            }
+
+            doFirst {
+                appendManifestLine(project.name)
+                println("Publishing ${project.name} to local staging repository: ${project.path}")
+            }
+
+            doLast {
+                markReleaseStaged(project.name, "local-staging-success")
+                println("[${project.name}] 已发布到本地 staging，写入 staged 标记：${releaseStagedFile(project.name).absolutePath}")
+            }
         }
 
-        tasks.withType<PublishToMavenRepository> {
+        tasks.matching { it.name == "jreleaserDeploy" }.configureEach {
+            dependsOn("prepareReleaseManifest")
+            dependsOn("publishAllPublicationsToLocalStagingRepository")
+
+            onlyIf {
+                val deployed = isReleaseDeployed(project.name)
+                val remoteExists = remoteVersionExists(project.name)
+
+                if (deployed) {
+                    println("[${project.name}] 已存在 deployed 标记，跳过 jreleaserDeploy。")
+                } else if (remoteExists) {
+                    println("[${project.name}] Central Portal 已显示已发布，跳过 jreleaserDeploy。")
+                }
+
+                !deployed && !remoteExists
+            }
+
             doFirst {
+                appendManifestLine(project.name)
+                println("[${project.name}] 准备执行 jreleaserDeploy: ${GROUP_ID}:${project.name}:${PROJECT_VERSION}")
+                if (!isReleaseStaged(project.name)) {
+                    println("[${project.name}] 警告：尚未发现 staged 标记，但仍将继续尝试部署。")
+                }
+            }
+
+            doLast {
+                markReleaseDeployed(project.name, "jreleaser-deploy-success")
+                println("[${project.name}] 远端部署成功，已写入 deployed 标记：${releaseDeployedFile(project.name).absolutePath}")
+            }
+        }
+
+        tasks.withType<PublishToMavenRepository>().configureEach {
+            onlyIf {
+                !isReleaseDeployed(project.name)
+            }
+
+            doFirst {
+                appendManifestLine(project.name)
                 println("Publishing ${project.name} to repository: ${repository.url}")
             }
+        }
+
+        if (project == rootProject) {
+            gradle.addListener(object : TaskExecutionListener {
+                override fun beforeExecute(task: Task) {
+                    // no-op
+                }
+
+                override fun afterExecute(task: Task, state: TaskState) {
+                    if (task is PublishToMavenRepository && state.failure != null) {
+                        val moduleName = task.project.name
+                        val msg = state.failure?.message ?: "unknown failure"
+
+                        markReleaseFailed(moduleName, msg)
+
+                        if (looksLikePartialDeployFailure(msg)) {
+                            // 这里只能补 staged，不要直接补 deployed
+                            markReleaseStaged(moduleName, "partial-success-detected")
+                            println("[$moduleName] 检测到部分成功部署，已补写 staged 标记。")
+                        }
+                    }
+                }
+            })
+        }
+
+        tasks.register("resumeRelease") {
+            group = "publishing"
+            description = "基于 staged/deployed 标记继续未完成模块发布"
+            dependsOn("prepareReleaseManifest")
+            dependsOn("publishAllPublicationsToLocalStagingRepository")
+            //dependsOn("jreleaserUpload")
+            dependsOn("jreleaserDeploy")
+        }
+    }
+
+    tasks.register("cleanReleaseState") {
+        group = "publishing"
+        description = "清理当前版本的发布状态"
+
+        doLast {
+            if (releaseStateRoot.exists()) {
+                releaseStateRoot.deleteRecursively()
+                println("Deleted release state: ${releaseStateRoot.absolutePath}")
+            }
+        }
+    }
+
+    tasks.register("prepareReleaseManifest") {
+        group = "publishing"
+        description = "生成发布清单，并可选探测远端版本是否已存在"
+
+        doLast {
+            releaseStateRoot.mkdirs()
+            println("Release manifest: ${releaseManifestFile.absolutePath}")
+            println("Release state dir: ${releaseStateRoot.absolutePath}")
         }
     }
 }
@@ -430,7 +654,7 @@ kotlin {
 
 tasks.withType<PublishToMavenRepository> {
     doFirst {
-        println("Publishing to repository: ${repository.url}")
+        println("Publishing ${project.name} to repository: ${repository.url}")
         println("Username: ${repository.credentials.username}")
         //println("Password: ${repository.credentials.password}")
     }

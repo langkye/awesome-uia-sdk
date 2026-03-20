@@ -1,6 +1,20 @@
 # create the property file in ~/.gradle
-signing.keyId=
-signing.password=
+signing.keyId=<your-key-id>
+signing.key=
+signing.keyFilePath=<path-to-your-armored-pgp-key>
+signing.password=<your-signing-password>
 signing.secretKeyRingFile=
-ossrh.username=
-ossrh.password=
+signing.secretKeyFile=
+
+ossrh.username=<your-username>
+ossrh.password=<your-password>
+
+nexus.username=<your-username>
+nexus.password=<your-password>
+
+private.username=
+private.password=
+
+# JReleaser / Central Portal
+JRELEASER_MAVENCENTRAL_USERNAME=<your-central-username>
+JRELEASER_MAVENCENTRAL_PASSWORD=<your-central-password-or-token>
