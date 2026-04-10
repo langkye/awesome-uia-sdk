@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.bccastle
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.bccastle.BccastleSdkInstance
 import cn.lnkdoc.sdk.uia.instance.bccastle.BccastleSdkInstanceProvider
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -26,7 +26,7 @@ open class BccastleSdkAutoConfiguration {
      */
     @Bean(name = ["bccastleSdkInstance", BccastleSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["bccastleSdkInstance"])
-    open fun bccastleSdkInstance(properties: BccastleSdkProperties): ISdkInstance {
-        return Instance.of(BccastleSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun bccastleSdkInstance(properties: BccastleSdkProperties): BccastleSdkInstance {
+        return Instance.of(BccastleSdkInstanceProvider.NAME).function.invoke(properties) as BccastleSdkInstance
     }
 }

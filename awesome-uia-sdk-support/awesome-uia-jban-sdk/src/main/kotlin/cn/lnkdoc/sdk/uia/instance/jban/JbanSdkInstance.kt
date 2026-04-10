@@ -12,7 +12,7 @@ import cn.lnkdoc.sdk.uia.instance.jban.property.JbanProperty
  * @author langkye
  */
 @Suppress("Unchecked_cast", "unused")
-class JbanSdkInstance(property: JbanProperty) : AbstractInstance(), ISdkInstance {
+open class JbanSdkInstance(property: JbanProperty) : AbstractInstance(), ISdkInstance {
     /**
      * instance
      */

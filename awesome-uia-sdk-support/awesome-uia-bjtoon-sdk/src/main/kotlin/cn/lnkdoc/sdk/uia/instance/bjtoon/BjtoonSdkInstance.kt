@@ -16,7 +16,7 @@ import cn.lnkdoc.sdk.uia.instance.bjtoon.request.UserInfoRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
-class BjtoonSdkInstance(property: BjtoonProperty) : AbstractInstance(), ISdkInstance {
+open class BjtoonSdkInstance(property: BjtoonProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

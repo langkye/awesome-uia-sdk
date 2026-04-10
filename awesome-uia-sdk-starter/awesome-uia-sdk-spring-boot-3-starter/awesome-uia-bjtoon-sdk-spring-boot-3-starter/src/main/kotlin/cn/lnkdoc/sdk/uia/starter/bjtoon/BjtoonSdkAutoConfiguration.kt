@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.bjtoon
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.bjtoon.BjtoonSdkInstance
 import cn.lnkdoc.sdk.uia.instance.bjtoon.BjtoonSdkInstanceProvider
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -26,7 +26,7 @@ open class BjtoonSdkAutoConfiguration {
      */
     @Bean(name = ["bjtoonSdkInstance", BjtoonSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["bjtoonSdkInstance"])
-    open fun bjtoonSdkInstance(properties: BjtoonSdkProperties): ISdkInstance {
-        return Instance.of(BjtoonSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun bjtoonSdkInstance(properties: BjtoonSdkProperties): BjtoonSdkInstance {
+        return Instance.of(BjtoonSdkInstanceProvider.NAME).function.invoke(properties) as BjtoonSdkInstance
     }
 }

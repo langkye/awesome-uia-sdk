@@ -1,6 +1,8 @@
+import org.gradle.api.Project
+
 // ---------------------------------------------------------- Project info ----------------------------------------------------------
 const val GROUP_ID = "cn.lnkdoc.sdk"
-const val PROJECT_VERSION = "3.0.0-RC1"
+const val PROJECT_VERSION = "3.0.0-RC2"
 const val DESCRIPTION = """
     Awesome Uia SDK for Java
     Copyright © 2023 lnkdoc All rights reserved.
@@ -28,7 +30,7 @@ fun resolveSupportModuleName(shortName: String): String {
 }
 
 fun isJavaPlatform(name: String): Boolean {
-    return name === BOM_NAME || name === DEPENDENCIES_NAME
+    return name == BOM_NAME || name == DEPENDENCIES_NAME
 }
 
 fun isInternalModule(name: String): Boolean {
@@ -41,6 +43,23 @@ fun isInternalModule(name: String): Boolean {
     ).contains(name) 
             || name.matches(Regex("^awesome-uia-sdk-spring-boot-.*-starter$"))
             || name.matches(Regex("^awesome-uia-sdk-solon-boot-.*-starter$"))
+            || name.matches(Regex("^awesome-uia-sdk-example$"))
+}
+
+fun isInternalModule(project: Project): Boolean {
+    val name = project.name
+    val projectPath = project.path
+    
+    return listOf(CORE, 
+        BOM_NAME, 
+        BUILD_LOGIC_NAME,
+        COMMON_NAME, 
+        SUPPORT_NAME, 
+        STARTER_NAME,
+    ).contains(name) 
+            || name.matches(Regex("^awesome-uia-sdk-spring-boot-.*-starter$"))
+            || name.matches(Regex("^awesome-uia-sdk-solon-boot-.*-starter$"))
+            || projectPath.matches(Regex(":awesome-uia-sdk-example:.*"))
 }
 
 fun resolveReleaseJdkVersion(version: Number): Int {

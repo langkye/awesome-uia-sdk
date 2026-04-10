@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.gitee.request.AccessTokenRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
-class GiteeSdkInstance(property: GiteeProperty) : AbstractInstance(), ISdkInstance {
+open class GiteeSdkInstance(property: GiteeProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

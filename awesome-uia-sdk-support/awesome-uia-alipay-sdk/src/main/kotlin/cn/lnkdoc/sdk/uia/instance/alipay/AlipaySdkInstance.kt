@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.alipay.request.UserInfoRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class AlipaySdkInstance(property: AlipayProperty?) : AbstractInstance(), ISdkInstance {
+open class AlipaySdkInstance(property: AlipayProperty?) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

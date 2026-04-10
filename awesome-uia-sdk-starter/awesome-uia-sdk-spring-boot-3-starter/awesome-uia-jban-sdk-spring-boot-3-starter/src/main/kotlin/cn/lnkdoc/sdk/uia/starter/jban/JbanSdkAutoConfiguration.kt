@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.jban
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstance
 import cn.lnkdoc.sdk.uia.instance.jban.JbanSdkInstanceProvider
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -26,7 +26,7 @@ open class JbanSdkAutoConfiguration {
      */
     @Bean(name = ["jbanSdkInstance", JbanSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["jbanSdkInstance"])
-    open fun jbanSdkInstance(properties: JbanSdkProperties): ISdkInstance {
-        return Instance.of(JbanSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun jbanSdkInstance(properties: JbanSdkProperties): JbanSdkInstance {
+        return Instance.of(JbanSdkInstanceProvider.NAME).function.invoke(properties) as JbanSdkInstance
     }
 }

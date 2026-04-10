@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.gitlab
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.gitlab.GitlabSdkInstance
 import cn.lnkdoc.sdk.uia.instance.gitlab.GitlabSdkInstanceProvider
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -26,7 +26,7 @@ open class GitlabSdkAutoConfiguration {
      */
     @Bean(name = ["gitlabSdkInstance", GitlabSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["gitlabSdkInstance"])
-    open fun gitlabSdkInstance(properties: GitlabSdkProperties): ISdkInstance {
-        return Instance.of(GitlabSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun gitlabSdkInstance(properties: GitlabSdkProperties): GitlabSdkInstance {
+        return Instance.of(GitlabSdkInstanceProvider.NAME).function.invoke(properties) as GitlabSdkInstance
     }
 }

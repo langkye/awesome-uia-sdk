@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.github.property.GithubProperty
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
-class GithubSdkInstance(property: GithubProperty) : AbstractInstance(), ISdkInstance {
+open class GithubSdkInstance(property: GithubProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

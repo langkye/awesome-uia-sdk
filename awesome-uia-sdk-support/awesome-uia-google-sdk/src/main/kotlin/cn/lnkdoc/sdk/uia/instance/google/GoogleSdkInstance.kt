@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.google.request.AccessTokenRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
-class GoogleSdkInstance(property: GoogleProperty) : AbstractInstance(), ISdkInstance {
+open class GoogleSdkInstance(property: GoogleProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

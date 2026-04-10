@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.wx
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.wx.WxSdkInstance
 import cn.lnkdoc.sdk.uia.instance.wx.WxSdkInstanceProvider
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -26,7 +26,7 @@ open class WxSdkAutoConfiguration {
      */
     @Bean(name = ["wxSdkInstance", WxSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["wxSdkInstance"])
-    open fun wxSdkInstance(properties: WxSdkProperties): ISdkInstance {
-        return Instance.of(WxSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun wxSdkInstance(properties: WxSdkProperties): WxSdkInstance {
+        return Instance.of(WxSdkInstanceProvider.NAME).function.invoke(properties) as WxSdkInstance
     }
 }

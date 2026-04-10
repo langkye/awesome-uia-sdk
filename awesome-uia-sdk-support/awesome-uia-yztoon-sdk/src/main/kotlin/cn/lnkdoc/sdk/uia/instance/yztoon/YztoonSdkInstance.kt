@@ -13,7 +13,7 @@ import cn.lnkdoc.sdk.uia.instance.yztoon.request.LogoutRequest
  * @author langkye
  */
 @Suppress("Unchecked_cast", "unused")
-class YztoonSdkInstance(property: YztoonProperty) : AbstractInstance(), ISdkInstance {
+open class YztoonSdkInstance(property: YztoonProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

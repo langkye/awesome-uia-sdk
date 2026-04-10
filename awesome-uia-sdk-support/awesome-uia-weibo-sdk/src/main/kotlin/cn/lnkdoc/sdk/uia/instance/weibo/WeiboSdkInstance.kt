@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.weibo.request.AccessTokenRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
-class WeiboSdkInstance(property: WeiboProperty) : AbstractInstance(), ISdkInstance {
+open class WeiboSdkInstance(property: WeiboProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

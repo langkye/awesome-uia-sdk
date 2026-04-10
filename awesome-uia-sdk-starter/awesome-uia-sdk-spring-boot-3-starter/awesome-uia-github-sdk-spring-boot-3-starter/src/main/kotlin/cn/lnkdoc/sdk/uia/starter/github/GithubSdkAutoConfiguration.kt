@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.github
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.github.GithubSdkInstance
 import cn.lnkdoc.sdk.uia.instance.github.GithubSdkInstanceProvider
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -26,7 +26,7 @@ open class GithubSdkAutoConfiguration {
      */
     @Bean(name = ["githubSdkInstance", GithubSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["githubSdkInstance"])
-    open fun githubSdkInstance(properties: GithubSdkProperties): ISdkInstance {
-        return Instance.of(GithubSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun githubSdkInstance(properties: GithubSdkProperties): GithubSdkInstance {
+        return Instance.of(GithubSdkInstanceProvider.NAME).function.invoke(properties) as GithubSdkInstance
     }
 }

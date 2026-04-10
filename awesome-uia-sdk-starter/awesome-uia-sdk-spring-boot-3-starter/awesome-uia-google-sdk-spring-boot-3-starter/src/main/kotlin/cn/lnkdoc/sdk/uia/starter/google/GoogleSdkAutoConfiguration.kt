@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.google
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.google.GoogleSdkInstance
 import cn.lnkdoc.sdk.uia.instance.google.GoogleSdkInstanceProvider
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -26,7 +26,7 @@ open class GoogleSdkAutoConfiguration {
      */
     @Bean(name = ["googleSdkInstance", GoogleSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["googleSdkInstance"])
-    open fun googleSdkInstance(properties: GoogleSdkProperties): ISdkInstance {
-        return Instance.of(GoogleSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun googleSdkInstance(properties: GoogleSdkProperties): GoogleSdkInstance {
+        return Instance.of(GoogleSdkInstanceProvider.NAME).function.invoke(properties) as GoogleSdkInstance
     }
 }

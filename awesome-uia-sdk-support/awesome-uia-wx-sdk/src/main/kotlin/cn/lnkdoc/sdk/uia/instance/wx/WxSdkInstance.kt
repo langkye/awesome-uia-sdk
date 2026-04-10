@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.wx.request.UserInfoRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class WxSdkInstance(property: WxProperty?) : AbstractInstance(), ISdkInstance {
+open class WxSdkInstance(property: WxProperty?) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

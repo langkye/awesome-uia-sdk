@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.bccastle.request.UserInfoRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast", "unused")
-class BccastleSdkInstance(property: BccastleProperty?) : AbstractInstance(), ISdkInstance {
+open class BccastleSdkInstance(property: BccastleProperty?) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

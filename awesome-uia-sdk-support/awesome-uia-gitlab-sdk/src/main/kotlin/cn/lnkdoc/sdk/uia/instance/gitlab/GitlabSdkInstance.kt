@@ -14,7 +14,7 @@ import cn.lnkdoc.sdk.uia.instance.gitlab.request.AccessTokenRequest
  * @since 1.0.0.RELEASE
  */
 @Suppress("Unchecked_cast")
-class GitlabSdkInstance(property: GitlabProperty) : AbstractInstance(), ISdkInstance {
+open class GitlabSdkInstance(property: GitlabProperty) : AbstractInstance(), ISdkInstance {
     /**
      * constructor
      */

@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.alipay
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.alipay.AlipaySdkInstance
 import cn.lnkdoc.sdk.uia.instance.alipay.AlipaySdkInstanceProvider
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -26,7 +26,7 @@ open class AlipaySdkAutoConfiguration {
      */
     @Bean(name = ["alipaySdkInstance", AlipaySdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["alipaySdkInstance", AlipaySdkInstanceProvider.NAME])
-    open fun alipaySdkInstance(properties: AlipaySdkProperties): ISdkInstance {
-        return Instance.of(AlipaySdkInstanceProvider.NAME).function.invoke(properties)
+    open fun alipaySdkInstance(properties: AlipaySdkProperties): AlipaySdkInstance {
+        return Instance.of(AlipaySdkInstanceProvider.NAME).function.invoke(properties) as AlipaySdkInstance
     }
 }

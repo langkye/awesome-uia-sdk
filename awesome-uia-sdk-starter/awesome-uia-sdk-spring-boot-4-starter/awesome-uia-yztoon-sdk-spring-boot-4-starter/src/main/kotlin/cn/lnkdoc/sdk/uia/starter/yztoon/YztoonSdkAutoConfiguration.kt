@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.yztoon
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.yztoon.YztoonSdkInstance
 import cn.lnkdoc.sdk.uia.instance.yztoon.YztoonSdkInstanceProvider
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -26,7 +26,7 @@ open class YztoonSdkAutoConfiguration {
      */
     @Bean(name = ["yztoonSdkInstance", YztoonSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["yztoonSdkInstance"])
-    open fun yztoonSdkInstance(properties: YztoonSdkProperties): ISdkInstance {
-        return Instance.of(YztoonSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun yztoonSdkInstance(properties: YztoonSdkProperties): YztoonSdkInstance {
+        return Instance.of(YztoonSdkInstanceProvider.NAME).function.invoke(properties) as YztoonSdkInstance
     }
 }

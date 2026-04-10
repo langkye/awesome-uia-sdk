@@ -1,7 +1,7 @@
 package cn.lnkdoc.sdk.uia.starter.weibo
 
-import cn.lnkdoc.sdk.uia.instance.ISdkInstance
 import cn.lnkdoc.sdk.uia.instance.Instance
+import cn.lnkdoc.sdk.uia.instance.weibo.WeiboSdkInstance
 import cn.lnkdoc.sdk.uia.instance.weibo.WeiboSdkInstanceProvider
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -26,7 +26,7 @@ open class WeiboSdkAutoConfiguration {
      */
     @Bean(name = ["weiboSdkInstance", WeiboSdkInstanceProvider.NAME])
     @ConditionalOnMissingBean(name = ["weiboSdkInstance"])
-    open fun weiboSdkInstance(properties: WeiboSdkProperties): ISdkInstance {
-        return Instance.of(WeiboSdkInstanceProvider.NAME).function.invoke(properties)
+    open fun weiboSdkInstance(properties: WeiboSdkProperties): WeiboSdkInstance {
+        return Instance.of(WeiboSdkInstanceProvider.NAME).function.invoke(properties) as WeiboSdkInstance
     }
 }
